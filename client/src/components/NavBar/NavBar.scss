@@ -1,0 +1,19 @@
+@use "../../styles/partials/variables" as*;
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+    &__links {
+        background-color:$navbar-background;
+        color:$navbar-font;
+        padding: .25rem;
+        border: .5px solid $navbar-font;
+        cursor: pointer;
+    &--active {
+        background-color: $navbar-background--active;
+        color: $navbar-font--active;
+    }
+    }
+    
+}
