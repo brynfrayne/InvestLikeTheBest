@@ -1,5 +1,7 @@
 import React from 'react';
 import { Dropdown } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 export default function DropDown() {
   return <div>
@@ -8,7 +10,7 @@ export default function DropDown() {
     variant="success"
     id="dropdown-basic"
   >
-    Dropdown Button
+    Follow your heart ❤️ 
   </Dropdown.Toggle>
 
   <Dropdown.Menu>
@@ -22,6 +24,6 @@ export default function DropDown() {
       Something else
     </Dropdown.Item>
   </Dropdown.Menu>
-</Dropdown>;
+</Dropdown>
   </div>;
 }

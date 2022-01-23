@@ -1,0 +1,16 @@
+// @use "../../styles/partials/global" as*;
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    &__img {
+        width: 25vw;
+        height: 14vh;
+        border: 1px solid linear-gradient(to right, #E5E5BE, #003973);
+        border-radius: 1rem;
+        box-shadow: rgba(1, 7, 14, 0.2) 0px 8px 24px;
+        margin-bottom: 1rem;
+    }
+}
