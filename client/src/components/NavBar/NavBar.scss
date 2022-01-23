@@ -3,6 +3,9 @@
 .navbar {
     display: flex;
     justify-content: center;
+    font-size: .75rem;
+    width: 60%;
+    // flex-wrap: nowrap;
 
 
     &__links {
