@@ -3,7 +3,8 @@
 .navbar {
     display: flex;
     justify-content: center;
-    margin: 2rem;
+    // margin: 2rem;
+
     &__links {
         background-color:$navbar-background;
         color:$navbar-font;

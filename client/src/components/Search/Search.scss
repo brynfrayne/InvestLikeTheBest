@@ -1,0 +1,26 @@
+@use "../../styles/partials/variables" as*;
+
+.search {
+    position:relative;
+    min-height:1rem;
+    box-shadow: 0;
+    
+   
+
+    &__input {
+        padding: .5rem;
+        padding-left:2.5rem;
+        border: 1px solid $Divider-line;
+        border-radius: 1.25rem;
+        width: 8rem;
+        
+    }
+
+    &__svg {
+        left:1rem;
+        position:absolute;
+        top:30%;
+        height: .8rem;
+        width:.8rem;
+    }
+}
