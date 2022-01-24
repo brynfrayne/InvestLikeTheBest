@@ -311,9 +311,9 @@ for (let i = 1; i < 2; i++) {
     // console.log(investorDir);
     let investorFilings = fs.readdirSync(investorDir);
     console.log(investorFilings);
-    for(let j =0; j <investorFilings.length; j ++) {
+    // for(let j =0; j <investorFilings.length; j ++) {
 
-    }
+    // }
     // console.log(investorFilings[0]);
     let q4 = investorDir + '/' + investorFilings[0];
     let q1 = investorDir + '/' + investorFilings[1];
