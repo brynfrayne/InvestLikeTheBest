@@ -1,0 +1,15 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+}
+.navbar__links {
+  background-color: lightgrey;
+  color: black;
+  padding: 0.25rem;
+  border: 0.5px solid black;
+  cursor: pointer;
+}
+.navbar__links--active {
+  background-color: green;
+  color: white;
+}/*# sourceMappingURL=NavBar.css.map */

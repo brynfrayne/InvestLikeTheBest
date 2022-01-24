@@ -1,0 +1,35 @@
+$navbar-background: lightgrey;
+$navbar-background--active: green; 
+$navbar-font: black;
+$navbar-font--active: white;
+
+$Divider-line: #E1e1e1;
+
+// breakpoints
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
+// colors
+
+$dark-black: #121a21; // Black for nav bar/ start gradient
+$white: #ffffff; // White active text
+$graphite: #45484f; // Graphite for backgound
+$light-grey: #b1b1b1; // Light-Grey for text
+$neutral-blue: #2e3b45;
+
+$color-primary-1: #13182c; // Black
+$color-primary-2: #2e66e5; // Indigo
+$color-primary-3: #ffffff; // White
+
+$color-secondary-1: #5c667e; // Slate
+$color-secondary-2: #bdc5d5; // Cloud
+
+$color-background-1: #232940; // Graphite
+$color-background-2: #f7f8f9; // Light-Grey
+
+$color-supporting-1: #158463; // Green
+$color-supporting-2: #c94515; // Red
+
+$color-barchart-green: rgba(13,210,13,.64); // translucent green
+$color-barchart-yellow: rgba(210, 210, 13,.64); //translucent yellow
+$color-barchart-red: rgba(210,13,13,.8); //translucent red

@@ -1,0 +1,9 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero__img {
+  width: 25vw;
+  height: 14vh;
+}/*# sourceMappingURL=Hero.css.map */
