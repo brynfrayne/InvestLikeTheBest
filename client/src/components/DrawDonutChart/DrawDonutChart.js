@@ -1,7 +1,7 @@
 import * as d3 from "d3";
-import { Translate } from "react-bootstrap-icons";
+// import { Translate } from "react-bootstrap-icons";
 
-const drawChart = (element, data) => {
+const DrawDonutChart = (element, data) => {
   const colors = ["#05BBD2", "#2070C4", "#EB80F1", "#F5C842", "#37D400"];
   const boxSize = 500;
 
@@ -18,11 +18,17 @@ const drawChart = (element, data) => {
     .attr("transform", `translate(${boxSize / 2}, ${boxSize / 2})`);
 
   const arcGenerator = d3.arc().padAngle(0.01).innerRadius(90).outerRadius(150);
-//   const maxValue = data.reduce((cur, val) => Math.max(cur, val.value), 0);
+
+// Below is a way to give each segment a proportionally larger segment -- delete before handing
+console.log('delete the code below!!')
+
+  //   const maxValue = data.reduce((cur, val) => Math.max(cur, val.value), 0);
 // const arcGenerator = d3.arc().cornerRadius(10).padAngle(0.02).innerRadius(100)
 // .outerRadius((d) => {
 //     return 150 - (maxValue - d.value);
 // });
+
+
   const pieGenerator = d3.pie().value((d) => d.value);
 
   const arcs = svg.selectAll().data(pieGenerator(data)).enter();
@@ -51,4 +57,4 @@ const drawChart = (element, data) => {
     })
 };
 
-export default drawChart;
+export default DrawDonutChart;
