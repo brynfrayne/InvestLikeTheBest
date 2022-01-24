@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ChartComponent from '../../components/ChartComponent/ChartComponent';
-// import Doughnut from '../../components/Doughnut/Doughnut';
+import Header from '../../components/Header/Header';
+import Hero from '../../components/Hero/Hero';
+
 const data = [
   { value: 40 },
   { value: 25 },
@@ -9,11 +11,19 @@ const data = [
   { value: 2 }
 ];
 export default class FundPage extends Component {
-  
+   data = [
+    { value: 40 },
+    { value: 25 },
+    { value: 15 },
+    { value: 8 },
+    { value: 2 }
+  ];
   render() {
 
     return <div>
-        <ChartComponent data={data}/>
+      <Header />
+      <Hero />
+      <ChartComponent data={data}/>
     </div>;
   }
 }
