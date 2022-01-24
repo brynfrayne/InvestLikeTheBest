@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import ChartsPage from './pages/ChartsPage/ChartsPage';
 import LandingPage from './pages/LandingPage/LandingPage';
 import FundPage from './pages/FundPage/FundPage';
+import CompanyPage from './pages/CompanyPage/CompanyPage';
 
 function App() {
 ;
@@ -14,7 +15,7 @@ function App() {
 {/* <Header /> */}
   <Routes>
     <Route path='/' exact element={<LandingPage/>} /> 
-    {/* <Route path='/:companyId' component={CompanyPage} />*/}
+    <Route path='/company' element={<CompanyPage/>} />
     <Route path='/funds' element={<FundPage/>} />
     {/*<Route path='/superInvestors' component={SuperInvestors} /> */}
     <Route path='/charts' element={<ChartsPage />} /> 
