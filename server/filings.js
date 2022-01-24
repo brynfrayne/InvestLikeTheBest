@@ -4,270 +4,19 @@ const fs = require('fs');
 const cheerio = require('cheerio');
 
 // Ignore this array for now
-const investorFilingsArray = [
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-    ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-    ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-    ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-    ] 
-    }, 
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-    ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-    ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-    ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-        ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-    ] 
-    },
-    {
-    fundName: "",
-    managerName: "",
-    filings: [
-        {
-            filingDate: "",
-            filingSrc: ""
-        }
-    ] 
-    }       
-];
+
 
 // here i want to take all of the data html filings i have and then turn them into an array which i can pass through a for loop to pass each into my html parser function below
-const dir = './data/';
+const dir = 'server/data/';
 const files = fs.readdirSync(dir);
 
 
-const holdingsText = [];
-const holdings = [];
+
 
 // below i have written a function which will take the raw 13f html file and turn it into a json object with corresponging key values
     const htmlParser = (src, fileName, investor) => {
-    
+    const holdingsText = [];
+    const holdings = [];
     const $ = cheerio.load(fs.readFileSync(src));
     const rows = $("body > table:nth-child(3) > tbody > tr > td")
     console.log($)
@@ -297,7 +46,7 @@ const holdings = [];
       holdings.push(newObj);
       
     }
-    fs.writeFileSync(`./data/${investor}/${fileName}.json`, JSON.stringify(holdings));
+    fs.writeFileSync(`server/data/${investor}/${fileName}.json`, JSON.stringify(holdings));
     return holdings;
   }
 
@@ -305,25 +54,19 @@ const holdings = [];
 // how can i programmatically take the array made with the for loop above
 // and pass each file through the html function and make a json object for each
 
-for (let i = 1; i < 2; i++) {
+for (let i = 1; i < files.length; i++) {
     let investorDir = dir+files[i];
-    // console.log(files[i]);
-    // console.log(investorDir);
-    let investorFilings = fs.readdirSync(investorDir);
-    console.log(investorFilings);
-    // for(let j =0; j <investorFilings.length; j ++) {
 
-    // }
-    // console.log(investorFilings[0]);
+    let investorFilings = fs.readdirSync(investorDir);
+    
     let q4 = investorDir + '/' + investorFilings[0];
     let q1 = investorDir + '/' + investorFilings[1];
     let q2 = investorDir + '/' + investorFilings[2];
     let q3 = investorDir + '/' + investorFilings[3];
-    // htmlParser(q4, 'q4', files[i] );
-    // htmlParser(q1, 'q1', files[i] );
-    // htmlParser(q2, 'q2', files[i] );
-    // htmlParser(q3, 'q3', files[i] );
-    console.log(q4);
-
+    
+    htmlParser(q4, 'q4', files[i] );
+    htmlParser(q1, 'q1', files[i] );
+    htmlParser(q2, 'q2', files[i] );
+    htmlParser(q3, 'q3', files[i] );
+      
 }
-// console.log(files);

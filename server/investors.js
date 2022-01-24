@@ -27,3 +27,255 @@ const investors = [
 ]
 
 console.log(investors.length);
+const investorFilingsArray = [
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+    ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+    ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+    ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+    ] 
+    }, 
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+    ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+    ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+    ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+        ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+    ] 
+    },
+    {
+    fundName: "",
+    managerName: "",
+    filings: [
+        {
+            filingDate: "",
+            filingSrc: ""
+        }
+    ] 
+    }       
+];
