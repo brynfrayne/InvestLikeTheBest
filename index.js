@@ -1,4 +1,4 @@
-const knexConfig = require('./db/knexfile');
+const knexConfig = require('./server/db/knexfile');
 //initialize knex
 const knex = require('knex')(knexConfig[process.env.NODE_ENV])
 const axios = require('axios');
@@ -6,9 +6,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
-const firebase = require("firebase");
+// const firebase = require("firebase");
 // Required for side-effects
-require("firebase/firestore");
+// require("firebase/firestore");
 
 
 app.use(bodyParser.json());
