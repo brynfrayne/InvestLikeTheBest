@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ChartComponent from '../../components/ChartComponent/ChartComponent';
 import Header from '../../components/Header/Header';
 import Hero from '../../components/Hero/Hero';
+import TableComponent from '../../components/TableComponent/TableComponent';
 
 const data = [
   { value: 40 },
@@ -24,6 +25,7 @@ export default class FundPage extends Component {
       <Header />
       <Hero />
       <ChartComponent data={data}/>
+      <TableComponent/>
     </div>;
   }
 }
