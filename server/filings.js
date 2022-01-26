@@ -7,8 +7,9 @@ const cheerio = require('cheerio');
 
 
 // here i want to take all of the data html filings i have and then turn them into an array which i can pass through a for loop to pass each into my html parser function below
-const dir = 'server/data/';
+const dir = 'server/db/data/';
 const files = fs.readdirSync(dir);
+console.log(files);
 
 
 
@@ -46,7 +47,7 @@ const files = fs.readdirSync(dir);
       holdings.push(newObj);
       
     }
-    fs.writeFileSync(`server/data/${investor}/${fileName}.json`, JSON.stringify(holdings));
+    fs.writeFileSync(`server/db/data/${investor}/${fileName}.json`, JSON.stringify(holdings));
     return holdings;
   }
 
@@ -64,9 +65,9 @@ for (let i = 1; i < files.length; i++) {
     let q2 = investorDir + '/' + investorFilings[2];
     let q3 = investorDir + '/' + investorFilings[3];
     
-    htmlParser(q4, 'q4', files[i] );
-    htmlParser(q1, 'q1', files[i] );
-    htmlParser(q2, 'q2', files[i] );
-    htmlParser(q3, 'q3', files[i] );
+    // htmlParser(q4, 'q4', files[i] );
+    // htmlParser(q1, 'q1', files[i] );
+    // htmlParser(q2, 'q2', files[i] );
+    // htmlParser(q3, 'q3', files[i] );
       
 }

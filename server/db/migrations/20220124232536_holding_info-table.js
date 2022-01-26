@@ -5,8 +5,6 @@ exports.up = function(knex) {
       table.string('cusip', 255).notNullable();
       table.string('security_name', 255).notNullable();
       table.string('ticker', 50).notNullable();
-      table.string('exchange_code', 10).notNullable();
-      table.string('security_type', 50).notNullable();
     })
 };
 

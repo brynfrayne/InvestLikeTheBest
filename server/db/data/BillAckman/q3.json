@@ -1,0 +1,92 @@
+[{
+    "investor": "Bill Ackman",
+    "fund": "Pershing Square Capital Mangement",
+    "CIK": "0001336528",
+    "period_of_report":"Q3-21",
+    "holdings":
+    [
+    {
+        "name": "CHIPOTLE MEXICAN GRILL INC",
+        "class": "COM",
+        "cusip": "169656105",
+        "value": "2,026,035",
+        "shares": "1,114,725",
+        "shPrn": "SH",
+        "putCall": " ",
+        "investmentDiscretion": "SOLE",
+        "otherManager": " ",
+        "sole": "1,114,725",
+        "shared": "0",
+        "none": "0"
+    },
+    {
+        "name": "DOMINOS PIZZA INC",
+        "class": "COM",
+        "cusip": "25754A201",
+        "value": "997,897",
+        "shares": "2,092,202",
+        "shPrn": "SH",
+        "putCall": " ",
+        "investmentDiscretion": "SOLE",
+        "otherManager": " ",
+        "sole": "2,092,202",
+        "shared": "0",
+        "none": "0"
+    },
+    {
+        "name": "HILTON WORLDWIDE HLDGS INC",
+        "class": "COM",
+        "cusip": "43300A203",
+        "value": "1,702,284",
+        "shares": "12,885,354",
+        "shPrn": "SH",
+        "putCall": " ",
+        "investmentDiscretion": "SOLE",
+        "otherManager": " ",
+        "sole": "12,885,354",
+        "shared": "0",
+        "none": "0"
+    },
+    {
+        "name": "HOWARD HUGHES CORP",
+        "class": "COM",
+        "cusip": "44267D107",
+        "value": "1,195,987",
+        "shares": "13,620,164",
+        "shPrn": "SH",
+        "putCall": " ",
+        "investmentDiscretion": "SOLE",
+        "otherManager": " ",
+        "sole": "13,620,164",
+        "shared": "0",
+        "none": "0"
+    },
+    {
+        "name": "LOWES COS INC",
+        "class": "COM",
+        "cusip": "548661107",
+        "value": "2,076,571",
+        "shares": "10,236,471",
+        "shPrn": "SH",
+        "putCall": " ",
+        "investmentDiscretion": "SOLE",
+        "otherManager": " ",
+        "sole": "10,236,471",
+        "shared": "0",
+        "none": "0"
+    },
+    {
+        "name": "RESTAURANT BRANDS INTL INC",
+        "class": "COM",
+        "cusip": "76131D103",
+        "value": "1,464,720",
+        "shares": "23,937,248",
+        "shPrn": "SH",
+        "putCall": " ",
+        "investmentDiscretion": "SOLE",
+        "otherManager": " ",
+        "sole": "23,937,248",
+        "shared": "0",
+        "none": "0"
+    }
+]}]

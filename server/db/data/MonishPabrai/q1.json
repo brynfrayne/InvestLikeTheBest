@@ -1,0 +1,50 @@
+[{
+    "investor": "Monish Pabrai",
+    "fund": "Dalal Street, LLC",
+    "CIK": "0001549575",
+    "period_of_report": "Q1-21",
+    "holdings": 
+    [
+    {
+        "name": "ALIBABA GROUP HLDG LTD",
+        "class": "SPONSORED ADS",
+        "cusip": "01609W102",
+        "value": "38,282",
+        "shares": "168,843",
+        "shPrn": "SH",
+        "putCall": " ",
+        "investmentDiscretion": "SOLE",
+        "otherManager": " ",
+        "sole": "168,843",
+        "shared": "0",
+        "none": "0"
+    },
+    {
+        "name": "MICRON TECHNOLOGY INC",
+        "class": "COM",
+        "cusip": "595112103",
+        "value": "136,902",
+        "shares": "1,552,000",
+        "shPrn": "SH",
+        "putCall": " ",
+        "investmentDiscretion": "SOLE",
+        "otherManager": " ",
+        "sole": "1,552,000",
+        "shared": "0",
+        "none": "0"
+    },
+    {
+        "name": "SERITAGE GROWTH PPTYS",
+        "class": "CL A",
+        "cusip": "81752R100",
+        "value": "86,853",
+        "shares": "4,733,118",
+        "shPrn": "SH",
+        "putCall": " ",
+        "investmentDiscretion": "SOLE",
+        "otherManager": " ",
+        "sole": "4,733,118",
+        "shared": "0",
+        "none": "0"
+    }
+]}]
