@@ -2,6 +2,7 @@
 exports.up = function(knex) {
     return knex.schema
     .createTable('holdings_0001115373', (table) => {
+        table.string('period_of_report', 50);
         table.string('name', 255).notNullable();
         table.string('cusip',255).notNullable();
         table.integer('value').notNullable();
