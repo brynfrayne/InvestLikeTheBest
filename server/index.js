@@ -36,6 +36,7 @@ app.get('/:companyId', (req, res) => {
 });
 
 // Endpoint for charts --- can i just fetch an array of arrays of objects??
+// probably will need to make a routes file for this as there will be multiple distinct get request
 app.get('/charts', (req, res) => {
   knex.select(*).from("charts")
     .then((data) => {

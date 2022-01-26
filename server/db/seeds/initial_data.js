@@ -2,18 +2,16 @@ const fs = require('fs');
 
 const dir = '/Users/brynfrayne/BrainStation-Local/Brainstation/capstone/server/db/data/';
 const files = fs.readdirSync(dir);
-// console.log(files.length);
-// console.log(files);
+
 // Below loops through the folder with all of the investors
 let investorPromises = [];
 let investorHoldings = [];
 
 for (let i = 1; i < files.length; i++) {
     let investorDir = dir+files[i];
+
     // Here it reads through each investors specific folder
     let investorFilings = fs.readdirSync(investorDir);
-
-    // console.log(typeof(files[i]));
 
     // Below it goes through each individual json file in the folder and reads it
     for(let j = 4; j<investorFilings.length; j++) {
@@ -28,7 +26,7 @@ for (let i = 1; i < files.length; i++) {
             CIK:parsedData[0].CIK, 
             period_of_report:parsedData[0].period_of_report
         });
-        // we need a 3rd for loop(!!!!) here to iterate through the holdings for each filing
+        // we need a 3rd for loop here to iterate through the holdings for each filing
         for (let k=0; k <parsedData[0].holdings.length; k++) {
         investorHoldings.push({
             investor:parsedData[0].investor,
@@ -37,13 +35,13 @@ for (let i = 1; i < files.length; i++) {
             period_of_report:parsedData[0].period_of_report,
             name:parsedData[0].holdings[k].name,
             cusip:parsedData[0].holdings[k].cusip,
-            value:parsedData[0].holdings[k].value,
-            shares:parsedData[0].holdings[k].shares
+            value:parsedData[0].holdings[k].value.replaceAll(',',''),
+            shares:parsedData[0].holdings[k].shares.replaceAll(',','')
         })
+        console.log(parsedData[0].holdings[k].shares.replaceAll(',',''));
     }
 
     }
-console.log(investorHoldings);
     // i think i would put the export seed file here so for each investor they add to the array created 
     // above in the parent for loop with their individual holdings in the nested for loop, then when that completes
     // the export seed file is ran here
