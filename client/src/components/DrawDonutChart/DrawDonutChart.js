@@ -4,6 +4,7 @@ import * as d3 from "d3";
 const DrawDonutChart = (element, data) => {
   const colors = ["#05BBD2", "#2070C4", "#EB80F1", "#F5C842", "#37D400"];
   const boxSize = 500;
+  console.log(data)
 
   d3.select(element).select("svg").remove(); // Remove the old svg
   // Create new svg
@@ -48,7 +49,7 @@ console.log('delete the code below!!')
   arcs 
     .append("text")
     .attr("text-anchor", "middle")
-    .text((d)=>{return 'brown eyed girl'})
+    .text((d, i)=>{return data[i].name})
     .style("fill","#fff")
     .style("font-size", "16px")
     .attr('transform', (d)=> {
@@ -56,5 +57,4 @@ console.log('delete the code below!!')
       return `translate(${x}, ${y})`;
     })
 };
-
 export default DrawDonutChart;

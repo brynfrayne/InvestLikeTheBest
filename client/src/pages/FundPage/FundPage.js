@@ -4,13 +4,18 @@ import Header from '../../components/Header/Header';
 import Hero from '../../components/Hero/Hero';
 import TableComponent from '../../components/TableComponent/TableComponent';
 
-const data = [
-  { value: 40 },
-  { value: 25 },
-  { value: 15 },
-  { value: 8 },
-  { value: 2 }
-];
+// const data = [
+//   { value: 40 },
+//   { value: 25 },
+//   { value: 15 },
+//   { value: 8 },
+//   { value: 2 }
+// ];
+
+// const sumval = this.state.fund.holdings
+// .map((holding) => (holding.value))
+// .reduce((prev, curr) => prev + curr, 0);
+// console.log(sumval);
 export default class FundPage extends Component {
    state = {
      data : [
@@ -28,36 +33,36 @@ export default class FundPage extends Component {
       {
         name: "Alibaba Group Holding Ltd",
         cusip: "01609W102",
-        value: "37,491",
-        shares: "165,320",
+        value: 37491,
+        shares: 165320,
 
     },
     {
         name: "Bank of America Corp",
         cusip: "060505104",
-        value: "94,829",
-        shares: "2,300,000",
+        value: 94829,
+        shares: 2300000,
 
     },
     {
         name: "Posco ADR",
         cusip: "693483109",
-        value: "748",
-        shares: "9,745",
+        value: 748,
+        shares: 9745,
 
     },
     {
         name: "US Bancorp",
         cusip: "902973304",
-        value: "7,976",
-        shares: "140,000",
+        value: 7976,
+        shares: 140000,
 
     },
     {
         name: "Wells Fargo & Co",
         cusip: "949746101",
-        value: "72,093",
-        shares: "1,591,800",
+        value: 72093,
+        shares: 1591800,
 
     }
     ]
@@ -65,12 +70,14 @@ export default class FundPage extends Component {
   }
    };
 
+  
+
   render() {
 
     return <div>
       <Header />
       <Hero />
-      <ChartComponent data={this.state.data}/>
+      <ChartComponent data={this.state.fund.holdings}/>
       <TableComponent fund={this.state.fund}/>
     </div>;
   }

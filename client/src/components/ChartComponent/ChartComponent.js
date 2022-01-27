@@ -4,7 +4,12 @@ import DrawDonutChart from "../DrawDonutChart/DrawDonutChart";
 
 const DonutChart = ({ data }) => {
   const ref = useRef(null);
-
+  
+  const sumval = data
+  .map((holding) => (holding.value))
+  .reduce((prev, curr) => prev + curr, 0);
+console.log(sumval)
+console.log(data)
   useEffect(() => {
     if (ref.current) {
       DrawDonutChart(ref.current, data);

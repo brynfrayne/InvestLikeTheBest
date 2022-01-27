@@ -27,7 +27,7 @@ app.use(express.json());
 
 //rest api to get all holdings
 app.get('/filings', function (_req, res) {
-   connection.query('select * from 13f_table', function (error, result, _fields) {
+   connection.query('select * from aggregate_holdings', function (error, result, _fields) {
 	  if (error) throw error;
 	  res.send((result));
 	});
