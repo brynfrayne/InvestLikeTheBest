@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 
-export default class TableComponent extends Component {
-  render() {
+export default function TableComponent({fund}) {
+  console.log(typeof(fund));
+  console.log(fund);
+
     return <Table>
-       <tr>
-           
+       <thead>           
            <td>Company</td><td>Shares</td><td>Weighting</td><td>Value</td><td>Net Change</td>
-           {/* <td>{Company}</td><td>{Shares}</td><td>{Weighting}</td><td>{Value}</td><td>{Net Change}</td>            */}
-           {/* {holdings.map((holding) => ( */}
-                {/* // <TableRow key={holding.id} id={holding.id} title={holding.title} shares={holding.shares} value={holding.value} netChange={holding.netChange}/> */}
-            {/* ))} */}
+          </thead>
+          <tbody>
+          <tr>
+             {fund.holdings.map((holding) => ( 
+                <td key={holding.cusip} >{holding.name}</td>
+                <td key={holding.cusip} >{holding.shares}</td> 
+             )
+             )
+             }
+                         
+              
        </tr>
+       </tbody>
+
     </Table>
    ;
 
   }
-}
+
