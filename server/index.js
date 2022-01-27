@@ -1,18 +1,19 @@
-// const knexConfig = require('./db/knexfile.js');
 const knex = require('knex')
 const express = require('express');
 const mysql = require('mysql');
 const app = express();
 const port = process.env.port || 8000;
-// Load the MySQL pool connection
-// const pool = require('./config');
-// const http = require('http');
+const companyRoutes = require('./routes/companyRoutes');
+const fundRoutes = require('./routes/fundRoutes');
+const chartRoutes = require('./routes/chartRoutes');
+require("dotenv").config();
+
 
 const connection = mysql.createConnection({
   host: '127.0.0.1',
     user: 'root',
-    password: 'rootroot',
-    database: '13f_filings'
+    password: process.env.password,
+    database: process.env.database
 });
 
 
@@ -21,20 +22,13 @@ connection.connect(function(err) {
   console.log('You are now connected with mysql database...')
 })
 
-
-// Not sure if I need these two
-console.log("delete the code below before handing in ");
-// const axios = require('axios');
-// const bodyParser = require('body-parser');
 app.use(express.json());
-// Display all users
 
 
 //rest api to get all holdings
 app.get('/filings', function (_req, res) {
    connection.query('select * from 13f_table', function (error, result, _fields) {
 	  if (error) throw error;
-    console.log(result);
 	  res.send((result));
 	});
 });
@@ -75,6 +69,11 @@ app.get('/filings', function (_req, res) {
 //       res.status(500).send("error getting charts data");
 //     })
 // });
+
+//  ROUTES
+app.use("/funds", fundRoutes);
+app.use("/companies", companyRoutes);
+app.use("/charts", chartRoutes);
 
 
 app.listen(port, () => {
