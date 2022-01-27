@@ -11,6 +11,6 @@ exports.up = function(knex) {
     })
 };
 
-// exports.down = function(knex) {
-//     return knex.schema.dropTable('13f_table')
-// };
+exports.down = function(knex) {
+    return knex.schema.dropTable('13f_table')
+};

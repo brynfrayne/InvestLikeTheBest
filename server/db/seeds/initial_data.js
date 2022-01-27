@@ -1,5 +1,4 @@
 const fs = require('fs');
-
 const dir = '/Users/brynfrayne/BrainStation-Local/Brainstation/capstone/server/db/data/';
 const files = fs.readdirSync(dir);
 
@@ -38,16 +37,8 @@ for (let i = 1; i < files.length; i++) {
             value:parsedData[0].holdings[k].value.replaceAll(',',''),
             shares:parsedData[0].holdings[k].shares.replaceAll(',','')
         })
-        console.log(parsedData[0].holdings[k].shares.replaceAll(',',''));
     }
-
     }
-    // i think i would put the export seed file here so for each investor they add to the array created 
-    // above in the parent for loop with their individual holdings in the nested for loop, then when that completes
-    // the export seed file is ran here
-    
-
-
 };
 exports.seed = function(knex) {
     return knex('aggregate_holdings')
@@ -55,22 +46,12 @@ exports.seed = function(knex) {
         return knex('aggregate_holdings').insert(investorHoldings);
     })
 }
-        // exports.seed = function(knex) {
-        //     return knex('13f_table')
-        //     .then(()=>{     
-        //         return knex('13f_table').insert(investorPromises);
-        //     })};
-        
-
-        // for holding_info i probably need an additional for loop to go through each stock in each filing
-        // let holding_info =[parsedData[0].holdings[k].cusip, parsedData[0].holdings[k].name];
-
-        // let holdings = [parsedData[0].holdings[k].name, parsedData[0].holdings[k].cusip, parsedData[0].holdings[k].value, parsedData[0].holdings[k].shares]
-
-// now i need to make an individual seed file for each investor's holdings  --- i think making one and attaching their period_of_report is the move
-// can i do that above as well??
-
-// what would i call the holdings ? -- `holdings_${cik}` -- this way i can pass in the cik programmatically 
+exports.seed = function(knex) {
+    return knex('13f_table')
+    .then(()=>{     
+        return knex('13f_table').insert(investorPromises);
+    })};
+    
 
 
 
