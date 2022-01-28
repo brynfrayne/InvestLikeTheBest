@@ -16,7 +16,8 @@ function App() {
   <Routes>
     <Route path='/' exact element={<LandingPage/>} /> 
     <Route path='/company' element={<CompanyPage/>} />
-    <Route path='/funds' element={<FundPage/>} />
+    <Route path='/funds' exact element={<FundPage />} />
+    <Route path='/funds/:CIK' element={<FundPage />} />
     {/*<Route path='/superInvestors' component={SuperInvestors} /> */}
     <Route path='/charts' element={<ChartsPage />} /> 
   </Routes>

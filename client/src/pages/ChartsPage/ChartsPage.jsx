@@ -15,10 +15,10 @@ export default class ChartsPage extends Component {
     { value: 8 },
   ],
   dropDown : [
-    ['Most Held Stocks', uniqid()],
-    ['Most Sold Last Quarter', uniqid()],
-    ['Most Bought Last Quarter', uniqid()],
-    ['Biggest Bets', uniqid()]
+    {title:'Most Held Stocks', id:uniqid(), url:'most_held_stocks'},
+    {title:'Most Sold Last Quarter', id:uniqid(), url:'most_sold_qtr'},
+    {title:'Most Bought Last Quarter', id:uniqid(), url:'most_bought_last_qtr'},
+    {title:'Biggest Bets', id:uniqid(), url:'biggest_bets'}
   ]
 
 }

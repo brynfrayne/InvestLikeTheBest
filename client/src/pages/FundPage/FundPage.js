@@ -5,7 +5,6 @@ import Hero from '../../components/Hero/Hero';
 import TableComponent from '../../components/TableComponent/TableComponent';
 import uniqid from 'uniqid';
 
-
 // const sumval = this.state.fund.holdings
 // .map((holding) => (holding.value))
 // .reduce((prev, curr) => prev + curr, 0);
@@ -63,18 +62,18 @@ export default class FundPage extends Component {
 
   },
   dropDown: [
-    ['Q1 - 2021', uniqid()],
-    ['Q2 - 2021',uniqid()],
-    ['Q3 - 2021',uniqid()],
-    ['Q4 - 2020',uniqid()]
+    {title:'Q1 - 2021', id:uniqid(), url:'Q1-21'},
+    {title:'Q2 - 2021', id:uniqid(), url:'Q2-21'},
+    {title:'Q3 - 2021', id:uniqid(), url:'Q3-21'},
+    {title:'Q4 - 2020', id:uniqid(), url:'Q4-20'}
   ]
    };
    
 
   
-
   render() {
-    
+    console.log(this.props.match.params);
+
     const sumval = this.state.fund.holdings
     .map((holding) => (holding.value))
     .reduce((prev, curr) => prev + curr, 0);
