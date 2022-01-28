@@ -4,13 +4,6 @@ import Header from '../../components/Header/Header';
 import Hero from '../../components/Hero/Hero';
 import TableComponent from '../../components/TableComponent/TableComponent';
 
-// const data = [
-//   { value: 40 },
-//   { value: 25 },
-//   { value: 15 },
-//   { value: 8 },
-//   { value: 2 }
-// ];
 
 // const sumval = this.state.fund.holdings
 // .map((holding) => (holding.value))

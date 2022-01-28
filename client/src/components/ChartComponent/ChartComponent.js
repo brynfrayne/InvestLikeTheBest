@@ -1,13 +1,21 @@
 import React, { useEffect, useRef } from "react";
 import DrawDonutChart from "../DrawDonutChart/DrawDonutChart";
-// import drawChart from "../DrawChart/DrawChart";
+import axios from "axios";
+
 
 const DonutChart = ({ data }) => {
   const ref = useRef(null);
   
+
+  for (let i = 0; i<data.length; i++) {
+    axios.get()
+  }
+  
+  
   const sumval = data
   .map((holding) => (holding.value))
   .reduce((prev, curr) => prev + curr, 0);
+  
 console.log(sumval)
 console.log(data)
   useEffect(() => {
