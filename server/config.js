@@ -7,8 +7,14 @@ const config = {
       database: '13f_filings'
 };
 
-// Create a MySQL pool
-const pool = mysql.createPool(config);
+const connection =mysql.createConnection(config); //added the line
+connection.connect(function(err){
+  if (err){
+    console.log('error connecting:' + err.stack);
+  }
+  console.log('connected successfully to DB.');
+});
 
-// Export the pool
-module.exports = pool;
+module.exports ={
+     connection : mysql.createConnection(config) 
+} 

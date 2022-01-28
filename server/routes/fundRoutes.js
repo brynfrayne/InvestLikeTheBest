@@ -1,7 +1,14 @@
 const express = require("express");
-const { json } = require("express/lib/response");
 const router = express.Router();
-const fs = require("fs");
+const connection = require('../connection');
+
+// get fund list info -- 
+router.get('/', function (_req, res) {
+    connection.query('select distinct investor,fund, CIK from 13f_table', function (error, result, _fields) {
+       if (error) throw error;
+       res.send((result));
+     });
+ });
 
 // get specific fund info -- 
 router.get('/:CIK', function (_req, res) {
