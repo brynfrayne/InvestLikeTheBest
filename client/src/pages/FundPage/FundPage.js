@@ -74,9 +74,11 @@ export default class FundPage extends Component {
   
 
   render() {
+    
     const sumval = this.state.fund.holdings
     .map((holding) => (holding.value))
     .reduce((prev, curr) => prev + curr, 0);
+
     return <div>
       <Header />
       <Hero dropDown={this.state.dropDown}/>
