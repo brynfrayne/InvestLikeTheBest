@@ -3,7 +3,7 @@ import { Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-export default function DropDown() {
+export default function DropDown({dropDown}) {
   return <div>
       <Dropdown>
   <Dropdown.Toggle
@@ -14,15 +14,9 @@ export default function DropDown() {
   </Dropdown.Toggle>
 
   <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1">
-      Action
-    </Dropdown.Item>
-    <Dropdown.Item href="#/action-2">
-      Another action
-    </Dropdown.Item>
-    <Dropdown.Item href="#/action-3">
-      Something else
-    </Dropdown.Item>
+    {dropDown.map(item => 
+     <Dropdown.Item key={item[1]}>{item[0]}</Dropdown.Item>     )}
+    
   </Dropdown.Menu>
 </Dropdown>
   </div>;

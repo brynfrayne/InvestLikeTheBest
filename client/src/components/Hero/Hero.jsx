@@ -3,9 +3,9 @@ import heroImg from '../../assets/images/Bull-Markets-and-Bear-Markets-Explained
 import DropDown from '../DropDown/DropDown';
 import "./Hero.scss";
 
-export default function Hero() {
+export default function Hero({dropDown}) {
   return <div className='hero'>
       <img className='hero__img' src={heroImg} alt="hero image of bull and bear" />
-      <DropDown />
+      <DropDown dropDown={dropDown}/>
   </div>;
 }

@@ -3,6 +3,7 @@ import ChartComponent from '../../components/ChartComponent/ChartComponent';
 import Header from '../../components/Header/Header';
 import Hero from '../../components/Hero/Hero';
 import TableComponent from '../../components/TableComponent/TableComponent';
+import uniqid from 'uniqid';
 
 
 // const sumval = this.state.fund.holdings
@@ -60,17 +61,26 @@ export default class FundPage extends Component {
     }
     ]
 
-  }
+  },
+  dropDown: [
+    ['Q1 - 2021', uniqid()],
+    ['Q2 - 2021',uniqid()],
+    ['Q3 - 2021',uniqid()],
+    ['Q4 - 2020',uniqid()]
+  ]
    };
+   
 
   
 
   render() {
-
+    const sumval = this.state.fund.holdings
+    .map((holding) => (holding.value))
+    .reduce((prev, curr) => prev + curr, 0);
     return <div>
       <Header />
-      <Hero />
-      <ChartComponent data={this.state.fund.holdings}/>
+      <Hero dropDown={this.state.dropDown}/>
+      <ChartComponent data={this.state.fund.holdings} sumVal={sumval}/>
       <TableComponent fund={this.state.fund}/>
     </div>;
   }
