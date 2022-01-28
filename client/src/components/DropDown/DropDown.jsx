@@ -4,7 +4,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
 
 
-export default function DropDown({dropDown}) {
+export default function DropDown({dropDown, params}) {
+  
+  
   return <div>
       <Dropdown>
   <Dropdown.Toggle
@@ -16,7 +18,7 @@ export default function DropDown({dropDown}) {
 
   <Dropdown.Menu>
     {dropDown.map(item => 
-     <Dropdown.Item as={Link} to={`/${item.url}`} key={item.id}>{item.title}</Dropdown.Item>     )}
+     <Dropdown.Item as={Link} to={`/${params}/${item.url}`} key={item.id}>{item.title}</Dropdown.Item>     )}
     
   </Dropdown.Menu>
 </Dropdown>

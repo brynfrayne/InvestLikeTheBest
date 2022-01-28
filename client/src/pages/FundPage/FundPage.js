@@ -5,12 +5,10 @@ import Hero from '../../components/Hero/Hero';
 import TableComponent from '../../components/TableComponent/TableComponent';
 import uniqid from 'uniqid';
 
-// const sumval = this.state.fund.holdings
-// .map((holding) => (holding.value))
-// .reduce((prev, curr) => prev + curr, 0);
-// console.log(sumval);
+
 export default class FundPage extends Component {
-   state = {
+    
+  state = {
      data : [
     { value: 40 },
     { value: 25 },
@@ -72,15 +70,17 @@ export default class FundPage extends Component {
 
   
   render() {
-    console.log(this.props.match.params);
 
+    console.log(this.props.match.params.CIK)
+    
+    // render() {
     const sumval = this.state.fund.holdings
     .map((holding) => (holding.value))
     .reduce((prev, curr) => prev + curr, 0);
 
     return <div>
       <Header />
-      <Hero dropDown={this.state.dropDown}/>
+      <Hero dropDown={this.state.dropDown} params={this.props.match.params.CIK}/>
       <ChartComponent data={this.state.fund.holdings} sumVal={sumval}/>
       <TableComponent fund={this.state.fund}/>
     </div>;
