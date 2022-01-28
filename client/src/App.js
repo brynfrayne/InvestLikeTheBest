@@ -5,6 +5,7 @@ import ChartsPage from './pages/ChartsPage/ChartsPage';
 import LandingPage from './pages/LandingPage/LandingPage';
 import FundPage from './pages/FundPage/FundPage';
 import CompanyPage from './pages/CompanyPage/CompanyPage';
+import FundListPage from './pages/FundListPage/FundListPage';
 
 function App() {
 ;
@@ -16,9 +17,8 @@ function App() {
   <Switch>
     <Route path='/' exact component={LandingPage} /> 
     <Route path='/company' component={CompanyPage} />
-    <Route path='/funds' exact component={FundPage} />
+    <Route path='/funds' exact component={FundListPage} />
     <Route path='/funds/:CIK' component={FundPage} />
-    {/*<Route path='/superInvestors' component={SuperInvestors} /> */}
     <Route path='/charts' component={ChartsPage} /> 
   </Switch>
 </BrowserRouter>

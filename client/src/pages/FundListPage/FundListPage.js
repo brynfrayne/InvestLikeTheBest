@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import ChartComponent from '../../components/ChartComponent/ChartComponent';
 import Header from '../../components/Header/Header';
 import Hero from '../../components/Hero/Hero';
-import TableComponent from '../../components/TableComponent/TableComponent';
-import uniqid from 'uniqid';
-
+import InvestorsList from '../../components/InvestorsList/InvestorsList';
 
 // const sumval = this.state.fund.holdings
 // .map((holding) => (holding.value))
 // .reduce((prev, curr) => prev + curr, 0);
 // console.log(sumval);
-export default class FundPage extends Component {
+
+// below is a template for the investors info ill need passed in 
+const investors = [
+  {name:'', fund:'',CIK:'',top3holdings:[{icon:''},{icon:''},{icon:''}]}
+]
+
+export default class FundListPage extends Component {
    state = {
      data : [
     { value: 40 },
@@ -54,13 +57,15 @@ export default class FundPage extends Component {
 
   render() {
     
-    const sumval = this.state.fund.holdings
-    .map((holding) => (holding.value))
-    .reduce((prev, curr) => prev + curr, 0);
+    // const sumval = this.state.fund.holdings
+    // .map((holding) => (holding.value))
+    // .reduce((prev, curr) => prev + curr, 0);
 
     return <div>
       <Header />
-      <TableComponent fund={this.state.fund}/>
+      {/* <Hero /> */}
+      <InvestorsList investors={this.state.investors}/>
+
     </div>;
   }
 }
