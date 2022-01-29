@@ -6,6 +6,21 @@ import TableComponent from '../../components/TableComponent/TableComponent';
 import uniqid from 'uniqid';
 import axios from 'axios';
 
+let config = {
+  headers: {
+    'Authorization': 'Bearer ' + process.env.clearbit_bearer_token
+  }
+}
+
+
+console.log("deal with this axios call to polygon in for loop")
+// .then((result)=> {
+  //   console.log(this.state.fund[0].cusip)
+  //   // for(let i=0; i<this.state.fund.length;i++){
+  //   axios.get('https://api.polygon.io/v3/reference/tickers?cusip='+ this.state.fund[i].cusip +'&apiKey=6S8WE2mCmlIzzY2UmCIFDAQAZmS13pGL')
+  //     .then(response=>{
+  //       console.log(response.data)
+  //   
 export default class FundPage extends Component {
     
   state = {
@@ -16,7 +31,8 @@ export default class FundPage extends Component {
     {title:'Q2 - 2021', id:uniqid(), url:'Q2-21'},
     {title:'Q3 - 2021', id:uniqid(), url:'Q3-21'},
     {title:'Q4 - 2020', id:uniqid(), url:'Q4-20'}
-  ]
+  ],
+  icons : []
    };
    
    componentDidMount() {
@@ -26,28 +42,31 @@ export default class FundPage extends Component {
       this.setState({
         fund:response.data
       })
-    })
-    .then((result)=> {
-      console.log(this.state.fund[0].CIK)
-      for(let i=0; i<this.state.fund.length;i++){
-      axios.get('https://api.polygon.io/v3/reference/tickers?cusip='+ this.state.fund[i].cusip +'&apiKey=6S8WE2mCmlIzzY2UmCIFDAQAZmS13pGL')
-        .then(response=>{
-          console.log(response.data)
+      let iconsArr = []
+      for (let i=0; i<this.state.fund.length; i++){
+      const filteredCompanyName = this.state.fund[i].name.split(' ').filter(word => {return word !== 'INC' && word !== 'MD' && word !== 'DEL' && word !== 'CORP' && word !== 'CO' && word !== 'NEW' && word !== 'PLC' && word !== 'HLDG' && word !== 'GROUP'}).join(" ");
+      iconsArr.push({name:filteredCompanyName});
+
+      axios.get(`https://company.clearbit.com/v1/domains/find?name=${filteredCompanyName}`, 
+      {headers : {
+        Authorization: `Bearer sk_275268748a7fba421ff68563ace779ae`
+      }})
+
+      .then(response => {
+        console.log(response)
       })
     }
-    // )
-    // .catch(err => {
-    //   console.log('error')
-    // })
-  })}
-  // }
+
+    })
+    }
+    
   
   render() {
 
     if (this.state.fund === null) {
       return <p>Choo choo, Here we go!!</p>
     }
-    // render() {
+    
     const sumval = this.state.fund
     .map((holding) => (holding.value))
     .reduce((prev, curr) => prev + curr, 0);
