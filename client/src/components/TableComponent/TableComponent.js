@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
+import uniqid from 'uniqid';
 
 export default function TableComponent({fund}) {
 
-  const sumval = fund.holdings
+  const sumval = fund
   .map((holding) => (holding.value))
   .reduce((prev, curr) => prev + curr, 0);
 
@@ -14,12 +15,12 @@ export default function TableComponent({fund}) {
           </thead>
           <tbody>
           
-            {fund.holdings.map((holding) => ( 
+            {fund.map((holding) => ( 
                <tr>
-                  <td key={holding.cusip} >{holding.name}</td>
-                  <td key={holding.cusip} >{holding.shares}</td>
-                  <td key={holding.cusip} >{holding.value}</td> 
-                  <td key={holding.cusip} >{(holding.value/sumval).toFixed(2)*100+'%'}</td> 
+                  <td key={uniqid()} >{holding.name}</td>
+                  <td key={uniqid()} >{holding.shares}</td>
+                  <td key={uniqid()} >{holding.value}</td> 
+                  <td key={uniqid()} >{(holding.value/sumval).toFixed(2)*100+'%'}</td> 
                 </tr>
              ))
             }              

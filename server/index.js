@@ -27,7 +27,7 @@ connection.connect(function(err) {
 
 //  MIDDLEWARE
 app.use(express.json());
-app.use(express.urlencoded());
+// app.use(express.urlencoded());
 app.use(cors());
 
 //rest api to get all holdings

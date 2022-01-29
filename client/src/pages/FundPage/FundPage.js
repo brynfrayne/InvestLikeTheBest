@@ -4,7 +4,7 @@ import Header from '../../components/Header/Header';
 import Hero from '../../components/Hero/Hero';
 import TableComponent from '../../components/TableComponent/TableComponent';
 import uniqid from 'uniqid';
-
+import axios from 'axios';
 
 export default class FundPage extends Component {
     
@@ -16,49 +16,7 @@ export default class FundPage extends Component {
     { value: 8 },
     { value: 2 }
   ],
-  fund : {
-    investor:"Bill Ackman",
-    fund:"Pershing Square Capital Management",
-    period_of_report: "Q1-21",
-    holdings: [
-      {
-        name: "Alibaba Group Holding Ltd",
-        cusip: "01609W102",
-        value: 37491,
-        shares: 165320,
-
-    },
-    {
-        name: "Bank of America Corp",
-        cusip: "060505104",
-        value: 94829,
-        shares: 2300000,
-
-    },
-    {
-        name: "Posco ADR",
-        cusip: "693483109",
-        value: 748,
-        shares: 9745,
-
-    },
-    {
-        name: "US Bancorp",
-        cusip: "902973304",
-        value: 7976,
-        shares: 140000,
-
-    },
-    {
-        name: "Wells Fargo & Co",
-        cusip: "949746101",
-        value: 72093,
-        shares: 1591800,
-
-    }
-    ]
-
-  },
+  fund : null,
   dropDown: [
     {title:'Q1 - 2021', id:uniqid(), url:'Q1-21'},
     {title:'Q2 - 2021', id:uniqid(), url:'Q2-21'},
@@ -67,21 +25,34 @@ export default class FundPage extends Component {
   ]
    };
    
-
+   componentDidMount() {
+    axios.get('http://localhost:8000/funds/'+this.props.match.params.CIK)
+    .then((response)=> {
+      console.log(response.data)
+      this.setState({
+        fund:response.data
+      })
+    })
+    .catch(err => {
+      console.log('error')
+    })
+  }
   
   render() {
 
-    console.log(this.props.match.params.CIK)
-    
+    if (this.state.fund === null) {
+      return <p>Choo choo, Here we go!!</p>
+    }
     // render() {
-    const sumval = this.state.fund.holdings
+    const sumval = this.state.fund
     .map((holding) => (holding.value))
     .reduce((prev, curr) => prev + curr, 0);
+    console.log(sumval);
 
     return <div>
       <Header />
       <Hero dropDown={this.state.dropDown} params={this.props.match.params.CIK}/>
-      <ChartComponent data={this.state.fund.holdings} sumVal={sumval}/>
+      <ChartComponent data={this.state.fund} sumVal={sumval}/>
       <TableComponent fund={this.state.fund}/>
     </div>;
   }
