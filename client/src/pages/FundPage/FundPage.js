@@ -9,13 +9,7 @@ import axios from 'axios';
 export default class FundPage extends Component {
     
   state = {
-     data : [
-    { value: 40 },
-    { value: 25 },
-    { value: 15 },
-    { value: 8 },
-    { value: 2 }
-  ],
+
   fund : null,
   dropDown: [
     {title:'Q1 - 2021', id:uniqid(), url:'Q1-21'},
@@ -33,10 +27,20 @@ export default class FundPage extends Component {
         fund:response.data
       })
     })
-    .catch(err => {
-      console.log('error')
-    })
-  }
+    .then((result)=> {
+      console.log(this.state.fund[0].CIK)
+      for(let i=0; i<this.state.fund.length;i++){
+      axios.get('https://api.polygon.io/v3/reference/tickers?cusip='+ this.state.fund[i].cusip +'&apiKey=6S8WE2mCmlIzzY2UmCIFDAQAZmS13pGL')
+        .then(response=>{
+          console.log(response.data)
+      })
+    }
+    // )
+    // .catch(err => {
+    //   console.log('error')
+    // })
+  })}
+  // }
   
   render() {
 
