@@ -3,6 +3,7 @@ const express = require('express');
 const mysql = require('mysql');
 // const connection = require('./connection');
 const app = express();
+const cors = require("cors");
 const port = process.env.port || 8000;
 const companyRoutes = require('./routes/companyRoutes');
 const fundRoutes = require('./routes/fundRoutes');
@@ -24,8 +25,10 @@ connection.connect(function(err) {
   console.log('You are now connected with mysql database...')
 })
 
+//  MIDDLEWARE
 app.use(express.json());
-
+app.use(express.urlencoded());
+app.use(cors());
 
 //rest api to get all holdings
 app.get('/filings', function (_req, res) {
