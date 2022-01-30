@@ -18,11 +18,11 @@ export default function TableComponent({fund}) {
           <tbody>
           
             {fund.map((holding) => ( 
-               <tr>
-                  <td key={uniqid()} >{holding.name}</td>
-                  <td key={uniqid()} >{holding.shares}</td>
-                  <td key={uniqid()} >{(holding.value/sumval).toFixed(2)*100+'%'}</td> 
-                  <td key={uniqid()} >{holding.value}</td> 
+               <tr key={uniqid()}  >
+                  <td >{holding.name}</td>
+                  <td >{holding.shares}</td>
+                  <td >{(holding.value/sumval).toFixed(2)*100+'%'}</td> 
+                  <td >{holding.value}</td> 
                 </tr>
              ))
             }              
