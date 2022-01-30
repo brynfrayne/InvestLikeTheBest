@@ -41,7 +41,7 @@ app.get('/filings', function (_req, res) {
 
 //  ROUTES
 app.use("/funds", fundRoutes);
-app.use("/companies", companyRoutes);
+app.use("/company", companyRoutes);
 app.use("/charts", chartRoutes);
 
 
