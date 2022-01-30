@@ -10,8 +10,10 @@ export default function TableComponent({fund}) {
 
   
     return <Table>
-       <thead>           
+       <thead>
+          <tr>           
            <td>Company</td><td>Shares</td><td>Weighting</td><td>Value</td><td>Net Change</td>
+           </tr>
           </thead>
           <tbody>
           

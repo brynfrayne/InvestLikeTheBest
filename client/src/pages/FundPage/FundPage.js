@@ -6,11 +6,6 @@ import TableComponent from '../../components/TableComponent/TableComponent';
 import uniqid from 'uniqid';
 import axios from 'axios';
 
-let config = {
-  headers: {
-    'Authorization': 'Bearer ' + process.env.clearbit_bearer_token
-  }
-}
 
 
 console.log("deal with this axios call to polygon in for loop")
@@ -21,6 +16,8 @@ console.log("deal with this axios call to polygon in for loop")
   //     .then(response=>{
   //       console.log(response.data)
   //   
+  let iconsArr = [];
+  let topStocks;
 export default class FundPage extends Component {
     
   state = {
@@ -32,20 +29,24 @@ export default class FundPage extends Component {
     {title:'Q3 - 2021', id:uniqid(), url:'Q3-21'},
     {title:'Q4 - 2020', id:uniqid(), url:'Q4-20'}
   ],
-  icons : []
+  data : null
    };
    
    componentDidMount() {
     axios.get('http://localhost:8000/funds/'+this.props.match.params.CIK)
     .then((response)=> {
-      console.log(response.data)
+      
       this.setState({
         fund:response.data
+      
       })
-      let iconsArr = []
-      for (let i=0; i<this.state.fund.length; i++){
-      const filteredCompanyName = this.state.fund[i].name.split(' ').filter(word => {return word !== 'INC' && word !== 'MD' && word !== 'DEL' && word !== 'CORP' && word !== 'CO' && word !== 'NEW' && word !== 'PLC' && word !== 'HLDG' && word !== 'GROUP'}).join(" ");
-      iconsArr.push({name:filteredCompanyName});
+            
+      topStocks = this.state.fund.sort((a,b)=> (b.value - a.value)).slice(0,6);
+
+      for (let i=0; i<topStocks.length; i++){
+
+      const filteredCompanyName = topStocks[i].name.split(' ').filter(word => {return word !== 'INC' && word !== 'MD' && word !== 'DEL' && word !== 'CORP' && word !== 'CO' && word !== 'NEW' && word !== 'PLC' && word !== 'HLDG' && word !== 'GROUP'}).join(" ");
+      topStocks[i].name=filteredCompanyName;
 
       axios.get(`https://company.clearbit.com/v1/domains/find?name=${filteredCompanyName}`, 
       {headers : {
@@ -53,17 +54,31 @@ export default class FundPage extends Component {
       }})
 
       .then(response => {
-        console.log(response)
+       
+        topStocks[i].logo = response.data.logo; 
+        this.setState({
+          data:topStocks
+        })
       })
+      console.log(topStocks)
+      
     }
-
-    })
-    }
+    
+    // .then((response) => {
+    //   console.log(topStocks[3].logo)
+    //   console.log(topStocks)
+    //   this.setState({
+    //     data:topStocks
+    //   })
+    // })
+  })}
+  
+    
     
   
   render() {
-
-    if (this.state.fund === null) {
+    
+    if (this.state.fund === null || this.state.data === null || this.state.data[0].logo === undefined) {
       return <p>Choo choo, Here we go!!</p>
     }
     
@@ -75,7 +90,7 @@ export default class FundPage extends Component {
     return <div>
       <Header />
       <Hero dropDown={this.state.dropDown} params={this.props.match.params.CIK}/>
-      <ChartComponent data={this.state.fund} sumVal={sumval}/>
+      <ChartComponent data={this.state.data} sumVal={sumval} />
       <TableComponent fund={this.state.fund}/>
     </div>;
   }

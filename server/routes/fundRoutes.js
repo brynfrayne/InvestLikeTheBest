@@ -12,7 +12,6 @@ router.get('/', function (_req, res) {
 
 // get specific fund info -- right now has all 4 quarters of data!!!
 router.get('/:CIK', function (req, res) {
-    console.log(req.params.CIK)
     const CIK = req.params.CIK;
     connection.query(`select * from aggregate_holdings where(CIK=${CIK} and period_of_report='Q3-21')`, function (error, result, _fields) {
        if (error) throw error;

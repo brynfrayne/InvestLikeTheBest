@@ -1,10 +1,13 @@
 import * as d3 from "d3";
-// import { Translate } from "react-bootstrap-icons";
+// import { Translate } from "react-bootstrap-data";
 
-const DrawDonutChart = (element, data) => {
+export default function DrawDonutChart(element, data) {
   const colors = ["#05BBD2", "#2070C4", "#EB80F1", "#F5C842", "#37D400"];
   const boxSize = 500;
   console.log(data)
+  for (let i=0; i<data.length;i++){
+  console.log(data[i].logo)
+  }  
 
   d3.select(element).select("svg").remove(); // Remove the old svg
   // Create new svg
@@ -19,16 +22,6 @@ const DrawDonutChart = (element, data) => {
     .attr("transform", `translate(${boxSize / 2}, ${boxSize / 2})`);
 
   const arcGenerator = d3.arc().padAngle(0.01).innerRadius(90).outerRadius(150);
-
-// Below is a way to give each segment a proportionally larger segment -- delete before handing
-console.log('delete the code below!!')
-
-  //   const maxValue = data.reduce((cur, val) => Math.max(cur, val.value), 0);
-// const arcGenerator = d3.arc().cornerRadius(10).padAngle(0.02).innerRadius(100)
-// .outerRadius((d) => {
-//     return 150 - (maxValue - d.value);
-// });
-
 
   const pieGenerator = d3.pie().value((d) => d.value);
 
@@ -46,15 +39,83 @@ console.log('delete the code below!!')
       return arcGenerator(d);
     };
   });
-  arcs 
-    .append("text")
-    .attr("text-anchor", "middle")
-    .text((d, i)=>{return data[i].name})
+  // arcs 
+  // .append("svg:image")
+  // .attr("href",data.logoURL)
+  // .attr("width", "32")
+  // .attr("height", "32");
+  // console.log(data.investor)
+
+    // .append("text")
+    // .attr("text-anchor", "middle")
+    // .text((d, i)=>{return data[i].name})
+    // .style("fill","#fff")
+    // .style("font-size", "16px")
+    // .attr('transform', (d)=> {
+    //   const [x, y] = arcGenerator.centroid(d);
+    //   return `translate(${x}, ${y})`;
+    // })
+
+
+const image_width = 32;
+const image_height = 32;
+    arcs
+    .append("svg:image")
+    .data(data)
+    .attr("href",function(d, i) { 
+      console.log(data[i].logo) 
+      return data.logo})
+    .attr("width", image_width)
+    .attr("height", image_height)
     .style("fill","#fff")
-    .style("font-size", "16px")
-    .attr('transform', (d)=> {
-      const [x, y] = arcGenerator.centroid(d);
-      return `translate(${x}, ${y})`;
-    })
+    .style("position", "absolute")
+  //   .attr("transform", function(d){
+  //     // Reposition so that the centre of the image (not the top left corner)
+  //     // is in the centre of the arc
+  //     const y = arcGenerator.centroid(d)[1] - image_height/2;
+  //     const x = arcGenerator.centroid(d)[0] - image_width/2;
+  //     return "translate(" + x + "," + y + ")";
+  // })
+  .attr("x",-1*image_width/2)
+  .attr("y",-1*image_height/2);
+ 
 };
-export default DrawDonutChart;
+
+// var width = 550,
+//     height = 550,
+//     radius = 250;
+//     // colors = ['#336699 ','#336699 ','#ACD1E9','#ACD1E9','#ACD1E9'];
+
+// const image_width=40,
+//     image_height=40;
+
+// var pie = d3.pie().value((d) => d.value);
+
+// var arc = d3.arc().padAngle(0.01).innerRadius(90).outerRadius(150);
+
+// var svg = d3.select('body').append('svg')
+//     .attr('width', width)
+//     .attr('height', height)
+//     .append('g')
+//     .attr('transform', 'translate('+(width-radius)+','+(height-radius)+')');
+
+
+// var g = svg.selectAll(".arc")
+//       .data(pie(data))
+//     .enter().append("g")
+//       .attr("class", "arc");
+
+//   g.append("path")
+//       .attr("d", arc)
+//       .style("fill", (d, i) => colors[i % data.length])
+
+//   g.append("g")
+//       .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+//   .append("svg:image")
+//       .attr("xlink:href",function(d) {return d.data.image;})
+//       .attr("width",image_width)
+//       .attr("height",image_height)
+//       .attr("x",-1*image_width/2)
+//       .attr("y",-1*image_height/2);
+
+// export default DrawDonutChart;
