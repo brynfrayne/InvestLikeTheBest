@@ -39,32 +39,32 @@ export default function DrawDonutChart(element, data) {
       return arcGenerator(d);
     };
   });
-  // arcs 
+  arcs 
   // .append("svg:image")
   // .attr("href",data.logoURL)
   // .attr("width", "32")
   // .attr("height", "32");
   // console.log(data.investor)
 
-    // .append("text")
-    // .attr("text-anchor", "middle")
-    // .text((d, i)=>{return data[i].name})
-    // .style("fill","#fff")
-    // .style("font-size", "16px")
-    // .attr('transform', (d)=> {
-    //   const [x, y] = arcGenerator.centroid(d);
-    //   return `translate(${x}, ${y})`;
-    // })
+    .append("text")
+    .attr("text-anchor", "middle")
+    .text((d, i)=>{return data[i].name})
+    .style("fill","#fff")
+    .style("font-size", "16px")
+    .attr('transform', (d)=> {
+      const [x, y] = arcGenerator.centroid(d);
+      return `translate(${x}, ${y})`;
+    })
 
 
-const image_width = 32;
-const image_height = 32;
+const image_width = 90;
+const image_height = 90;
     arcs
     .append("svg:image")
     .data(data)
     .attr("href",function(d, i) { 
       console.log(data[i].logo) 
-      return data.logo})
+      return data[i].logo})
     .attr("width", image_width)
     .attr("height", image_height)
     .style("fill","#fff")
@@ -76,8 +76,12 @@ const image_height = 32;
   //     const x = arcGenerator.centroid(d)[0] - image_width/2;
   //     return "translate(" + x + "," + y + ")";
   // })
-  .attr("x",-1*image_width/2)
-  .attr("y",-1*image_height/2);
+  // .attr("x",-1*image_width/2)
+  // .attr("y",-1*image_height/2);
+  .attr('transform', (d)=> {
+      const [x, y] = arcGenerator.centroid(d);
+      return `translate(${x}, ${y})`;
+    })
  
 };
 
