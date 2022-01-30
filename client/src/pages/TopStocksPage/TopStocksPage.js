@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import Header from '../../components/Header/Header';
 import Hero from '../../components/Hero/Hero';
 import ChartComponent from '../../components/ChartComponent/ChartComponent';
+import BarChart from '../../components/BarChart/BarChart';
 import uniqid from 'uniqid';
-export default class ChartsPage extends Component {
+import axios from 'axios';
+
+
+export default class TopStocksPage extends Component {
   state = { 
   data : [
     { value: 35 },
@@ -19,14 +23,31 @@ export default class ChartsPage extends Component {
     {title:'Most Sold Last Quarter', id:uniqid(), url:'most_sold_qtr'},
     {title:'Most Bought Last Quarter', id:uniqid(), url:'most_bought_last_qtr'},
     {title:'Biggest Bets', id:uniqid(), url:'biggest_bets'}
-  ]
+  ],
+  topStocks : null
 
 }
+
+componentDidMount() {
+  axios.get('http://localhost:8000/charts/topStocks')
+    .then((response)=> {
+    const topTen = response.data.sort((a,b)=>(b.stockvalue - a.stockvalue)).slice(0,15);  
+      this.setState({
+        topStocks: topTen
+      })
+})};
+
   render() {
+
+    if (this.state.topStocks === null) {
+      return <p>Choo choo, Here we go!!</p>
+    }
+    
     return <div>
         <Header />
-        <Hero dropDown={this.state.dropDown} params={'charts'}/>
-        <ChartComponent data={this.state.data}/>
+        <Hero dropDown={this.state.dropDown}/>
+        {/* <ChartComponent data={this.state.data}/> */}
+        <BarChart data={this.state.topStocks}/>
 
     </div>;
   }

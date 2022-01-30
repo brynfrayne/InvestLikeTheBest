@@ -4,10 +4,7 @@ import * as d3 from "d3";
 export default function DrawDonutChart(element, data) {
   const colors = ["#05BBD2", "#2070C4", "#EB80F1", "#F5C842", "#37D400"];
   const boxSize = 500;
-  console.log(data)
-  for (let i=0; i<data.length;i++){
-  console.log(data[i].logo)
-  }  
+  
 
   d3.select(element).select("svg").remove(); // Remove the old svg
   // Create new svg
