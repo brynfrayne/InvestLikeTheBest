@@ -5,7 +5,7 @@ import uniqid from 'uniqid';
 export default function TableComponent({fund}) {
 
   const sumval = fund
-  .map((holding) => (holding.value))
+  .map((holding) => (holding.stockvalue))
   .reduce((prev, curr) => prev + curr, 0);
 
   
@@ -21,8 +21,8 @@ export default function TableComponent({fund}) {
                <tr>
                   <td key={uniqid()} >{holding.name}</td>
                   <td key={uniqid()} >{holding.shares}</td>
-                  <td key={uniqid()} >{(holding.value/sumval).toFixed(2)*100+'%'}</td> 
-                  <td key={uniqid()} >{holding.value}</td> 
+                  <td key={uniqid()} >{(holding.stockvalue/sumval).toFixed(2)*100+'%'}</td> 
+                  <td key={uniqid()} >{holding.stockvalue}</td> 
                 </tr>
              ))
             }              
