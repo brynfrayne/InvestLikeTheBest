@@ -6,7 +6,7 @@ import axios from 'axios';
 import uniqid from 'uniqid';
 import CompanyOwnershipTable from '../../components/CompanyOwnershipTable/CompanyOwnershipTable';
 
-let sortedData;
+
 export default class SpecificCompanyPage extends Component {
 
     state = {
@@ -22,6 +22,7 @@ export default class SpecificCompanyPage extends Component {
     };
     
   componentDidMount() {
+    let sortedData;
     axios.get('http://localhost:8000/company/'+this.props.match.params.cusip +'/'+this.props.match.params.period_of_report)
     .then((response)=> {
         let newArray = [];
@@ -32,29 +33,65 @@ export default class SpecificCompanyPage extends Component {
             } else {newArray.push(response.data[i])}
         }
         sortedData = newArray.sort((a,b)=>(b.shares - a.shares));
-      this.setState({
-          fundOwnership:sortedData
+      
       })
-      })
-      .then(result => {
+      .then(result => {        
         for(let i=0;i < sortedData.length; i++) {
-          axios.get('http://localhost:8000/funds/'+sortedData[i].CIK)
+          axios.get('http://localhost:8000/funds/'+sortedData[i].CIK+'/'+sortedData[i].period_of_report)
           .then(response => {
             const sumval = response.data
-            .map((holding) => (holding.value))
-            .reduce((prev, curr) => prev + curr, 0);
-            sortedData[i].portfolioValue = sumval;
-
+              .map((holding) => (holding.value))
+              .reduce((prev, curr) => prev + curr, 0);
+            
+            sortedData[i].portfolioValue = sumval; 
+         
+            this.setState({
+              fundOwnership:sortedData
+          })
           })
         }
+        
       })
+  }
+  componentDidUpdate(prevProps) {
+    let sortedData;
+    if (this.props.match.params.period_of_report !== prevProps.match.params.period_of_report ) {
+      axios.get('http://localhost:8000/company/'+this.props.match.params.cusip +'/'+this.props.match.params.period_of_report)
+      .then((response)=> {
+          let newArray = [];
+          for(let i = 0; i < response.data.length; i++) {
+              if ( newArray.length>=1 && newArray[newArray.length - 1].investor === response.data[i].investor) {
+                  newArray[newArray.length - 1].shares += response.data[i].shares;
+                  newArray[newArray.length - 1].value += response.data[i].value;
+              } else {newArray.push(response.data[i])}
+          }
+          sortedData = newArray.sort((a,b)=>(b.shares - a.shares));
+        
+        })
+        .then(result => {
+          for(let i=0;i < sortedData.length; i++) {
+            axios.get('http://localhost:8000/funds/'+sortedData[i].CIK+'/'+sortedData[i].period_of_report)
+            .then(response => {
+              const sumval = response.data
+                .map((holding) => (holding.value))
+                .reduce((prev, curr) => prev + curr, 0);
+              sortedData[i].portfolioValue = sumval;
+              this.setState({
+                fundOwnership:sortedData
+            })
+            })
+          }
+          
+        })
+    }
   }
     
     render() {
-        if (this.state.fundOwnership === null) {
+      
+        if ( !this.state.fundOwnership ) {
             return <p>CHoo choooo, here we go!!🚂 </p>
-        }
-        console.log(this.state.fundOwnership)
+        }  
+        console.log(this.state.fundOwnership[0].portfolioValue)
     return <div>
       <Header />
       <Hero dropDown={this.state.dropDown} params={`company/${this.props.match.params.cusip}`}/>
