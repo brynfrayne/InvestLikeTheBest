@@ -3,6 +3,7 @@ import Header from '../../components/Header/Header';
 import Hero from '../../components/Hero/Hero';
 import ChartComponent from '../../components/ChartComponent/ChartComponent';
 import uniqid from 'uniqid';
+import MostHeldStocks from '../../components/MostHeldStocks/MostHeldStocks';
 export default class ChartsPage extends Component {
   state = { 
   data : [
@@ -26,7 +27,8 @@ export default class ChartsPage extends Component {
     return <div>
         <Header />
         <Hero dropDown={this.state.dropDown} params={'charts'}/>
-        <ChartComponent data={this.state.data}/>
+        <MostHeldStocks />
+        {/* <ChartComponent data={this.state.data}/> */}
 
     </div>;
   }

@@ -22,7 +22,7 @@ function App() {
     <Route path='/funds' exact component={FundListPage} />
     <Route path='/funds/:CIK/:period_of_report' component={FundPage} />
     <Route path='/charts' exact component={ChartsPage} /> 
-    <Route path='/charts/most_held_stocks' component={TopStocksPage} />
+    <Route path='/charts/most_held_stocks' component={ChartsPage} />
   </Switch>
 </BrowserRouter>
   );
