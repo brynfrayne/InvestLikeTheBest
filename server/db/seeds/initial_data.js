@@ -33,6 +33,7 @@ for (let i = 1; i < files.length; i++) {
             CIK:parsedData[0].CIK, 
             period_of_report:parsedData[0].period_of_report,
             name:parsedData[0].holdings[k].name,
+            class:parsedData[0].holdings[k].class,
             cusip:parsedData[0].holdings[k].cusip,
             value:parsedData[0].holdings[k].value.replaceAll(',',''),
             shares:parsedData[0].holdings[k].shares.replaceAll(',','')
@@ -46,11 +47,11 @@ exports.seed = function(knex) {
         return knex('aggregate_holdings').insert(investorHoldings);
     })
 }
-exports.seed = function(knex) {
-    return knex('13f_table')
-    .then(()=>{     
-        return knex('13f_table').insert(investorPromises);
-    })};
+// exports.seed = function(knex) {
+//     return knex('13f_table')
+//     .then(()=>{     
+//         return knex('13f_table').insert(investorPromises);
+//     })};
     
 
 

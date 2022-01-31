@@ -7,6 +7,7 @@ exports.up = function(knex) {
         table.string('CIK', 50);
         table.string('period_of_report', 50);
         table.string('name', 255).notNullable();
+        table.string('class',50);
         table.string('cusip',255).notNullable();
         table.integer('value').notNullable();
         table.integer('shares').notNullable();

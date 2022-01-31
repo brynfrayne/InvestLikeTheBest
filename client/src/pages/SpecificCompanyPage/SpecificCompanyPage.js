@@ -21,9 +21,21 @@ export default class SpecificCompanyPage extends Component {
     };
     
   componentDidMount() {
-    axios.get('http://localhost:8000/company/'+this.props.match.params.cusip)
+    axios.get('http://localhost:8000/company/'+this.props.match.params.cusip +'/'+this.props.match.params.period_of_report)
     .then((response)=> {
-        const sortedData = response.data.sort((a,b)=>(b.shares - a.shares));
+        console.log(response.data[1].investor)
+        let newArray = [];
+        for(let i = 0; i < response.data.length; i++) {
+            if ( newArray.length>=1 && newArray[newArray.length - 1].investor === response.data[i].investor) {
+                newArray[newArray.length - 1].shares += response.data[i].shares;
+                newArray[newArray.length - 1].value += response.data[i].value;
+
+            } else {newArray.push(response.data[i])}
+            
+        }
+        console.log(newArray);
+        const sortedData = newArray.sort((a,b)=>(b.shares - a.shares));
+        console.log(sortedData);
       this.setState({
           fundOwnership:sortedData
       })
@@ -36,7 +48,8 @@ export default class SpecificCompanyPage extends Component {
         }
     return <div>
       <Header />
-      <Hero dropDown={this.state.dropDown} params={this.props.match.params.cusip}/>
+      <Hero dropDown={this.state.dropDown} params={`company/${this.props.match.params.cusip}`}/>
+      <h1>{this.state.fundOwnership[0].name}</h1>
       <CompanyOwnershipBarChart data={this.state.fundOwnership}/>
       <CompanyOwnershipTable data={this.state.fundOwnership} />
     </div>;

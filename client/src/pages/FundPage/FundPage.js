@@ -6,17 +6,6 @@ import TableComponent from '../../components/TableComponent/TableComponent';
 import uniqid from 'uniqid';
 import axios from 'axios';
 
-
-
-console.log("deal with this axios call to polygon in for loop")
-// .then((result)=> {
-  //   console.log(this.state.fund[0].cusip)
-  //   // for(let i=0; i<this.state.fund.length;i++){
-  //   axios.get('https://api.polygon.io/v3/reference/tickers?cusip='+ this.state.fund[i].cusip +'&apiKey=6S8WE2mCmlIzzY2UmCIFDAQAZmS13pGL')
-  //     .then(response=>{
-  //       console.log(response.data)
-  //   
-  let iconsArr = [];
   let topStocks;
 export default class FundPage extends Component {
     
@@ -41,47 +30,21 @@ export default class FundPage extends Component {
       
       })
             
-      topStocks = this.state.fund.sort((a,b)=> (b.value - a.value)).slice(0,6);
+    topStocks = this.state.fund.sort((a,b)=> (b.value - a.value)).slice(0,6);
+      this.setState({
+              data:topStocks
+            })
 
-      for (let i=0; i<topStocks.length; i++){
-
-      const filteredCompanyName = topStocks[i].name.split(' ').filter(word => {return word !== 'INC' && word !== 'MD' && word !== 'DEL' && word !== 'CORP' && word !== 'CO' && word !== 'NEW' && word !== 'PLC' && word !== 'HLDG' && word !== 'GROUP'}).join(" ");
-      topStocks[i].name=filteredCompanyName;
-
-      axios.get(`https://company.clearbit.com/v1/domains/find?name=${filteredCompanyName}`, 
-      {headers : {
-        Authorization: `Bearer sk_275268748a7fba421ff68563ace779ae`
-      }})
-
-      .then(response => {
-       
-        topStocks[i].logo = response.data.logo; 
-        this.setState({
-          data:topStocks
-        })
-      })
-      console.log(topStocks)
-      
-    }
     
-    // .then((response) => {
-    //   console.log(topStocks[3].logo)
-    //   console.log(topStocks)
-    //   this.setState({
-    //     data:topStocks
-    //   })
-    // })
   })}
   
-    
-    
   
   render() {
     
-    if (this.state.fund === null || this.state.data === null || this.state.data[0].logo === undefined) {
+    if (this.state.fund === null || this.state.data === null ) {
       return <p>Choo choo, Here we go!!</p>
     }
-    
+    console.log(this.state.fund[0].fund)
     const sumval = this.state.fund
     .map((holding) => (holding.value))
     .reduce((prev, curr) => prev + curr, 0);
@@ -90,8 +53,49 @@ export default class FundPage extends Component {
     return <div>
       <Header />
       <Hero dropDown={this.state.dropDown} params={this.props.match.params.CIK}/>
+      <h1>{this.state.fund[0].investor}</h1>
+      <h2>{this.state.fund[0].fund}</h2>
+      <p>{this.state.fund[0].period_of_report}</p>
       <ChartComponent data={this.state.data} sumVal={sumval} />
-      <TableComponent fund={this.state.fund}/>
+      <TableComponent fund={this.state.fund} sumVal={sumval}/>
     </div>;
   }
 }
+
+console.log("deal with this axios call to polygon in for loop")
+// .then((result)=> {
+  //   console.log(this.state.fund[0].cusip)
+  //   // for(let i=0; i<this.state.fund.length;i++){
+  //   axios.get('https://api.polygon.io/v3/reference/tickers?cusip='+ this.state.fund[i].cusip +'&apiKey=6S8WE2mCmlIzzY2UmCIFDAQAZmS13pGL')
+  //     .then(response=>{
+  //       console.log(response.data)
+  //   
+
+  //   for (let i=0; i<topStocks.length; i++){
+
+    //   const filteredCompanyName = topStocks[i].name.split(' ').filter(word => {return word !== 'INC' && word !== 'MD' && word !== 'DEL' && word !== 'CORP' && word !== 'CO' && word !== 'NEW' && word !== 'PLC' && word !== 'HLDG' && word !== 'GROUP'}).join(" ");
+    //   topStocks[i].name=filteredCompanyName;
+
+    //   axios.get(`https://company.clearbit.com/v1/domains/find?name=${filteredCompanyName}`, 
+    //   {headers : {
+    //     Authorization: `Bearer sk_275268748a7fba421ff68563ace779ae`
+    //   }})
+
+    //   .then(response => {
+       
+    //     topStocks[i].logo = response.data.logo; 
+    //     this.setState({
+    //       data:topStocks
+    //     })
+    //   })
+    //   console.log(topStocks)
+      
+    // }
+    
+    // .then((response) => {
+    //   console.log(topStocks[3].logo)
+    //   console.log(topStocks)
+    //   this.setState({
+    //     data:topStocks
+    //   })
+    // })

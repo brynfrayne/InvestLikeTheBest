@@ -17,8 +17,8 @@ export default function MostPopularCompaniesTable({stocks}) {
           
             {stocks.map((stock) => ( 
                <tr key={uniqid()}>
-                  <td ><Link to={`/company/${stock.cusip}`}>{stock.name}</Link></td>
-                  <td ><Link to={`/company/${stock.cusip}`}>{stock.stockCount}</Link></td> 
+                  <td ><Link to={`/company/${stock.cusip}/${stock.period_of_report}`}>{stock.name}</Link></td>
+                  <td ><Link to={`/company/${stock.cusip}/${stock.period_of_report}`}>{stock.stockCount}</Link></td> 
                 </tr>
              ))
             }              
