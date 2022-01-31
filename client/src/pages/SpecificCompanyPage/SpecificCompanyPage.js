@@ -88,10 +88,10 @@ export default class SpecificCompanyPage extends Component {
     
     render() {
       
-        if ( !this.state.fundOwnership ) {
+        if ( !this.state.fundOwnership || document.querySelector("#root > div > svg > g.plot-area > rect:nth-child(2)") ) {
             return <p>CHoo choooo, here we go!!🚂 </p>
         }  
-        console.log(this.state.fundOwnership[0].portfolioValue)
+        
     return <div>
       <Header />
       <Hero dropDown={this.state.dropDown} params={`company/${this.props.match.params.cusip}`}/>

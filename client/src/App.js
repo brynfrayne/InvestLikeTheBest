@@ -6,7 +6,6 @@ import FundPage from './pages/FundPage/FundPage';
 import CompanyPage from './pages/CompanyPage/CompanyPage';
 import SpecificCompanyPage from './pages/SpecificCompanyPage/SpecificCompanyPage';
 import FundListPage from './pages/FundListPage/FundListPage';
-import TopStocksPage from './pages/TopStocksPage/TopStocksPage';
 
 function App() {
 ;

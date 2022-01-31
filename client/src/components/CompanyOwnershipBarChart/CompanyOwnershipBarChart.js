@@ -2,7 +2,9 @@ import { useD3 } from '../hooks/useD3';
 import React from 'react';
 import * as d3 from 'd3';
 
-function BarChart({ data }) {
+function CompanyOwnershipBarChart({ data }) {
+  console.log(data)
+  console.log(document.querySelectorAll("#root > div > svg > g.plot-area > rect").length)
   const ref = useD3(
     (svg) => {
       const height = 200;
@@ -83,4 +85,4 @@ function BarChart({ data }) {
   );
 }
 
-export default BarChart;
+export default CompanyOwnershipBarChart;

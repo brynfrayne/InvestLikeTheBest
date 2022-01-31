@@ -11,7 +11,7 @@ export default class MostHeldStocks extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/company/')
+    axios.get('http://localhost:8000/company/Q3-21')
     .then((response)=> {
       const mostHeldStocks = response.data.sort((a,b)=>(b.stockCount - a.stockCount)).slice(0,20);
       this.setState({
@@ -24,7 +24,6 @@ export default class MostHeldStocks extends Component {
       if (this.state.stocks === null) {
         return <p>Here we go, choo, choo!!</p>
       }
-      console.log(this.state.stocks)
     return <div>
       {/* <Header /> */}
       <h1 className="company-page__title">Top 20 Most Held Companies</h1>
