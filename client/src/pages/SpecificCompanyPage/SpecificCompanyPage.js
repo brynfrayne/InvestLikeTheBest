@@ -116,7 +116,7 @@ export default class SpecificCompanyPage extends Component {
       <Hero dropDown={this.state.dropDown} params={`company/${this.props.match.params.cusip}`}/>
       <h1 className="company-page__title">{this.state.companyData.name}</h1>
       <p className="company-page__ticker">Ticker: {this.state.companyData.ticker}</p>
-      <img src={`https://eodhistoricaldata.com/img/logos/US/${this.state.companyData.ticker}.png`} />
+      <img className='company-page__image' src={`https://eodhistoricaldata.com/img/logos/US/${this.state.companyData.ticker}.png`}  alt='/'/>
       <p>{this.state.fundOwnership[0].period_of_report}</p>
       {/* <img src={this.state.img} alt="" /> */}
       <CompanyOwnershipBarChart data={this.state.fundOwnership}/>
