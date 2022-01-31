@@ -12,8 +12,8 @@ export default function InvestorsList({investors}) {
           
             {investors.map((investor) => ( 
                <tr className='table__row' key={uniqid()}>
-                  <td className='table__data'><Link  className='table-links' to={`/funds/${investor.CIK}`}>{investor.investor}</Link></td>
-                  <td className='table__data'><Link  className='table-links' to={`/funds/${investor.CIK}`}>{investor.fund}</Link></td>
+                  <td className='table__data'><Link  className='table-links' to={`/funds/${investor.CIK}/Q3-21`}>{investor.investor}</Link></td>
+                  <td className='table__data'><Link  className='table-links' to={`/funds/${investor.CIK}/Q3-21`}>{investor.fund}</Link></td>
                 </tr>
              ))
             }              

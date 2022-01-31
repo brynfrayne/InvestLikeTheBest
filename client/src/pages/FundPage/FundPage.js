@@ -23,7 +23,7 @@ export default class FundPage extends Component {
    };
    
    componentDidMount() {
-    axios.get('http://localhost:8000/funds/'+this.props.match.params.CIK)
+    axios.get('http://localhost:8000/funds/'+this.props.match.params.CIK +"/"+this.props.match.params.period_of_report)
     .then((response)=> {
       
       this.setState({
@@ -36,7 +36,22 @@ export default class FundPage extends Component {
               data:topStocks
             })
   })}
-  
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.period_of_report !== prevProps.match.params.period_of_report) {
+      axios.get('http://localhost:8000/funds/'+this.props.match.params.CIK +"/"+this.props.match.params.period_of_report)
+    .then((response)=> {
+      
+      this.setState({
+        fund:response.data
+      
+      })
+            
+    topStocks = this.state.fund.sort((a,b)=> (b.value - a.value)).slice(0,6);
+      this.setState({
+              data:topStocks
+            })
+    })
+  }}
   
   render() {
     
@@ -49,7 +64,7 @@ export default class FundPage extends Component {
 
     return <div>
       <Header />
-      <Hero dropDown={this.state.dropDown} params={this.props.match.params.CIK}/>
+      <Hero dropDown={this.state.dropDown} params={`funds/${this.props.match.params.CIK}`}/>
       <div className='fund-page__title-box'>
         <h2>{this.state.fund[0].fund}</h2>
         <h1 className='fund-page__title'>{this.state.fund[0].investor}</h1>
