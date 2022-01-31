@@ -17,7 +17,7 @@ function App() {
 {/* <Header /> */}
   <Switch>
     <Route path='/' exact component={LandingPage} /> 
-    <Route path='/company' exact component={CompanyPage} />
+    <Route path='/company/:period_of_report' exact component={CompanyPage} />
     <Route path='/company/:cusip/:period_of_report' component={SpecificCompanyPage} />
     <Route path='/funds' exact component={FundListPage} />
     <Route path='/funds/:CIK/:period_of_report' component={FundPage} />
