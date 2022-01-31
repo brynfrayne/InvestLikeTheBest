@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Table } from 'react-bootstrap';
 import uniqid from 'uniqid';
+import { Link } from 'react-router-dom';
 
 export default function MostPopularCompaniesTable({stocks}) {
 
@@ -9,16 +10,15 @@ export default function MostPopularCompaniesTable({stocks}) {
     return <Table>
        <thead>
           <tr>           
-           <td>Company</td><td>Shares</td><td># Funds Who Own</td>
+           <td>Company</td><td># Funds Who Own</td>
            </tr>
           </thead>
           <tbody>
           
             {stocks.map((stock) => ( 
-               <tr>
-                  <td key={uniqid()} >{stock.name}</td>
-                  <td key={uniqid()} >{stock.shares}</td>
-                  <td key={uniqid()} >{stock.stockCount}</td> 
+               <tr key={uniqid()}>
+                  <td ><Link to={`/company/${stock.cusip}`}>{stock.name}</Link></td>
+                  <td ><Link to={`/company/${stock.cusip}`}>{stock.stockCount}</Link></td> 
                 </tr>
              ))
             }              
