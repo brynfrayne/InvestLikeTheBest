@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
 
 export default function InvestorsList({investors}) {
- console.log(investors)
     return <Table>
        <thead>           
            <td className='table__data'>Name</td><td className='table__data'>Fund</td>  
