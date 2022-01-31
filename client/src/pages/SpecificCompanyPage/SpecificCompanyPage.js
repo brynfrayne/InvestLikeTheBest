@@ -95,7 +95,7 @@ export default class SpecificCompanyPage extends Component {
     return <div>
       <Header />
       <Hero dropDown={this.state.dropDown} params={`company/${this.props.match.params.cusip}`}/>
-      <h1>{this.state.fundOwnership[0].name}</h1>
+      <h1 className="company-page__title">{this.state.fundOwnership[0].name}</h1>
       <CompanyOwnershipBarChart data={this.state.fundOwnership}/>
       <CompanyOwnershipTable data={this.state.fundOwnership} />
     </div>;
