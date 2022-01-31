@@ -24,9 +24,11 @@ export default class CompanyPage extends Component {
       if (this.state.stocks === null) {
         return <p>Here we go, choo, choo!!</p>
       }
+      console.log(this.state.stocks)
     return <div>
       <Header />
       <h1 className="company-page__title">Top 20 Most Held Companies</h1>
+      <BarChart data={this.state.stocks} />
       <MostPopularCompaniesTable  stocks={this.state.stocks}/>
     </div>;
   }

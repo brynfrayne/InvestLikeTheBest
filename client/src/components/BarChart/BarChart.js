@@ -6,19 +6,19 @@ function BarChart({ data }) {
   console.log(data)
   const ref = useD3(
     (svg) => {
-      const height = 500;
+      const height = 200;
       const width = 500;
-      const margin = { top: 20, right: 30, bottom: 30, left: 40 };
+      const margin = { top: 20, right: 30, bottom: 20, left: 30 };
 
       const x = d3
         .scaleBand()
         .domain(data.map((d) => d.name))
-        .rangeRound([margin.left, width - margin.right])
+        .rangeRound([margin.left, 405])
         .padding(0.1);
 
       const y1 = d3
         .scaleLinear()
-        .domain([0, d3.max(data, (d) => d.stockvalue)])
+        .domain([0, d3.max(data, (d) => d.stockCount)])
         .rangeRound([height - margin.bottom, margin.top]);
 
       const xAxis = (g) =>
@@ -36,7 +36,7 @@ function BarChart({ data }) {
       const y1Axis = (g) =>
         g
           .attr("transform", `translate(${margin.left},0)`)
-          .style("color", "steelblue")
+          .style("color", "black")
           .call(d3.axisLeft(y1).ticks(null, "s"))
           .call((g) => g.select(".domain").remove())
           .call((g) =>
@@ -61,8 +61,8 @@ function BarChart({ data }) {
         .attr("class", "bar")
         .attr("x", (d) => x(d.name))
         .attr("width", x.bandwidth())
-        .attr("y", (d) => y1(d.stockvalue))
-        .attr("height", (d) => y1(0) - y1(d.stockvalue));
+        .attr("y", (d) => y1(d.stockCount))
+        .attr("height", (d) => y1(0) - y1(d.stockCount));
     },
     [data.length]
   );
@@ -71,7 +71,7 @@ function BarChart({ data }) {
     <svg
       ref={ref}
       style={{
-        height: 500,
+        height: 200,
         width: "100%",
         marginRight: "0px",
         marginLeft: "0px",
