@@ -18,7 +18,9 @@ export default class SpecificCompanyPage extends Component {
         {title:'Q3 - 2021', id:uniqid(), url:'Q3-21'},
         {title:'Q4 - 2020', id:uniqid(), url:'Q4-20'}
     ],
-    data : null
+    data : null,
+    img : null,
+    companyData: null
     };
     
   componentDidMount() {
@@ -49,10 +51,27 @@ export default class SpecificCompanyPage extends Component {
               fundOwnership:sortedData
           })
           })
-        }
-        
+        } 
       })
-  }
+      .then((result)=> {
+          axios.get('https://api.polygon.io/v3/reference/tickers?cusip='+ this.props.match.params.cusip +'&apiKey=6S8WE2mCmlIzzY2UmCIFDAQAZmS13pGL')
+            .then(response=>{
+              console.log(response.data.results[0])
+              this.setState({
+                companyData:response.data.results[0]
+              })
+              // axios.get(`https://api.polygon.io/v1/meta/symbols/${response.data.results[0].ticker}/company&apiKey=6S8WE2mCmlIzzY2UmCIFDAQAZmS13pGL`)
+              // axios.get(`https://eodhistoricaldata.com/img/logos/US/${response.data.results[0].ticker}.png`)
+
+              // .then(response => {
+              //   console.log(response.data)
+              //   this.setState({
+              //     img: response.data
+              //   })
+              // })
+      })
+  })
+}
   componentDidUpdate(prevProps) {
     let sortedData;
     if (this.props.match.params.period_of_report !== prevProps.match.params.period_of_report ) {
@@ -88,14 +107,18 @@ export default class SpecificCompanyPage extends Component {
     
     render() {
       
-        if ( !this.state.fundOwnership || document.querySelector("#root > div > svg > g.plot-area > rect:nth-child(2)") ) {
+        if ( !this.state.fundOwnership || !this.state.companyData || document.querySelector("#root > div > svg > g.plot-area > rect:nth-child(2)") ) {
             return <p>CHoo choooo, here we go!!🚂 </p>
         }  
         
     return <div>
       <Header />
       <Hero dropDown={this.state.dropDown} params={`company/${this.props.match.params.cusip}`}/>
-      <h1 className="company-page__title">{this.state.fundOwnership[0].name}</h1>
+      <h1 className="company-page__title">{this.state.companyData.name}</h1>
+      <p className="company-page__ticker">Ticker: {this.state.companyData.ticker}</p>
+      <img src={`https://eodhistoricaldata.com/img/logos/US/${this.state.companyData.ticker}.png`} />
+      <p>{this.state.fundOwnership[0].period_of_report}</p>
+      {/* <img src={this.state.img} alt="" /> */}
       <CompanyOwnershipBarChart data={this.state.fundOwnership}/>
       <CompanyOwnershipTable data={this.state.fundOwnership} />
     </div>;

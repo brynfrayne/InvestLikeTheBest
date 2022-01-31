@@ -3,8 +3,6 @@ import React from 'react';
 import * as d3 from 'd3';
 
 function CompanyOwnershipBarChart({ data }) {
-  console.log(data)
-  console.log(document.querySelectorAll("#root > div > svg > g.plot-area > rect").length)
   const ref = useD3(
     (svg) => {
       const height = 200;
