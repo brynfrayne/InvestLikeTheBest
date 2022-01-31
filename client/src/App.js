@@ -6,6 +6,7 @@ import FundPage from './pages/FundPage/FundPage';
 import CompanyPage from './pages/CompanyPage/CompanyPage';
 import SpecificCompanyPage from './pages/SpecificCompanyPage/SpecificCompanyPage';
 import FundListPage from './pages/FundListPage/FundListPage';
+import BiggestBetsPage from './pages/BiggestBetsPage/BiggestBetsPage';
 
 function App() {
 ;
@@ -22,6 +23,8 @@ function App() {
     <Route path='/funds/:CIK/:period_of_report' component={FundPage} />
     <Route path='/charts' exact component={ChartsPage} /> 
     <Route path='/charts/most_held_stocks' component={ChartsPage} />
+    <Route path='/charts/biggest_bets' component={BiggestBetsPage} />
+
   </Switch>
 </BrowserRouter>
   );

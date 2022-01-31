@@ -25,10 +25,8 @@ export default class FundPage extends Component {
    componentDidMount() {
     axios.get('http://localhost:8000/funds/'+this.props.match.params.CIK +"/"+this.props.match.params.period_of_report)
     .then((response)=> {
-      
       this.setState({
         fund:response.data
-      
       })
             
     topStocks = this.state.fund.sort((a,b)=> (b.value - a.value)).slice(0,6);

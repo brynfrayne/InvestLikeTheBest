@@ -5,16 +5,6 @@ import InvestorsList from '../../components/InvestorsList/InvestorsList';
 import axios from 'axios';
 import uniqid from 'uniqid';
 
-// const sumval = this.state.fund.holdings
-// .map((holding) => (holding.value))
-// .reduce((prev, curr) => prev + curr, 0);
-// console.log(sumval);
-
-// below is a template for the investors info ill need passed in 
-// const investors = [
-//   {name:'', fund:'',CIK:'',top3holdings:[{icon:''},{icon:''},{icon:''}]}
-// ]
-
 export default class FundListPage extends Component {
    state = {
      data : [
