@@ -3,23 +3,22 @@ import React from 'react';
 import * as d3 from 'd3';
 
 function BarChart({ data }) {
-  console.log(data)
   const ref = useD3(
     (svg) => {
-      const height = 500;
+      const height = 200;
       const width = 500;
-      const margin = { top: 20, right: 30, bottom: 30, left: 40 };
+      const margin = { top: -20, right: 100, bottom: -40, left: 40 };
 
       const x = d3
         .scaleBand()
         .domain(data.map((d) => d.investor))
         .rangeRound([margin.left, width - margin.right])
-        .padding(0.1);
+        .padding(0.25);
 
       const y1 = d3
         .scaleLinear()
-        .domain([0, d3.max(data, (d) => d.value/d.portfolioValue)])
-        .rangeRound([height - margin.bottom, margin.top]);
+        .domain([0, d3.max(data, (d) => (d.value/d.portfolioValue))])
+        .rangeRound([height - margin.bottom, 80]);
 
       const xAxis = (g) =>
         g.attr("transform", `translate(0,${height - margin.bottom})`).call(
@@ -36,7 +35,7 @@ function BarChart({ data }) {
       const y1Axis = (g) =>
         g
           .attr("transform", `translate(${margin.left},0)`)
-          .style("color", "steelblue")
+          .style("color", "black")
           .call(d3.axisLeft(y1).ticks(null, "s"))
           .call((g) => g.select(".domain").remove())
           .call((g) =>
@@ -71,7 +70,7 @@ function BarChart({ data }) {
     <svg
       ref={ref}
       style={{
-        height: 500,
+        height: 250,
         width: "100%",
         marginRight: "0px",
         marginLeft: "0px",

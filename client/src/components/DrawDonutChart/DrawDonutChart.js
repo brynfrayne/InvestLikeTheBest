@@ -54,18 +54,18 @@ export default function DrawDonutChart(element, data) {
     })
 
 
-const image_width = 90;
-const image_height = 90;
-    arcs
-    .append("svg:image")
-    .data(data)
-    .attr("href",function(d, i) { 
-      console.log(data[i].logo) 
-      return data[i].logo})
-    .attr("width", image_width)
-    .attr("height", image_height)
-    .style("fill","#fff")
-    .style("position", "absolute")
+// const image_width = 90;
+// const image_height = 90;
+//     arcs
+//     .append("svg:image")
+//     .data(data)
+//     .attr("href",function(d, i) { 
+//       console.log(data[i].logo) 
+//       return data[i].logo})
+//     .attr("width", image_width)
+//     .attr("height", image_height)
+//     .style("fill","#fff")
+//     .style("position", "absolute")
   //   .attr("transform", function(d){
   //     // Reposition so that the centre of the image (not the top left corner)
   //     // is in the centre of the arc
@@ -75,10 +75,10 @@ const image_height = 90;
   // })
   // .attr("x",-1*image_width/2)
   // .attr("y",-1*image_height/2);
-  .attr('transform', (d)=> {
-      const [x, y] = arcGenerator.centroid(d);
-      return `translate(${x}, ${y})`;
-    })
+  // .attr('transform', (d)=> {
+  //     const [x, y] = arcGenerator.centroid(d);
+  //     return `translate(${x}, ${y})`;
+  //   })
  
 };
 
