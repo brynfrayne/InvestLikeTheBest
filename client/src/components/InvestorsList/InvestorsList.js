@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
-// below is a template for the investors info ill need passed in 
-// const investors = [
-//     {name:'', fund:'',CIK:''}
-// ]
+import uniqid from 'uniqid';
 
 export default function InvestorsList({investors}) {
  console.log(investors)
     return <Table>
        <thead>           
-           <td>Name</td><td>Fund</td>  
+           <td className='table__data'>Name</td><td className='table__data'>Fund</td>  
         </thead>
         <tbody>
           
             {investors.map((investor) => ( 
-               <tr>
-                  <td><Link to={`/funds/${investor.CIK}`}>{investor.investor}</Link></td>
-                  <td><Link to={`/funds/${investor.CIK}`}>{investor.fund}</Link></td>
+               <tr className='table__row' key={uniqid()}>
+                  <td className='table__data'><Link  className='table-links' to={`/funds/${investor.CIK}`}>{investor.investor}</Link></td>
+                  <td className='table__data'><Link  className='table-links' to={`/funds/${investor.CIK}`}>{investor.fund}</Link></td>
                 </tr>
              ))
             }              

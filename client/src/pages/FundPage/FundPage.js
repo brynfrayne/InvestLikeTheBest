@@ -5,6 +5,7 @@ import Hero from '../../components/Hero/Hero';
 import TableComponent from '../../components/TableComponent/TableComponent';
 import uniqid from 'uniqid';
 import axios from 'axios';
+import "./FundPage.scss";
 
   let topStocks;
 export default class FundPage extends Component {
@@ -49,9 +50,11 @@ export default class FundPage extends Component {
     return <div>
       <Header />
       <Hero dropDown={this.state.dropDown} params={this.props.match.params.CIK}/>
-      <h1>{this.state.fund[0].investor}</h1>
-      <h2>{this.state.fund[0].fund}</h2>
-      <p>{this.state.fund[0].period_of_report}</p>
+      <div className='fund-page__title-box'>
+        <h2>{this.state.fund[0].fund}</h2>
+        <h1 className='fund-page__title'>{this.state.fund[0].investor}</h1>
+        <p>{this.state.fund[0].period_of_report}</p>
+      </div>  
       <ChartComponent data={this.state.data} sumVal={sumval} />
       <TableComponent fund={this.state.fund} sumVal={sumval}/>
     </div>;

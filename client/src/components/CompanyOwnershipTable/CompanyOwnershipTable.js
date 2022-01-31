@@ -20,7 +20,7 @@ export default function CompanyOwnershipTable({data}) {
                <tr key={uniqid()}  >
                   <td  >{holding.investor}</td>
                   <td  >{holding.fund}</td>
-                  <td>{(holding.value/holding.portfolioValue).toFixed(2)*100 + "%"}</td>
+                  <td>{(holding.value/holding.portfolioValue).toFixed(4)+"%"}</td>
                 </tr>
              ))
             }              

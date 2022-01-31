@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import Hero from '../../components/Hero/Hero';
 import axios from 'axios';
 import MostPopularCompaniesTable from '../../components/MostPopularCompaniesTable/MostPopularCompaniesTable';
+import "./CompanyPage.scss";
 export default class CompanyPage extends Component {
   state = {
     stocks : null
@@ -25,7 +26,7 @@ export default class CompanyPage extends Component {
       }
     return <div>
       <Header />
-      <h1>Top 20 Most Held Companies</h1>
+      <h1 className="company-page__title">Top 20 Most Held Companies</h1>
       <MostPopularCompaniesTable  stocks={this.state.stocks}/>
     </div>;
   }
