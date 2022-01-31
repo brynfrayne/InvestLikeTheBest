@@ -1,4 +1,11 @@
 .fund-page {
+    &__title {
+        // text-align: center;
+    }
+    &__subtitle {
+        width: 50%;
+        // margin: 0 auto;
+    }
     &__title-box {
         margin: 2rem 1rem;
         margin-bottom: -3rem;

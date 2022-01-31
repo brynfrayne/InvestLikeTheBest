@@ -66,7 +66,7 @@ export default class FundPage extends Component {
       <Header />
       <Hero dropDown={this.state.dropDown} params={`funds/${this.props.match.params.CIK}`}/>
       <div className='fund-page__title-box'>
-        <h2>{this.state.fund[0].fund}</h2>
+        <h2 className='fund-page__subtitle'>{this.state.fund[0].fund}</h2>
         <h1 className='fund-page__title'>{this.state.fund[0].investor}</h1>
         <p>{this.state.fund[0].period_of_report}</p>
       </div>  
