@@ -25,9 +25,7 @@ export default class CompanyPage extends Component {
       }
     return <div>
       <Header />
-      {/* <Hero dropDown={this.state.dropDown} params={this.props.match.params.CIK}/> */}
-        {/* <BarChart data={this.data}/> */}
-      {/* <DrawBarChart data={data}/> */}
+      <h1>Top 20 Most Held Companies</h1>
       <MostPopularCompaniesTable  stocks={this.state.stocks}/>
     </div>;
   }

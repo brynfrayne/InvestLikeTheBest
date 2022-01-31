@@ -34,8 +34,6 @@ export default class FundPage extends Component {
       this.setState({
               data:topStocks
             })
-
-    
   })}
   
   
@@ -44,11 +42,9 @@ export default class FundPage extends Component {
     if (this.state.fund === null || this.state.data === null ) {
       return <p>Choo choo, Here we go!!</p>
     }
-    console.log(this.state.fund[0].fund)
     const sumval = this.state.fund
     .map((holding) => (holding.value))
     .reduce((prev, curr) => prev + curr, 0);
-    console.log(sumval);
 
     return <div>
       <Header />

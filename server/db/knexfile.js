@@ -11,7 +11,5 @@ module.exports = {
       database: '13f_filings',
       charset: 'utf8',
   },
-  // seeds: {
-    // directory: './seeds'
-  // }
+ 
 }}

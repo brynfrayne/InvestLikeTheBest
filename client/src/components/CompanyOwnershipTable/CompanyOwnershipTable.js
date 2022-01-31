@@ -4,15 +4,14 @@ import uniqid from 'uniqid';
 
 export default function CompanyOwnershipTable({data}) {
 
-  const sumval = data
-  .map((holding) => (holding.stockvalue))
-  .reduce((prev, curr) => prev + curr, 0);
-
+//   const sumval = data
+//   .map((holding) => (holding.stockvalue))
+//   .reduce((prev, curr) => prev + curr, 0);
   
     return <Table>
        <thead>
           <tr>           
-           <td>Investor</td><td>Fund</td><td>Shares</td><td>Value</td>
+           <td>Investor</td><td>Fund</td><td>Portfolio %</td>
            </tr>
           </thead>
           <tbody>
@@ -21,8 +20,7 @@ export default function CompanyOwnershipTable({data}) {
                <tr key={uniqid()}  >
                   <td  >{holding.investor}</td>
                   <td  >{holding.fund}</td>
-                  <td  >{holding.shares}</td>
-                  <td  >{holding.value}</td> 
+                  <td>{(holding.value/holding.portfolioValue).toFixed(2)*100 + "%"}</td>
                 </tr>
              ))
             }              

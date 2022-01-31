@@ -18,7 +18,7 @@ function BarChart({ data }) {
 
       const y1 = d3
         .scaleLinear()
-        .domain([0, d3.max(data, (d) => d.shares)])
+        .domain([0, d3.max(data, (d) => d.value/d.portfolioValue)])
         .rangeRound([height - margin.bottom, margin.top]);
 
       const xAxis = (g) =>
@@ -61,8 +61,8 @@ function BarChart({ data }) {
         .attr("class", "bar")
         .attr("x", (d) => x(d.investor))
         .attr("width", x.bandwidth())
-        .attr("y", (d) => y1(d.shares))
-        .attr("height", (d) => y1(0) - y1(d.shares));
+        .attr("y", (d) => y1(d.value/d.portfolioValue))
+        .attr("height", (d) => y1(0) - y1(d.value/d.portfolioValue));
     },
     [data.length]
   );

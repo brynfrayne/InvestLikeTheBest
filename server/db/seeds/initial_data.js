@@ -47,11 +47,11 @@ exports.seed = function(knex) {
         return knex('aggregate_holdings').insert(investorHoldings);
     })
 }
-// exports.seed = function(knex) {
-//     return knex('13f_table')
-//     .then(()=>{     
-//         return knex('13f_table').insert(investorPromises);
-//     })};
+exports.seed = function(knex) {
+    return knex('13f_table')
+    .then(()=>{     
+        return knex('13f_table').insert(investorPromises);
+    })};
     
 
 
