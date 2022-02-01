@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header';
 import Hero from '../../components/Hero/Hero';
-import ChartComponent from '../../components/ChartComponent/ChartComponent';
 import uniqid from 'uniqid';
-import MostHeldStocks from '../../components/MostHeldStocks/MostHeldStocks';
 import axios from 'axios';
+import ChartComponent from '../../components/ChartComponent/ChartComponent';
+import BiggestBetsTableComponent from '../../components/BiggestBetsTableComponent/BiggestBetsTableComponent';
 
 
 export default class BiggestBetsPage extends Component {
@@ -32,7 +32,6 @@ export default class BiggestBetsPage extends Component {
 componentDidMount() {
     axios.get('http://localhost:8000/funds')
      .then((response)=> {
-         console.log(response.data)
        this.setState({
          investors:response.data
        })
@@ -44,26 +43,28 @@ componentDidMount() {
             axios.get('http://localhost:8000/funds/'+this.state.investors[i].CIK +"/Q3-21")
                 .then(response => {
                     let topStock = response.data.sort((a,b)=> (b.value - a.value)).slice(0,1);
+                    let portfolioValue = response.data.map((holding) => (holding.value)).reduce((prev, curr) => prev + curr, 0);
+                    topStock[0].portfolioValue = portfolioValue;
                     topStocks.push(topStock[0]);
                     this.setState({
                         biggestBets : topStocks
                     })
-                })
+        console.log(this.state.biggestBets)
 
+                })                
         }
     }
     )}
 
   render() {
-      if (!this.state.investors) {
+      if (!this.state.investors || !this.state.biggestBets) {
           return <p>Choo chooooo, here we go</p>
       }
+    
     return <div>
         <Header />
         <Hero dropDown={this.state.dropDown} params={'charts'}/>
-        <MostHeldStocks />
-        {/* <ChartComponent data={this.state.data}/> */}
-
+        <BiggestBetsTableComponent fund={this.state.biggestBets} />
     </div>;
   }
 }
