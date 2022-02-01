@@ -50,7 +50,8 @@ function CompanyOwnershipBarChart({ data }) {
 
       svg.select(".x-axis").call(xAxis);
       svg.select(".y-axis").call(y1Axis);
-
+      
+    
       svg
         .select(".plot-area")
         .attr("fill", "steelblue")
