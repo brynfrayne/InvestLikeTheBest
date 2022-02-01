@@ -5,6 +5,7 @@ import './CompanyOwnershipTable.scss';
 
 export default function CompanyOwnershipTable({data}) {
 
+   data.sort((a,b)=>((b.value/b.portfolioValue)-(a.value/a.portfolioValue)))
 
     return <Table >
        <thead>

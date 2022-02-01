@@ -1,15 +1,69 @@
 @font-face {
-font-family: "Balsamiq Sans";
-src: url('../../assets/font/BalsamiqSans-Regular.ttf');
+    font-family: "Inter";
+    src: url('../../assets/font/Inter/static/Inter-Thin.ttf');
+    font-weight: 100;
+    font-style:normal;
+    font-display:swap;
+    }
+
+@font-face {
+    font-family: "Inter";
+    src: url('../../assets/font/Inter/static/Inter-ExtraLight.ttf');
+    font-weight: 200;
+    font-style:normal;
+    font-display:swap;
+    }
+
+@font-face {
+    font-family: "Inter";
+    src: url('../../assets/font/Inter/static/Inter-Light.ttf');
+    font-weight: 300;
+    font-style:normal;
+    font-display:swap;
+    }
+
+@font-face {
+font-family: "Inter";
+src: url('../../assets/font/Inter/static/Inter-Regular.ttf');
 font-weight: 400;
 font-style:normal;
 font-display:swap;
 }
 
 @font-face {
-    font-family: "Balsamiq Sans";
-    src: url('../../assets/font/BalsamiqSans-Bold.ttf');
+    font-family: "Inter";
+    src: url('../../assets/font/Inter/static/Inter-Medium.ttf');
+    font-weight: 500;
+    font-style:normal;
+    font-display:swap;
+    }
+
+@font-face {
+    font-family: "Inter";
+    src: url('../../assets/font/Inter/static/Inter-SemiBold.ttf');
+    font-weight: 600;
+    font-style:normal;
+    font-display:swap;
+    }
+
+@font-face {
+    font-family: "Inter";
+    src: url('../../assets/font/Inter/static/Inter-Bold.ttf');
     font-weight: 700;
+    font-style:normal;
+    font-display:swap;
+    }
+@font-face {
+    font-family: "Inter";
+    src: url('../../assets/font/Inter/static/Inter-ExtraBold.ttf');
+    font-weight: 800;
+    font-style:normal;
+    font-display:swap;
+    }
+@font-face {
+    font-family: "Inter";
+    src: url('../../assets/font/Inter/static/Inter-Black.ttf');
+    font-weight: 900;
     font-style:normal;
     font-display:swap;
     }

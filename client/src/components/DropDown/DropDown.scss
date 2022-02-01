@@ -1,0 +1,16 @@
+@use "../../styles/partials/mixins" as*;
+
+.dropdown {
+    background-color: rgb(86, 114, 236);
+    border-radius: .25rem;
+    box-shadow:rgba(1, 7, 14, 0.2) 0px 8px 24px;
+    &-basic {
+        color: greenyellow;
+
+    }
+    &-toggle {
+        @include purple-gradient;
+        font-weight: 500;
+
+    }
+}

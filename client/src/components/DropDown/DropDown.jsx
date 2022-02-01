@@ -2,13 +2,14 @@ import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
+import "./DropDown.scss";
 
 
 export default function DropDown({dropDown, params}) {
   
   
   return <div>
-      <Dropdown>
+      <Dropdown className='dropdown'>
   <Dropdown.Toggle
     variant="success"
     id="dropdown-basic"

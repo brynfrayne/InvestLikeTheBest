@@ -56,20 +56,15 @@ export default class SpecificCompanyPage extends Component {
       .then((result)=> {
           axios.get('https://api.polygon.io/v3/reference/tickers?cusip='+ this.props.match.params.cusip +'&apiKey=6S8WE2mCmlIzzY2UmCIFDAQAZmS13pGL')
             .then(response=>{
-              console.log(response.data.results[0])
               this.setState({
                 companyData:response.data.results[0]
               })
-              console.log('delete this commented out code')
-              // axios.get(`https://api.polygon.io/v1/meta/symbols/${response.data.results[0].ticker}/company&apiKey=6S8WE2mCmlIzzY2UmCIFDAQAZmS13pGL`)
-              // axios.get(`https://eodhistoricaldata.com/img/logos/US/${response.data.results[0].ticker}.png`)
-
-              // .then(response => {
-              //   console.log(response.data)
-              //   this.setState({
-              //     img: response.data
-              //   })
-              // })
+                axios.get(`https://api.twelvedata.com/logo?symbol=${response.data.results[0].ticker}&apikey=7526608492784ea0bc724efc66592c3f`)
+              .then(response => {
+                this.setState({
+                  img: response.data.url
+                })
+              })
       })
   })
 }
@@ -108,7 +103,7 @@ export default class SpecificCompanyPage extends Component {
     
     render() {
       
-        if ( !this.state.fundOwnership || !this.state.companyData || document.querySelector("#root > div > svg > g.plot-area > rect:nth-child(2)") ) {
+        if ( !this.state.fundOwnership || !this.state.companyData || !this.state.img || document.querySelector("#root > div > svg > g.plot-area > rect:nth-child(2)") ) {
             return <p>CHoo choooo, here we go!!🚂 </p>
         }  
         
@@ -117,7 +112,7 @@ export default class SpecificCompanyPage extends Component {
       <Hero dropDown={this.state.dropDown} params={`company/${this.props.match.params.cusip}`}/>
       <h1 className="company-page__title">{this.state.companyData.name}</h1>
       <p className="company-page__ticker">Ticker: {this.state.companyData.ticker}</p>
-      {/* <img className='company-page__image' src={`https://eodhistoricaldata.com/img/logos/US/${this.state.companyData.ticker}.png`}  alt='/'/> */}
+      <img className='company-page__image' src={this.state.img}  alt='/'/>
       <p>{this.state.fundOwnership[0].period_of_report}</p>
       <CompanyOwnershipBarChart data={this.state.fundOwnership}/>
       <CompanyOwnershipTable data={this.state.fundOwnership} />

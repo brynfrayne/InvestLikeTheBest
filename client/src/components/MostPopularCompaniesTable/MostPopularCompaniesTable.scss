@@ -1,9 +1,17 @@
+@use "../../styles/partials/_mixins" as*;
+@use "../../styles/partials/variables" as*;
+
 .table-links {
     text-decoration: none;
-    color: black;
+    color: rgb(53, 16, 53);
     cursor:pointer;
+    
 }
+
 .table {
+    border-bottom: 1px solid rgb(194, 39, 194) ;
+    // margin: 0 1rem;
+    // max-width: 26.5rem;
    
     &__row {
        width: 100%;
@@ -12,5 +20,9 @@
         width: 50%;
         text-align: center;
         text-transform: uppercase;
+        &--title {
+            font-weight: 600;
+            @include purple-gradient;
+        }
     }
 }

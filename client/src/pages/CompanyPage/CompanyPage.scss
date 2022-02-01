@@ -1,12 +1,19 @@
+@use "../../styles/partials/mixins" as*;
+
 .company-page {
     &__title {
         text-align: center;
+        @include purple-gradient;
+        font-weight: 700;
     }
     &__ticker {
         text-align: center;
+        font-weight: 600;
+        @include purple-gradient;
     }
     &__image {
         width: 6rem;
-        margin: 0 auto;
+        margin-left: 40%;
+        height: 1rem;
     }
 }

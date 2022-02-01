@@ -1,0 +1,7 @@
+@mixin purple-gradient {
+    background: -webkit-repeating-radial-gradient(circle farthest-corner at center center, #000000 0%, #AE44E3 100%);
+    background: -moz-repeating-radial-gradient(circle farthest-corner at center center, #000000 0%, #AE44E3 100%);
+    background: repeating-radial-gradient(circle farthest-corner at center center, #000000 0%, #AE44E3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

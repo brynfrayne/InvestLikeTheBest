@@ -14,6 +14,7 @@ function App() {
 
 
   return (
+    <div className='main'>
 <BrowserRouter>
 {/* <Header /> */}
   <Switch>
@@ -30,6 +31,7 @@ function App() {
 
   </Switch>
 </BrowserRouter>
+</div>
   );
 }
 
