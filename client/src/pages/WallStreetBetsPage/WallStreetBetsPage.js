@@ -22,31 +22,12 @@ export default class BiggestBetsPage extends Component {
 }
 
 componentDidMount() {
-    axios.get('http://localhost:8000/funds')
-     .then((response)=> {
-       this.setState({
-         investors:response.data
-       })
-     })
-    
+   axios.get('https://tradestie.com/api/v1/apps/reddit')
     .then(response => {
-        let topStocks = [];
-        for (let i = 0; i < this.state.investors.length; i++) {
-            axios.get('http://localhost:8000/funds/'+this.state.investors[i].CIK +"/Q3-21")
-                .then(response => {
-                    let topStock = response.data.sort((a,b)=> (b.value - a.value)).slice(0,1);
-                    let portfolioValue = response.data.map((holding) => (holding.value)).reduce((prev, curr) => prev + curr, 0);
-                    topStock[0].portfolioValue = portfolioValue;
-                    topStocks.push(topStock[0]);
-                    this.setState({
-                        biggestBets : topStocks
-                    })
-        console.log(this.state.biggestBets)
-
-                })                
-        }
+        console.log(response.data)
+        
+    })
     }
-    )}
 
   render() {
       if (!this.state.investors || !this.state.biggestBets) {

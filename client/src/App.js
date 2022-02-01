@@ -7,6 +7,7 @@ import CompanyPage from './pages/CompanyPage/CompanyPage';
 import SpecificCompanyPage from './pages/SpecificCompanyPage/SpecificCompanyPage';
 import FundListPage from './pages/FundListPage/FundListPage';
 import BiggestBetsPage from './pages/BiggestBetsPage/BiggestBetsPage';
+import WallStreetBetsPage from './pages/WallStreetBetsPage/WallStreetBetsPage';
 
 function App() {
 ;
@@ -24,6 +25,8 @@ function App() {
     <Route path='/charts' exact component={ChartsPage} /> 
     <Route path='/charts/most_held_stocks' component={ChartsPage} />
     <Route path='/charts/biggest_bets' component={BiggestBetsPage} />
+    <Route path='/charts/wall_street_bets' component={WallStreetBetsPage} />
+
 
   </Switch>
 </BrowserRouter>

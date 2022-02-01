@@ -60,6 +60,7 @@ export default class SpecificCompanyPage extends Component {
               this.setState({
                 companyData:response.data.results[0]
               })
+              console.log('delete this commented out code')
               // axios.get(`https://api.polygon.io/v1/meta/symbols/${response.data.results[0].ticker}/company&apiKey=6S8WE2mCmlIzzY2UmCIFDAQAZmS13pGL`)
               // axios.get(`https://eodhistoricaldata.com/img/logos/US/${response.data.results[0].ticker}.png`)
 
