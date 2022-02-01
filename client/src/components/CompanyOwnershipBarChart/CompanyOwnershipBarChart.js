@@ -7,7 +7,7 @@ function CompanyOwnershipBarChart({ data }) {
     (svg) => {
       const height = 200;
       const width = 500;
-      const margin = { top: -20, right: 100, bottom: -40, left: 40 };
+      const margin = { top: -20, right: 100, bottom: 0, left: 40 };
 
       const x = d3
         .scaleBand()
@@ -24,11 +24,11 @@ function CompanyOwnershipBarChart({ data }) {
         g.attr("transform", `translate(0,${height - margin.bottom})`).call(
           d3
             .axisBottom(x)
-            .tickValues(
-              d3
-                .ticks(...d3.extent(x.domain()), width / 40)
-                .filter((v) => x(v) !== undefined)
-            )
+            // .tickValues(
+            //   d3
+            //     .ticks(...d3.extent(x.domain()), width / 40)
+            //     .filter((v) => x(v) !== undefined)
+            // )
             .tickSizeOuter(0)
         );
 
@@ -36,7 +36,7 @@ function CompanyOwnershipBarChart({ data }) {
         g
           .attr("transform", `translate(${margin.left},0)`)
           .style("color", "black")
-          .call(d3.axisLeft(y1).ticks(null, "s"))
+          .call(d3.axisLeft(y1).ticks().tickFormat(d3.format(".0%")))
           .call((g) => g.select(".domain").remove())
           .call((g) =>
             g
@@ -45,7 +45,7 @@ function CompanyOwnershipBarChart({ data }) {
               .attr("y", 10)
               .attr("fill", "currentColor")
               .attr("text-anchor", "start")
-              .text(data.y1)
+              // .text(data.y1)
           );
 
       svg.select(".x-axis").call(xAxis);
