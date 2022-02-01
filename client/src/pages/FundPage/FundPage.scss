@@ -1,13 +1,24 @@
+@use "../../styles/partials/mixins" as*;
+
 .fund-page {
-    &__title {
-        // text-align: center;
-    }
-    &__subtitle {
-        width: 50%;
-        // margin: 0 auto;
-    }
+    
     &__title-box {
         margin: 2rem 1rem;
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: -3rem;
+        width: 50%;
     }
+    &__subtitle {
+        @include purple-gradient;
+        text-align: center
+    }
+    &__title {
+        @include purple-gradient;
+    }
+    &__title-container {
+        display: flex;
+        justify-content: center;
+    }
+    
 }

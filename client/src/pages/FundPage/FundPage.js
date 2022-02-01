@@ -64,9 +64,15 @@ export default class FundPage extends Component {
       <Header />
       <Hero dropDown={this.state.dropDown} params={`funds/${this.props.match.params.CIK}`}/>
       <div className='fund-page__title-box'>
+        <div className='fund-page__title-container'>
         <h2 className='fund-page__subtitle'>{this.state.fund[0].fund}</h2>
+        </div>
+        <div className='fund-page__title-container'>
         <h1 className='fund-page__title'>{this.state.fund[0].investor}</h1>
+        </div>
+        <div className='fund-page__title-container'>
         <p>{this.state.fund[0].period_of_report}</p>
+        </div>
       </div>  
       <ChartComponent data={this.state.data} sumVal={sumval} />
       <TableComponent fund={this.state.fund} sumVal={sumval}/>

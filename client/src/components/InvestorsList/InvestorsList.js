@@ -6,7 +6,9 @@ import uniqid from 'uniqid';
 export default function InvestorsList({investors}) {
     return <Table>
        <thead>           
+           <tr>
            <td className='table__data'>Name</td><td className='table__data'>Fund</td>  
+           </tr>
         </thead>
         <tbody>
           

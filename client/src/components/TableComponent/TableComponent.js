@@ -9,7 +9,7 @@ export default function TableComponent({fund, sumVal}) {
     return <Table>
        <thead>
           <tr>           
-           <td className="company-ownership-table__row-item">Company</td><td className="company-ownership-table__row-item">Shares</td><td>Weighting</td><td className="company-ownership-table__row-item">Net Change</td>
+           <td className="company-ownership-table__row-item">Company</td><td className="company-ownership-table__row-item">Shares</td><td>% of Portfolio</td>
            </tr>
           </thead>
           <tbody>

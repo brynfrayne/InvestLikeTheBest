@@ -2,10 +2,10 @@ import * as d3 from "d3";
 // import { Translate } from "react-bootstrap-data";
 
 export default function DrawDonutChart(element, data) {
-  const colors = ["#05BBD2", "#2070C4", "#EB80F1", "#F5C842", "#37D400"];
+  const colors = ["rgb(10, 209, 259)", "#2070C4", "#EB80F1", "#F5C842", "#37D400", "rgb(177, 24, 245)"];
   const boxSize = 500;
   
-
+ 
   d3.select(element).select("svg").remove(); // Remove the old svg
   // Create new svg
   const svg = d3
@@ -37,16 +37,10 @@ export default function DrawDonutChart(element, data) {
     };
   });
   arcs 
-  // .append("svg:image")
-  // .attr("href",data.logoURL)
-  // .attr("width", "32")
-  // .attr("height", "32");
-  // console.log(data.investor)
-
     .append("text")
     .attr("text-anchor", "middle")
     .text((d, i)=>{return data[i].name})
-    .style("fill","#fff")
+    .style("fill","hsl(266, 91%, 23%)")
     .style("font-size", "16px")
     .attr('transform', (d)=> {
       const [x, y] = arcGenerator.centroid(d);
