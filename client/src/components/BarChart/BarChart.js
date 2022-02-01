@@ -25,11 +25,6 @@ function BarChart({ data }) {
         g.attr("transform", `translate(0,${height - margin.bottom})`).call(
           d3
             .axisBottom(x)
-            .tickValues(
-              d3
-                .ticks(...d3.extent(x.domain()), width / 40)
-                .filter((v) => x(v) !== undefined)
-            )
             .tickSizeOuter(0)
         );
 
@@ -49,8 +44,14 @@ function BarChart({ data }) {
               .text(data.y1)
           );
 
-      svg.select(".x-axis").call(xAxis);
-      svg.select(".y-axis").call(y1Axis);
+          svg.select(".x-axis").call(xAxis)
+            .selectAll("text")  
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", "rotate(-65)");
+          
+          svg.select(".y-axis").call(y1Axis);
 
       svg
         .select(".plot-area")
@@ -71,7 +72,7 @@ function BarChart({ data }) {
     <svg
       ref={ref}
       style={{
-        height: 200,
+        height: 350,
         width: "100%",
         marginRight: "0px",
         marginLeft: "0px",

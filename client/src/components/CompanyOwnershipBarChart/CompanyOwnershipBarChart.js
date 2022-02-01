@@ -36,17 +36,9 @@ function CompanyOwnershipBarChart({ data }) {
         g
           .attr("transform", `translate(${margin.left},0)`)
           .style("color", "black")
+          .style("font-size", 12)
           .call(d3.axisLeft(y1).ticks().tickFormat(d3.format(".0%")))
-          .call((g) => g.select(".domain").remove())
-          .call((g) =>
-            g
-              .append("text")
-              .attr("x", -margin.left)
-              .attr("y", 10)
-              .attr("fill", "currentColor")
-              .attr("text-anchor", "start")
-              // .text(data.y1)
-          );
+          .call((g) => g.select(".domain").remove());
 
       svg.select(".x-axis").call(xAxis);
       svg.select(".y-axis").call(y1Axis);
