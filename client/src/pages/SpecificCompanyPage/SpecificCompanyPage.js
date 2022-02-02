@@ -13,6 +13,7 @@ export default class SpecificCompanyPage extends Component {
 
     fundOwnership : null,
     dropDown: [
+        {title:'Statistics', id:uniqid(), url:'stats'},
         {title:'Q1 - 2021', id:uniqid(), url:'Q1-21'},
         {title:'Q2 - 2021', id:uniqid(), url:'Q2-21'},
         {title:'Q3 - 2021', id:uniqid(), url:'Q3-21'},
@@ -34,6 +35,8 @@ export default class SpecificCompanyPage extends Component {
                 newArray[newArray.length - 1].value += response.data[i].value;
             } else {newArray.push(response.data[i])}
         }
+        console.log(newArray)
+
         sortedData = newArray.sort((a,b)=>(b.shares - a.shares));
       
       })
