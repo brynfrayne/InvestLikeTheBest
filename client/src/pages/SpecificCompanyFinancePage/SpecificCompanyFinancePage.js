@@ -3,6 +3,7 @@ import Header from '../../components/Header/Header';
 import Hero from '../../components/Hero/Hero';
 import axios from 'axios';
 import uniqid from 'uniqid';
+import CompanyStatsTable from '../../components/CompanyStatsTable/CompanyStatsTable';
 
 
 export default class SpecificCompanyFinancePage extends Component {
@@ -33,13 +34,13 @@ export default class SpecificCompanyFinancePage extends Component {
               })
            
             
-              // axios.get(`https://api.twelvedata.com/statistics?symbol=${companyData.ticker}&apikey=7526608492784ea0bc724efc66592c3f`)
-              //   .then(response => {
-              //     console.log(response.data)
-              //     this.setState({
-              //       stats: response.data
-              //     })
-              //   })
+              axios.get(`https://financialmodelingprep.com/api/v3/ratios/${this.state.companyData.ticker}?period=quarter&limit=140&apikey=d955401eaf61979988a8f8b8073ea1f8`)
+                .then(response => {
+                  console.log(response.data)
+                  this.setState({
+                    stats: response.data
+                  })
+                })
             })         
       
   }
@@ -49,9 +50,9 @@ export default class SpecificCompanyFinancePage extends Component {
     
     render() {
       
-        // if ( !this.state.companyData || !this.state.img  ) {
-        //     return <p>CHoo choooo, here we go!!🚂 </p>
-        // }  
+        if ( !this.state.companyData || !this.state.img  ) {
+            return <p>CHoo choooo, here we go!!🚂 </p>
+        }  
         
     return <div>
       <Header />
@@ -59,6 +60,7 @@ export default class SpecificCompanyFinancePage extends Component {
       <h1 className="company-page__title">{this.state.companyData.name}</h1>
       <p className="company-page__ticker">Ticker: {this.state.companyData.ticker}</p>
       <img className='company-page__image' src={this.state.img}  alt='/'/>
+      <CompanyStatsTable stats={this.state.stats} />
      
     </div>;
   }

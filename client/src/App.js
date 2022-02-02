@@ -20,8 +20,9 @@ function App() {
   <Switch>
     <Route path='/' exact component={LandingPage} /> 
     <Route path='/company/:period_of_report' exact component={CompanyPage} />
+    <Route path='/company/:cusip/stats'  component={SpecificCompanyFinancePage} />
     <Route path='/company/:cusip/:period_of_report' exact component={SpecificCompanyPage} />
-    <Route path='/company/:cusip/stats' component={SpecificCompanyFinancePage} />
+    
     <Route path='/funds' exact component={FundListPage} />
     <Route path='/funds/:CIK/:period_of_report' component={FundPage} />
     <Route path='/charts' exact component={ChartsPage} /> 
