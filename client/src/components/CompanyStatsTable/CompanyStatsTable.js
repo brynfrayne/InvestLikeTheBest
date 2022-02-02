@@ -27,9 +27,9 @@ export default function CompanyStatsTable({stats}) {
                   <td  className='table__data'>{stat.date}</td>
                   <td  className='table__data'>{stat.priceEarningsRatio.toFixed(2)}</td> 
                   <td  className='table__data'>{stat.priceToSalesRatio.toFixed(2)}</td> 
-                  <td  className='table__data'>{stat.returnOnEquity.toFixed(3)*100+'%'}</td> 
-                  <td  className='table__data'>{stat.netProfitMargin.toFixed(2)*100+'%'}</td> 
-                  <td  className='table__data'>{stat.grossProfitMargin.toFixed(2)*100+'%'}</td> 
+                  <td  className='table__data'>{Math.round((stat.returnOnEquity)*100)+'%'}</td> 
+                  <td  className='table__data'>{Math.round((stat.netProfitMargin)*100)+'%'}</td> 
+                  <td  className='table__data'>{Math.round((stat.grossProfitMargin)*100)+'%'}</td> 
                 </tr>
              ))
             }              
