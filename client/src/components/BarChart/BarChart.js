@@ -3,7 +3,6 @@ import React from 'react';
 import * as d3 from 'd3';
 
 function BarChart({ data }) {
-  console.log(data)
   const ref = useD3(
     (svg) => {
       const height = 200;

@@ -43,7 +43,6 @@ export default class CompanyPage extends Component {
       if (this.state.stocks === null) {
         return <p>Here we go, choo, choo!!</p>
       }
-      console.log(this.state.stocks)
     return <div>
       <Header />
       <Hero dropDown={this.state.dropDown} params={'company'}/>

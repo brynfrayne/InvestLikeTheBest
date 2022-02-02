@@ -12,13 +12,13 @@ function CompanyOwnershipBarChart({ data }) {
       const x = d3
         .scaleBand()
         .domain(data.map((d) => d.investor))
-        .rangeRound([margin.left, width - margin.right])
+        .rangeRound([margin.left, 405])
         .padding(0.25);
 
       const y1 = d3
         .scaleLinear()
         .domain([0, d3.max(data, (d) => (d.value/d.portfolioValue))])
-        .rangeRound([height - margin.bottom, 80]);
+        .rangeRound([height - margin.bottom, 20]);
 
       const xAxis = (g) =>
         g.attr("transform", `translate(0,${height - margin.bottom})`).call(
@@ -40,7 +40,12 @@ function CompanyOwnershipBarChart({ data }) {
           .call(d3.axisLeft(y1).ticks().tickFormat(d3.format(".0%")))
           .call((g) => g.select(".domain").remove());
 
-      svg.select(".x-axis").call(xAxis);
+          svg.select(".x-axis").call(xAxis)
+          .selectAll("text")  
+          .style("text-anchor", "end")
+          .attr("dx", "-.8em")
+          .attr("dy", ".15em")
+          .attr("transform", "rotate(-65)");
       svg.select(".y-axis").call(y1Axis);
       
     
@@ -63,7 +68,7 @@ function CompanyOwnershipBarChart({ data }) {
     <svg
       ref={ref}
       style={{
-        height: 250,
+        height: 325,
         width: "100%",
         marginRight: "0px",
         marginLeft: "0px",
