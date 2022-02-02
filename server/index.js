@@ -1,7 +1,6 @@
 const knex = require('knex')
 const express = require('express');
 const mysql = require('mysql');
-// const connection = require('./connection');
 const app = express();
 const cors = require("cors");
 const port = process.env.port || 8000;

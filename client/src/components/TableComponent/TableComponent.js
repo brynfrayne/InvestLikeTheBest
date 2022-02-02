@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
 
 export default function TableComponent({fund, sumVal}) {
@@ -16,8 +17,8 @@ export default function TableComponent({fund, sumVal}) {
           
             {fund.map((holding) => ( 
                <tr className="company-ownership-table__row" key={uniqid()}  >
-                  <td className="company-ownership-table__row-item" >{holding.name}</td>
-                  <td className="company-ownership-table__row-item" >{holding.shares}</td>
+                  <td className="company-ownership-table__row-item" ><Link className='table-links' to={`/company/${holding.cusip}/${holding.period_of_report}`}>{holding.name}</Link></td>
+                  <td className="company-ownership-table__row-item" ><Link className='table-links' to={`/company/${holding.cusip}/${holding.period_of_report}`}>{holding.shares}</Link></td>
                   <td className="company-ownership-table__row-item" >{Math.round((holding.value/sumVal)*100)+'%'}</td> 
                 </tr>
              ))
