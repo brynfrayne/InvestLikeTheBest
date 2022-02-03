@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import DrawDonutChart from "../DrawDonutChart/DrawDonutChart";
-import axios from "axios";
 
 
-export default function DonutChart({ data, sumVal }) {
+export default function DonutChart({ data }) {
   const ref = useRef(null);
 
   useEffect(() => {

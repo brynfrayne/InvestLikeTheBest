@@ -2,7 +2,6 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import uniqid from 'uniqid';
 import { Link } from 'react-router-dom';
-// import "./MostPopularCompaniesTable.scss";
 
 export default function CompanyStatsTable({stats}) {
 

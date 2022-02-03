@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import BarChart from '../../components/BarChart/BarChart';
-import Header from '../../components/Header/Header';
-import Hero from '../../components/Hero/Hero';
 import axios from 'axios';
 import MostPopularCompaniesTable from '../../components/MostPopularCompaniesTable/MostPopularCompaniesTable';
-// import "../../pages/CompanyPage/Conm";
 export default class MostHeldStocks extends Component {
   state = {
     stocks : null

@@ -11,7 +11,6 @@ export default function LandingPage() {
             
             <NavBar/>
             <h1 className='landing-page__title'>Invest Like The Best</h1>
-            {/* <DropDown className='landing-page__header--item'/> */}
             <Search />
           </div>
           <img src={bullBear} alt="Logo" className="landing-page__image" />

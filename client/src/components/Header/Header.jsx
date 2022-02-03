@@ -7,7 +7,6 @@ import DropDown from '../DropDown/DropDown'
 export default function Header() {
   return <div className='header'>
       <NavBar />
-      {/* <DropDown/> */}
       <Search />
   </div>;
 }

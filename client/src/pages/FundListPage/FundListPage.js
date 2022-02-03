@@ -7,13 +7,6 @@ import uniqid from 'uniqid';
 
 export default class FundListPage extends Component {
    state = {
-     data : [
-    { value: 40 },
-    { value: 25 },
-    { value: 15 },
-    { value: 8 },
-    { value: 2 }
-  ],
   investors : null,
   dropDown : [
     {title:'Most Held Stocks', id:uniqid(), url:'most_held_stocks'},
@@ -37,10 +30,7 @@ export default class FundListPage extends Component {
     if (this.state.investors === null) {
       return <p>Choo choo, Here we go!!</p>
     }
-    // const sumval = this.state.fund.holdings
-    // .map((holding) => (holding.value))
-    // .reduce((prev, curr) => prev + curr, 0);
-
+  
     return <div>
       <Header />
       <Hero dropDown={this.state.dropDown} params={'/'}/>
