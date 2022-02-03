@@ -10,7 +10,7 @@ router.get('/', function (_req, res) {
      });
  });
 
-// get specific fund info -- right now has all 4 quarters of data!!!
+// get specific fund info
 router.get('/:CIK/:period_of_report', function (req, res) {
     const CIK = req.params.CIK;
     const period_of_report = req.params.period_of_report;
