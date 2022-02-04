@@ -39,12 +39,21 @@ app.get('/filings', function (_req, res) {
 	});
 });
 
+// fetches reddit wall street bets data
 app.get('/reddit', async (req, res) =>  {
 const api_url = 'https://tradestie.com/api/v1/apps/reddit';
 const fetch_response = await fetch(api_url);
 const json = await fetch_response.json();
 res.send(json);
 } )
+
+  //  this endpoint is to fetch the ticker symbol
+ app.get('/:cusip', async (req, res) => {
+  const api_url = `https://api.polygon.io/v3/reference/tickers?cusip=01609W102&apiKey=${process.env.REACT_APP_polygon_api_key}`;
+  const fetch_response = await fetch(api_url);
+  const json = await fetch_response.json();
+  res.send(json);
+ }); 
 
 
 //  ROUTES
