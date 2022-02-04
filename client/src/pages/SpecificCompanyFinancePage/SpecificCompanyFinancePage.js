@@ -21,12 +21,12 @@ export default class SpecificCompanyFinancePage extends Component {
     };
     
   componentDidMount() {
-          axios.get('https://api.polygon.io/v3/reference/tickers?cusip='+ this.props.match.params.cusip +'&apiKey=6S8WE2mCmlIzzY2UmCIFDAQAZmS13pGL')
+          axios.get('https://api.polygon.io/v3/reference/tickers?cusip='+ this.props.match.params.cusip +'&apiKey='+ process.env.REACT_APP_polygon_api_key)
             .then(response=>{
               this.setState({
                 companyData:response.data.results[0]
               })
-              axios.get(`https://api.twelvedata.com/logo?symbol=${response.data.results[0].ticker}&apikey=7526608492784ea0bc724efc66592c3f`)
+              axios.get(`https://api.twelvedata.com/logo?symbol=${response.data.results[0].ticker}&apikey=${process.env.REACT_APP_twelveData_apiKey}`)
                 .then(response => {
                   this.setState({
                     img: response.data.url
@@ -34,7 +34,7 @@ export default class SpecificCompanyFinancePage extends Component {
               })
            
             
-              axios.get(`https://financialmodelingprep.com/api/v3/ratios/${this.state.companyData.ticker}?period=quarter&limit=140&apikey=d955401eaf61979988a8f8b8073ea1f8`)
+              axios.get(`https://financialmodelingprep.com/api/v3/ratios/${this.state.companyData.ticker}?period=quarter&limit=140&apikey=${process.env.REACT_APP_financial_modelling_apiKey}`)
                 .then(response => {
                   console.log(response.data)
                   this.setState({

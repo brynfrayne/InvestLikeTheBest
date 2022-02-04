@@ -30,6 +30,7 @@ export default class SpecificCompanyPage extends Component {
     .then((response)=> {
         let newArray = [];
         for(let i = 0; i < response.data.length; i++) {
+          // if the investors have numerous listings for the same stock we must consolidate them
             if ( newArray.length>=1 && newArray[newArray.length - 1].investor === response.data[i].investor) {
                 newArray[newArray.length - 1].shares += response.data[i].shares;
                 newArray[newArray.length - 1].value += response.data[i].value;
@@ -57,12 +58,12 @@ export default class SpecificCompanyPage extends Component {
         } 
       })
       .then((result)=> {
-          axios.get('https://api.polygon.io/v3/reference/tickers?cusip='+ this.props.match.params.cusip +'&apiKey=6S8WE2mCmlIzzY2UmCIFDAQAZmS13pGL')
+          axios.get('https://api.polygon.io/v3/reference/tickers?cusip='+ this.props.match.params.cusip +'&apiKey='+process.env.REACT_APP_polygon_api_key)
             .then(response=>{
               this.setState({
                 companyData:response.data.results[0]
               })
-                axios.get(`https://api.twelvedata.com/logo?symbol=${response.data.results[0].ticker}&apikey=7526608492784ea0bc724efc66592c3f`)
+                axios.get(`https://api.twelvedata.com/logo?symbol=${response.data.results[0].ticker}&apikey=${process.env.REACT_APP_twelveData_apiKey}`)
               .then(response => {
                 this.setState({
                   img: response.data.url
