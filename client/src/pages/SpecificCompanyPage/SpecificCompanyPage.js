@@ -30,14 +30,14 @@ export default class SpecificCompanyPage extends Component {
     .then((response)=> {
         let newArray = [];
         for(let i = 0; i < response.data.length; i++) {
+
           // if the investors have numerous listings for the same stock we must consolidate them
-            if ( newArray.length>=1 && newArray[newArray.length - 1].investor === response.data[i].investor) {
+          
+          if ( newArray.length>=1 && newArray[newArray.length - 1].investor === response.data[i].investor) {
                 newArray[newArray.length - 1].shares += response.data[i].shares;
                 newArray[newArray.length - 1].value += response.data[i].value;
             } else {newArray.push(response.data[i])}
         }
-        console.log(newArray)
-
         sortedData = newArray.sort((a,b)=>(b.shares - a.shares));
       
       })
@@ -115,9 +115,9 @@ export default class SpecificCompanyPage extends Component {
       <Header />
       <Hero dropDown={this.state.dropDown} params={`company/${this.props.match.params.cusip}`}/>
       <h1 className="company-page__title">{this.state.companyData.name}</h1>
-      <p className="company-page__ticker">Ticker: {this.state.companyData.ticker}</p>
       <img className='company-page__image' src={this.state.img}  alt='/'/>
-      <p>{this.state.fundOwnership[0].period_of_report}</p>
+      <p className="company-page__ticker">{this.state.companyData.ticker}</p>
+      <p className="company-page__ticker">{this.state.fundOwnership[0].period_of_report}</p>
       <CompanyOwnershipBarChart data={this.state.fundOwnership}/>
       <CompanyOwnershipTable data={this.state.fundOwnership} />
     </div>;

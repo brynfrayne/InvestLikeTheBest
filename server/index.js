@@ -8,6 +8,7 @@ const companyRoutes = require('./routes/companyRoutes');
 const fundRoutes = require('./routes/fundRoutes');
 const chartRoutes = require('./routes/chartRoutes');
 const { config } = require('dotenv');
+const fetch = require('node-fetch');
 require("dotenv").config();
 
 
@@ -29,6 +30,7 @@ app.use(express.json());
 // app.use(express.urlencoded());
 app.use(cors());
 
+
 //rest api to get all holdings
 app.get('/filings', function (_req, res) {
    connection.query('select * from aggregate_holdings', function (error, result, _fields) {
@@ -36,6 +38,13 @@ app.get('/filings', function (_req, res) {
 	  res.send((result));
 	});
 });
+
+app.get('/reddit', async (req, res) =>  {
+const api_url = 'https://tradestie.com/api/v1/apps/reddit';
+const fetch_response = await fetch(api_url);
+const json = await fetch_response.json();
+res.send(json);
+} )
 
 
 //  ROUTES
