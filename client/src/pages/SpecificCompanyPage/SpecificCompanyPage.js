@@ -58,18 +58,25 @@ export default class SpecificCompanyPage extends Component {
         } 
       })
       .then((result)=> {
-          axios.get('https://api.polygon.io/v3/reference/tickers?cusip='+ this.props.match.params.cusip +'&apiKey='+process.env.REACT_APP_polygon_api_key)
+          axios.get('http://localhost:8000/'+ this.props.match.params.cusip )
             .then(response=>{
+              console.log(response.data.results[0].ticker)
               this.setState({
-                companyData:response.data.results[0]
-              })
-                axios.get(`https://api.twelvedata.com/logo?symbol=${response.data.results[0].ticker}&apikey=${process.env.REACT_APP_twelveData_apiKey}`)
-              .then(response => {
-                this.setState({
-                  img: response.data.url
-                })
-              })
-      })
+                companyData:response.data
+              });
+      // })
+      // .then(response => {
+      axios.get(`http://localhost:8000/${this.props.match.params.cusip}/${response.data.results[0].ticker}`)
+      .then(response => {
+        console.log(response)
+        this.setState({
+          img: response.data.url
+        })
+  })
+})
+  // .then((result) => {
+     
+              // })
   })
 }
   componentDidUpdate(prevProps) {

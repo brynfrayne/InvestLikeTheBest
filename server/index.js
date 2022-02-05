@@ -49,7 +49,18 @@ res.send(json);
 
   //  this endpoint is to fetch the ticker symbol
  app.get('/:cusip', async (req, res) => {
-  const api_url = `https://api.polygon.io/v3/reference/tickers?cusip=01609W102&apiKey=${process.env.REACT_APP_polygon_api_key}`;
+  const cusip = req.params.cusip; 
+  const api_url = `https://api.polygon.io/v3/reference/tickers?cusip=${cusip}&apiKey=${process.env.REACT_APP_polygon_api_key}`;
+  const fetch_response = await fetch(api_url);
+  const json = await fetch_response.json();
+  res.send(json);
+ }); 
+
+// this end point will fetch the logo for the ticker
+app.get('/:cusip/:ticker', async (req, res) => {
+  const ticker = req.params.ticker;
+  console.log(ticker)
+  const api_url = `https://api.twelvedata.com/logo?symbol=${ticker}&apikey=${process.env.REACT_APP_twelveData_apiKey}`;
   const fetch_response = await fetch(api_url);
   const json = await fetch_response.json();
   res.send(json);
