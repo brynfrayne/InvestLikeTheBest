@@ -22,7 +22,7 @@ export default class BiggestBetsPage extends Component {
 }
 
 componentDidMount() {
-   axios.get('https://tradestie.com/api/v1/apps/reddit')
+   axios.get('http://localhost:8000/company/reddit')
     .then(response => {
         console.log(response.data)
         

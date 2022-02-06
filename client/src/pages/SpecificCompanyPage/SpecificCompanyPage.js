@@ -58,26 +58,21 @@ export default class SpecificCompanyPage extends Component {
         } 
       })
       .then((result)=> {
-          axios.get('http://localhost:8000/'+ this.props.match.params.cusip )
+          axios.get('http://localhost:8000/company/'+ this.props.match.params.cusip +"/ticker")
             .then(response=>{
               console.log(response.data.results[0].ticker)
               this.setState({
                 companyData:response.data
               });
-      // })
-      // .then(response => {
-      axios.get(`http://localhost:8000/${this.props.match.params.cusip}/${response.data.results[0].ticker}`)
-      .then(response => {
-        console.log(response)
-        this.setState({
-          img: response.data.url
+          axios.get(`http://localhost:8000/company/${this.props.match.params.cusip}/${response.data.results[0].ticker}/logo`)
+          .then(response => {
+            console.log(response)
+            this.setState({
+              img: response.data.url
+            })
+          })
         })
-  })
-})
-  // .then((result) => {
-     
-              // })
-  })
+      })
 }
   componentDidUpdate(prevProps) {
     let sortedData;

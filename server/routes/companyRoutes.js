@@ -49,6 +49,7 @@ router.get('/:cusip/:ticker/logo', async (req, res) => {
   res.send(json);
  }); 
 
+//  this endpoint fetches all the investors who hold the stock for the period 
 router.get('/:cusip/:period_of_report', function (req, res) {
   const cusip = req.params.cusip;
   const period_of_report = req.params.period_of_report;
