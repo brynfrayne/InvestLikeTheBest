@@ -8,7 +8,7 @@ const { config } = require('dotenv');
 require("dotenv").config();
 
 //  MIDDLEWARE
-// router.use(express.json());
+router.use(express.json());
 // router.use(express.urlencoded());
 router.use(cors());
 
@@ -30,7 +30,24 @@ router.get('/:period_of_report', function (req, res) {
        res.send((result));
      });
  });
+
+   //  this endpoint is to fetch the ticker symbol
+   router.get('/:cusip/ticker', async (req, res) => {
+    const cusip = req.params.cusip; 
+    const api_url = `https://api.polygon.io/v3/reference/tickers?cusip=${cusip}&apiKey=${process.env.REACT_APP_polygon_api_key}`;
+    const fetch_response = await fetch(api_url);
+    const json = await fetch_response.json();
+    res.send(json);
+   }); 
  
+   // this end point will fetch the logo for the ticker
+router.get('/:cusip/:ticker/logo', async (req, res) => {
+  const ticker = req.params.ticker;
+  const api_url = `https://api.twelvedata.com/logo?symbol=${ticker}&apikey=${process.env.REACT_APP_twelveData_apiKey}`;
+  const fetch_response = await fetch(api_url);
+  const json = await fetch_response.json();
+  res.send(json);
+ }); 
 
 router.get('/:cusip/:period_of_report', function (req, res) {
   const cusip = req.params.cusip;
