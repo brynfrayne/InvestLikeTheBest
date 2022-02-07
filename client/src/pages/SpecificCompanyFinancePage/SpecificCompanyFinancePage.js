@@ -5,6 +5,7 @@ import axios from 'axios';
 import uniqid from 'uniqid';
 import CompanyStatsTable from '../../components/CompanyStatsTable/CompanyStatsTable';
 import CompanyEarningsTable from '../../components/CompanyEarningsTable/CompanyEarningsTable';
+import SpecificCompanyHeader from '../../components/SpecificCompanyHeader/SpecificCompanyHeader';
 
 
 export default class SpecificCompanyFinancePage extends Component {
@@ -19,6 +20,8 @@ export default class SpecificCompanyFinancePage extends Component {
     data : null,
     img : null,
     companyData: null,
+    price: null,
+    earnings: null
     };
     
   componentDidMount() {
@@ -29,47 +32,41 @@ export default class SpecificCompanyFinancePage extends Component {
               })
               axios.get(`http://localhost:8000/company/${this.props.match.params.cusip}/${response.data.results[0].ticker}/logo`)
                 .then(response => {
-                  console.log(response.data)
                   this.setState({
                     img: response.data.url
                   })
               })
-           
-            console.log(this.state.companyData)
+              axios.get(`http://localhost:8000/company/${this.state.companyData.ticker}/price`)
+                .then(response => {
+                  this.setState({
+                    price:response.data[0]
+                  })
+                })
               axios.get(`http://localhost:8000/company/${this.state.companyData.ticker}/stats`)
                 .then(response => {
-                  console.log(response.data)
                   this.setState({
                     stats: response.data
                   })
                 })
               axios.get(`http://localhost:8000/company/earningssuprises/${this.state.companyData.ticker}`)
                 .then(response => {
-                  console.log(this.state.companyData.ticker)
-                  console.log(response.data)
                   this.setState({
                     earnings:response.data
                   })
                 })
-            })         
-      
-  }
-
-  
-    
+            }
+            )}
     
     render() {
       
-        if ( !this.state.companyData || !this.state.img || !this.state.stats || !this.state.earnings ) {
+        if ( !this.state.companyData || !this.state.img || !this.state.stats || !this.state.earnings || !this.state.price) {
             return <p>CHoo choooo, here we go!!🚂 </p>
         }  
         
     return <div>
       <Header />
       <Hero dropDown={this.state.dropDown} params={`company/${this.props.match.params.cusip}`}/>
-      <h1 className="company-page__title">{this.state.companyData.name}</h1>
-      <p className="company-page__ticker">Ticker: {this.state.companyData.ticker}</p>
-      <img className='company-page__image' src={this.state.img}  alt='/'/>
+      <SpecificCompanyHeader price={this.state.price} companyData={this.state.companyData} img={this.state.img} />
       <CompanyStatsTable stats={this.state.stats} />
       <CompanyEarningsTable earnings={this.state.earnings} />
      

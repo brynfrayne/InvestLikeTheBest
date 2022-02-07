@@ -5,6 +5,8 @@ import Hero from '../../components/Hero/Hero';
 import axios from 'axios';
 import uniqid from 'uniqid';
 import CompanyOwnershipTable from '../../components/CompanyOwnershipTable/CompanyOwnershipTable';
+import SpecificCompanyHeader from '../../components/SpecificCompanyHeader/SpecificCompanyHeader';
+
 
 
 export default class SpecificCompanyPage extends Component {
@@ -61,8 +63,15 @@ export default class SpecificCompanyPage extends Component {
           axios.get('http://localhost:8000/company/'+ this.props.match.params.cusip +"/ticker")
             .then(response=>{
               this.setState({
-                companyData:response.data
+                companyData:response.data.results[0]
               });
+          axios.get(`http://localhost:8000/company/${response.data.results[0].ticker}/price`)
+          .then(response => {
+            console.log(response.data)
+            this.setState({
+              price:response.data[0]
+            })
+          })
           axios.get(`http://localhost:8000/company/${this.props.match.params.cusip}/${response.data.results[0].ticker}/logo`)
           .then(response => {
             this.setState({
@@ -107,18 +116,18 @@ export default class SpecificCompanyPage extends Component {
     
     render() {
       
-        if ( !this.state.fundOwnership || !this.state.companyData || !this.state.img || document.querySelector("#root > div > svg > g.plot-area > rect:nth-child(2)") ) {
-            return <p>CHoo choooo, here we go!!🚂 </p>
+        if ( !this.state.price|| !this.state.fundOwnership || !this.state.companyData || !this.state.img || document.querySelector("#root > div > svg > g.plot-area > rect:nth-child(2)") ) {
+            return <div class="loader"></div>
         }  
         
     return <div>
       <Header />
       <Hero dropDown={this.state.dropDown} params={`company/${this.props.match.params.cusip}`}/>
-      <h1 className="company-page__title">{this.state.companyData.name}</h1>
-      <img className='company-page__image' src={this.state.img}  alt='/'/>
-      <p className="company-page__ticker">{this.state.companyData.ticker}</p>
+      <SpecificCompanyHeader price={this.state.price} companyData={this.state.companyData} img={this.state.img}/>
       <p className="company-page__ticker">{this.state.fundOwnership[0].period_of_report}</p>
-      <CompanyOwnershipBarChart data={this.state.fundOwnership}/>
+      <div className='bar-chart'>
+        <CompanyOwnershipBarChart data={this.state.fundOwnership}/>
+      </div>
       <CompanyOwnershipTable data={this.state.fundOwnership} />
     </div>;
   }

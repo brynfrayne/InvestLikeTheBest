@@ -1,6 +1,7 @@
 import { useD3 } from '../hooks/useD3';
 import React from 'react';
 import * as d3 from 'd3';
+import "./CompanyOwnershipBarChart.scss";
 
 function CompanyOwnershipBarChart({ data }) {
   const ref = useD3(
