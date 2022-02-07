@@ -6,6 +6,7 @@ import axios from 'axios';
 import uniqid from 'uniqid';
 import CompanyOwnershipTable from '../../components/CompanyOwnershipTable/CompanyOwnershipTable';
 import SpecificCompanyHeader from '../../components/SpecificCompanyHeader/SpecificCompanyHeader';
+import CompanyNews from '../../components/CompanyNews/CompanyNews';
 
 
 
@@ -129,6 +130,7 @@ export default class SpecificCompanyPage extends Component {
         <CompanyOwnershipBarChart data={this.state.fundOwnership}/>
       </div>
       <CompanyOwnershipTable data={this.state.fundOwnership} />
+      <CompanyNews ticker={this.state.companyData.ticker} />
       </div>;
   }
 }
