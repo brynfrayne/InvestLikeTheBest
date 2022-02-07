@@ -4,6 +4,7 @@ import Hero from '../../components/Hero/Hero';
 import axios from 'axios';
 import uniqid from 'uniqid';
 import CompanyStatsTable from '../../components/CompanyStatsTable/CompanyStatsTable';
+import CompanyEarningsTable from '../../components/CompanyEarningsTable/CompanyEarningsTable';
 
 
 export default class SpecificCompanyFinancePage extends Component {
@@ -24,7 +25,7 @@ export default class SpecificCompanyFinancePage extends Component {
           axios.get('http://localhost:8000/company/'+ this.props.match.params.cusip +"/ticker")
             .then(response=>{
               this.setState({
-                companyData:response.data
+                companyData:response.data.results[0]
               })
               axios.get(`http://localhost:8000/company/${this.props.match.params.cusip}/${response.data.results[0].ticker}/logo`)
                 .then(response => {
@@ -35,11 +36,19 @@ export default class SpecificCompanyFinancePage extends Component {
               })
            
             console.log(this.state.companyData)
-              axios.get(`http://localhost:8000/company/${this.state.companyData.results[0].ticker}/stats`)
+              axios.get(`http://localhost:8000/company/${this.state.companyData.ticker}/stats`)
                 .then(response => {
                   console.log(response.data)
                   this.setState({
                     stats: response.data
+                  })
+                })
+              axios.get(`http://localhost:8000/company/earningssuprises/${this.state.companyData.ticker}`)
+                .then(response => {
+                  console.log(this.state.companyData.ticker)
+                  console.log(response.data)
+                  this.setState({
+                    earnings:response.data
                   })
                 })
             })         
@@ -51,7 +60,7 @@ export default class SpecificCompanyFinancePage extends Component {
     
     render() {
       
-        if ( !this.state.companyData || !this.state.img || !this.state.stats ) {
+        if ( !this.state.companyData || !this.state.img || !this.state.stats || !this.state.earnings ) {
             return <p>CHoo choooo, here we go!!🚂 </p>
         }  
         
@@ -62,6 +71,7 @@ export default class SpecificCompanyFinancePage extends Component {
       <p className="company-page__ticker">Ticker: {this.state.companyData.ticker}</p>
       <img className='company-page__image' src={this.state.img}  alt='/'/>
       <CompanyStatsTable stats={this.state.stats} />
+      <CompanyEarningsTable earnings={this.state.earnings} />
      
     </div>;
   }
