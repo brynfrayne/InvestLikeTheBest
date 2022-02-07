@@ -49,6 +49,16 @@ router.get('/:cusip/:ticker/logo', async (req, res) => {
   res.send(json);
  }); 
 
+//  this end point will fetch the stats for the company
+router.get('/:ticker/stats', async (req, res) => {
+  const ticker = req.params.ticker;
+  const api_url = `https://financialmodelingprep.com/api/v3/ratios/${ticker}?period=quarter&limit=140&apikey=${process.env.REACT_APP_financial_modelling_apiKey}`;
+  const fetch_response = await fetch(api_url);
+  const json = await fetch_response.json();
+  res.send(json);  
+})
+ 
+
 //  this endpoint fetches all the investors who hold the stock for the period 
 router.get('/:cusip/:period_of_report', function (req, res) {
   const cusip = req.params.cusip;

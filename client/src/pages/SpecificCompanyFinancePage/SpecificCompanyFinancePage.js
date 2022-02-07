@@ -21,20 +21,21 @@ export default class SpecificCompanyFinancePage extends Component {
     };
     
   componentDidMount() {
-          axios.get('https://api.polygon.io/v3/reference/tickers?cusip='+ this.props.match.params.cusip +'&apiKey='+ process.env.REACT_APP_polygon_api_key)
+          axios.get('http://localhost:8000/company/'+ this.props.match.params.cusip +"/ticker")
             .then(response=>{
               this.setState({
-                companyData:response.data.results[0]
+                companyData:response.data
               })
-              axios.get(`https://api.twelvedata.com/logo?symbol=${response.data.results[0].ticker}&apikey=${process.env.REACT_APP_twelveData_apiKey}`)
+              axios.get(`http://localhost:8000/company/${this.props.match.params.cusip}/${response.data.results[0].ticker}/logo`)
                 .then(response => {
+                  console.log(response.data)
                   this.setState({
                     img: response.data.url
                   })
               })
            
-            
-              axios.get(`https://financialmodelingprep.com/api/v3/ratios/${this.state.companyData.ticker}?period=quarter&limit=140&apikey=${process.env.REACT_APP_financial_modelling_apiKey}`)
+            console.log(this.state.companyData)
+              axios.get(`http://localhost:8000/company/${this.state.companyData.results[0].ticker}/stats`)
                 .then(response => {
                   console.log(response.data)
                   this.setState({
@@ -50,7 +51,7 @@ export default class SpecificCompanyFinancePage extends Component {
     
     render() {
       
-        if ( !this.state.companyData || !this.state.img  ) {
+        if ( !this.state.companyData || !this.state.img || !this.state.stats ) {
             return <p>CHoo choooo, here we go!!🚂 </p>
         }  
         
