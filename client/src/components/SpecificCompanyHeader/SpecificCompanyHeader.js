@@ -30,10 +30,11 @@ export default class SpecificCompanyHeader extends Component {
     
   return <div>
       <h1 className="company-page__title">{this.props.companyData.name}</h1>
+      <img className='company-page__image' src={this.state.img}  alt='/'/>
       <p className="company-page__ticker">Ticker: {this.props.companyData.ticker}</p>
       <p className="company-page__ticker">Price: $ {this.state.price.price}</p>
       <p className="company-page__ticker">Volume:{this.state.price.volume}</p>
-      <img className='company-page__image' src={this.state.img}  alt='/'/>
+      
     </div>;
   }
 }

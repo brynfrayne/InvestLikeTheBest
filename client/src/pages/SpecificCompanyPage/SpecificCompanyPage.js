@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import CompanyOwnershipBarChart from '../../components/CompanyOwnershipBarChart/CompanyOwnershipBarChart';
 import Header from '../../components/Header/Header';
 import Hero from '../../components/Hero/Hero';
 import axios from 'axios';
 import uniqid from 'uniqid';
-import CompanyOwnershipTable from '../../components/CompanyOwnershipTable/CompanyOwnershipTable';
 import SpecificCompanyHeader from '../../components/SpecificCompanyHeader/SpecificCompanyHeader';
 import CompanyNews from '../../components/CompanyNews/CompanyNews';
 import FundOwnership from '../../components/FundOwnership/FundOwnership';
-import { Link, Route, Switch } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
+import CompanyStats from '../../components/CompanyStats/CompanyStats';
+import './SpecificCompanyPage.scss';
 
 
 
@@ -37,7 +37,7 @@ export default class SpecificCompanyPage extends Component {
     axios.get('http://localhost:8000/company/'+this.props.match.params.cusip +'/'+this.props.match.params.period_of_report+'/institutional-ownership')
     .then((response)=> {
       console.log(response.data)
-        let newArray = [];
+      let newArray = [];
         for(let i = 0; i < response.data.length; i++) {
 
           // if the investors have numerous listings for the same stock we must consolidate them
@@ -122,9 +122,11 @@ export default class SpecificCompanyPage extends Component {
       <Hero dropDown={this.state.dropDown} params={`company/${this.props.match.params.cusip}`}/>
       <SpecificCompanyHeader price={this.state.price} companyData={this.state.companyData} img={this.state.img} cusip={this.props.match.params.cusip}/>
       
-    
-      <Link to={`/company/${this.props.match.params.cusip}/news`}>NEWS</Link>
-      <Link to={`/company/${this.props.match.params.cusip}/ownership`}>OWNERSHIP</Link>
+      <div className='tab-container'>
+        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/stats`}>STATISTICS</NavLink>
+        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/news`}>NEWS</NavLink>
+        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/ownership`}>OWNERSHIP</NavLink>
+      </div>  
 
       <Switch>
         <Route exact path='/company/:cusip/ownership/'>  
@@ -132,7 +134,10 @@ export default class SpecificCompanyPage extends Component {
         </Route>
         <Route exact path='/company/:cusip/news'>
           <CompanyNews ticker={this.state.companyData.ticker} />
-        </Route>    
+        </Route>   
+        <Route exact path='/company/:cusip/stats'>
+          <CompanyStats cusip={this.props.match.params.cusip} />
+        </Route> 
       </Switch>
       </div>;
   }

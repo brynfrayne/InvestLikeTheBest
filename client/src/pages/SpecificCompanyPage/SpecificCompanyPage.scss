@@ -1,0 +1,30 @@
+@use '../../styles/partials/mixins' as*;
+@use '../../styles/partials/variables' as*;
+
+.page-tab {
+    text-decoration: none;
+    background-color: #d6f4fd;
+    border-radius: .25rem;
+    border: 1px solid black;
+    box-shadow:rgba(1, 7, 14, 0.2) 0px 8px 24px;
+    padding: 0.25rem;
+    margin: 0 .25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $graphite;
+    @include purple-gradient;
+    transition: 0.2s all;
+    &:active {
+        background-color: rgb(33, 235, 100);
+        color: white;
+        transform: scale(0.97);
+        /* Scaling button to 0.98 to its original size */
+        box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+        /* Lowering the shadow */
+    }
+}
+.tab-container {
+    margin: .5rem;
+    display: flex;
+    justify-content: center;
+}
