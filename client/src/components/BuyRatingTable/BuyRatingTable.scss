@@ -1,0 +1,22 @@
+@use '../../styles/partials/mixins' as*;
+@use '../../styles/partials/variables' as*;
+
+.ratings-table {
+    height: 70vh;
+
+    &__data {
+        font-size: .875rem;
+        &--date {
+            font-size: .75rem;
+        }
+    }
+    &__company {
+        font-weight: 600;
+    }
+    &__rating {
+        &--updated {
+            font-weight: 600;
+            color:lightcoral;      
+        }
+    }
+}

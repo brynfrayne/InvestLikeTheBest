@@ -6,4 +6,11 @@
         margin: 0 auto;
         border: 1px solid black;
     }
+    &__rating-table {
+        margin: 1rem;
+        border: 1px solid black;
+        height: 20rem;
+        overflow: auto;
+        border-radius: .5rem;
+    }
 } 
