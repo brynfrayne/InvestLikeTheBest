@@ -9,6 +9,7 @@ import FundOwnership from '../../components/FundOwnership/FundOwnership';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import CompanyStats from '../../components/CompanyStats/CompanyStats';
 import './SpecificCompanyPage.scss';
+import CompanyValuation from '../../components/CompanyValuation/CompanyValuation';
 
 
 
@@ -126,6 +127,7 @@ export default class SpecificCompanyPage extends Component {
         <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/stats`}>STATISTICS</NavLink>
         <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/news`}>NEWS</NavLink>
         <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/ownership`}>OWNERSHIP</NavLink>
+        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/valuation`}>VALUATION</NavLink>
       </div>  
 
       <Switch>
@@ -137,6 +139,9 @@ export default class SpecificCompanyPage extends Component {
         </Route>   
         <Route exact path='/company/:cusip/stats'>
           <CompanyStats cusip={this.props.match.params.cusip} />
+        </Route> 
+        <Route exact path='/company/:cusip/valuation'>
+          <CompanyValuation ticker={this.state.companyData.ticker} />
         </Route> 
       </Switch>
       </div>;
