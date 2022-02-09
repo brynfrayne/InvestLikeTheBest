@@ -19,4 +19,9 @@
             color:lightcoral;      
         }
     }
+    &__row {
+        border-bottom: .5px solid $light-grey;
+        margin-bottom: .25rem;
+        border-style: initial;
+    }
 }

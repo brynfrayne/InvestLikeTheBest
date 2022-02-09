@@ -1,7 +1,6 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import uniqid from 'uniqid';
-import { Link } from 'react-router-dom';
 import './BuyRatingTable.scss';
 
 export default function BuyRatingTable({ratings}) {
@@ -21,7 +20,7 @@ export default function BuyRatingTable({ratings}) {
           <tbody>
           
             {ratings.map((rating) => ( 
-               <tr className='table__row' key={uniqid()}>
+               <tr className='ratings-table__row' key={uniqid()}>
                   <td  className='ratings-table__data--date'>{rating.date}</td>
                   <td  className='ratings-table__company'>{rating.gradingCompany}</td> 
                   <td  className={rating.newGrade !== rating.previousGrade ? 'ratings-table__rating--updated' : 'ratings-table__rating'}>{rating.newGrade}</td> 
