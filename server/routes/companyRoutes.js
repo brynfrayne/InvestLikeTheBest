@@ -88,9 +88,18 @@ router.get('/:ticker/news', async (req,res) => {
 
 
 //  this endpoint fetches all the investors who hold the stock for the period 
-router.get('/:cusip/:period_of_report', function (req, res) {
+// router.get('/:ticker/institutional-ownership', async function (req, res) {
+//   const ticker = req.params.ticker;
+//   const api_url = `https://financialmodelingprep.com/api/v4/institutional-ownership/institutional-holders/symbol-ownership?date=2021-09-30&symbol=${ticker}&limit=50&apikey=${process.env.REACT_APP_financial_modelling_apiKey}`;
+//   const fetch_response = await fetch(api_url);
+//   const json = await fetch_response.json();
+//   res.send(json);  
+// });
+
+router.get('/:cusip/:period_of_report/institutional-ownership', function (req, res) {
   const cusip = req.params.cusip;
   const period_of_report = req.params.period_of_report;
+  console.log(period_of_report)
   connection.query(`select * from aggregate_holdings where (period_of_report = "${period_of_report}" and cusip = "${cusip}" )order by cusip`, 
   function (error, result, _fields) { 
       if (error) throw error;
