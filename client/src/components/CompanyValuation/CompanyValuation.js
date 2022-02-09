@@ -24,7 +24,7 @@ export default class CompanyValuation extends Component {
     return <div>
         <section className='company-valuation__dcf-container'>
             <p>DCF Valuation</p>
-            <p>{this.state.DCF.dcf}</p>
+            <p>{'$' + Math.round(this.state.DCF.dcf)}</p>
         </section>
     </div>;
   }
