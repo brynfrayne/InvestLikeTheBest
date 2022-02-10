@@ -4,7 +4,7 @@ import { Table } from 'react-bootstrap';
 import uniqid from 'uniqid';
 import BuyRatingTable from '../BuyRatingTable/BuyRatingTable';
 import './CompanyValuation.scss';
-import StockScoreComponent from './StockScoreComponent/StockScoreComponent';
+import StockScoreComponent from '../StockScoreComponent/StockScoreComponent';
 
 export default class CompanyValuation extends Component {
     state = {
@@ -45,7 +45,7 @@ export default class CompanyValuation extends Component {
         return <div class="loader"></div>
     }  
 
-    return <div>
+    return <div className='company-valuation'>
         <section className='company-valuation__dcf-container'>
             <p>DCF Valuation</p>
             <p>{'$' + Math.round(this.state.DCF.dcf)}</p>

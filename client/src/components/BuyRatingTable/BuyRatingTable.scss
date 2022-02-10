@@ -5,11 +5,11 @@
     height: 70vh;
 
     &__data {
-        font-size: .875rem;
-        &--date {
-            font-size: .75rem;
-        }
+        width: 25%;
     }
+    &__date {
+        font-size: .75rem;
+    } 
     &__company {
         font-weight: 600;
     }
