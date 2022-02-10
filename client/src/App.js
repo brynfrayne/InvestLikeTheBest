@@ -7,12 +7,10 @@ import CompanyPage from './pages/CompanyPage/CompanyPage';
 import SpecificCompanyPage from './pages/SpecificCompanyPage/SpecificCompanyPage';
 import FundListPage from './pages/FundListPage/FundListPage';
 import BiggestBetsPage from './pages/BiggestBetsPage/BiggestBetsPage';
-import SpecificCompanyFinancePage from './pages/SpecificCompanyFinancePage/SpecificCompanyFinancePage';
+import AuthPage from './pages/AuthPage/AuthPage';
+
 
 function App() {
-;
-
-
   return (
     <div className='main'>
 <BrowserRouter>
@@ -20,9 +18,8 @@ function App() {
   <Switch>
     <Route path='/' exact component={LandingPage} /> 
     <Route path='/company/:period_of_report' exact component={CompanyPage} />
-    {/* <Route path='/company/:cusip/stats'  component={SpecificCompanyFinancePage} /> */}
     <Route path='/company/:cusip/:period_of_report' exact component={SpecificCompanyPage} />
-    
+    <Route path='/userAuth' component={AuthPage} />
     <Route path='/funds' exact component={FundListPage} />
     <Route path='/funds/:CIK/:period_of_report' component={FundPage} />
     <Route path='/charts' exact component={ChartsPage} /> 
