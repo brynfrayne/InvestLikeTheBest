@@ -34,11 +34,11 @@ export default class SpecificCompanyHeader extends Component {
       <div className='company-header__ticker-price-volume-container'>
         <div className='company-header__ticker-exchange-box'>
           <p className="company-header__ticker">Ticker: {this.props.companyData.ticker}</p>
-          <p className="company-header__ticker">Primary Exchange: {this.props.companyData.primary_exchange}</p>
+          <p className="company-header__ticker company-header__ticker--bottom">Primary Exchange: {this.props.companyData.primary_exchange}</p>
         </div>
         <div className='company-header__price-volume-box'>
           <p className="company-header__ticker">Price: $ {this.state.price.price}</p>
-          <p className="company-header__ticker">Volume:{this.state.price.volume}</p>
+          <p className="company-header__ticker company-header__ticker--bottom">Volume:{this.state.price.volume}</p>
         </div>
       </div>
     </div>;

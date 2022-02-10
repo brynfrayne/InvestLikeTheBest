@@ -66,15 +66,7 @@ function CompanyOwnershipBarChart({ data }) {
   );
 
   return (
-    <svg
-      ref={ref}
-      style={{
-        height: 325,
-        width: "100%",
-        marginRight: "0px",
-        marginLeft: "0px",
-      }}
-    >
+    <svg ref={ref} className='bar-chart__container'>
       <g className="plot-area" />
       <g className="x-axis" />
       <g className="y-axis" />
