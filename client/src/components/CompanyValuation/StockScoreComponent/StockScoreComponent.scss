@@ -1,0 +1,15 @@
+.stock-score {
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        width: 80vw;
+        border-bottom: .5px solid black;
+    }
+    &__column {
+        display: flex;
+        flex-direction: column;
+        &--right {
+            align-items: flex-end;
+        }
+    }
+}

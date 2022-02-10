@@ -117,6 +117,14 @@ router.get('/:ticker/buy-ratings', async (req, res) => {
   res.send(json);  
 })
 
+// this endpoint fetches stock ratings 
+router.get('/:ticker/stock-score', async (req, res) => {
+  const ticker = req.params.ticker;
+  const api_url = `https://financialmodelingprep.com/api/v3/rating/${ticker}?apikey=${process.env.REACT_APP_financial_modelling_apiKey}`;
+  const fetch_response = await fetch(api_url);
+  const json = await fetch_response.json();
+  res.send(json);  
+}) 
 
 
 

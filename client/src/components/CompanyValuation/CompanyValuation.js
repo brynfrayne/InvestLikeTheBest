@@ -4,11 +4,13 @@ import { Table } from 'react-bootstrap';
 import uniqid from 'uniqid';
 import BuyRatingTable from '../BuyRatingTable/BuyRatingTable';
 import './CompanyValuation.scss';
+import StockScoreComponent from './StockScoreComponent/StockScoreComponent';
 
 export default class CompanyValuation extends Component {
     state = {
         DCF : null,
-        buyRatings: null
+        buyRatings: null,
+        stockScore: null
     }
     
     componentDidMount(){
@@ -28,9 +30,18 @@ export default class CompanyValuation extends Component {
                     })
                 })
             })
+            .then(response => {
+                axios.get('http://localhost:8000/company/'+this.props.ticker+'/stock-score')
+                .then(response => {
+                    console.log(response.data)
+                    this.setState({
+                        stockScore: response.data[0]
+                    })
+                })
+            })
     }
   render() {
-    if ( !this.state.DCF || !this.state.buyRatings) {
+    if ( !this.state.DCF || !this.state.buyRatings || !this.state.stockScore) {
         return <div class="loader"></div>
     }  
 
@@ -38,6 +49,7 @@ export default class CompanyValuation extends Component {
         <section className='company-valuation__dcf-container'>
             <p>DCF Valuation</p>
             <p>{'$' + Math.round(this.state.DCF.dcf)}</p>
+            <StockScoreComponent scores={this.state.stockScore} />
         </section>
         <section className='company-valuation__rating-table'>
             <BuyRatingTable ratings={this.state.buyRatings} />
