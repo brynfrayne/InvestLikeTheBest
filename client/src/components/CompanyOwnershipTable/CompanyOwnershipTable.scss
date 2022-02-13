@@ -1,3 +1,6 @@
+@use "../../styles/partials/mixins" as*;
+@use "../../styles/partials/variables" as*;
+
 .company-ownership-table{
     &__row {
        max-width: 26.5rem; 
@@ -6,8 +9,7 @@
            cursor: pointer;
        }
        &:active {
-        
-           background-color: rgba(121, 189, 245, 1)
+        background-color: rgba(121, 189, 245, 1)
        }
      
     }
@@ -15,6 +17,11 @@
         width: 33%;
         text-align: center;
         letter-spacing: -0.06em;
-        text-transform: uppercase;
+        text-transform:lowercase;
+        &--title {
+            font-weight:700;
+
+            
+        }
     }
 }

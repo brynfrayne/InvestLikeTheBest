@@ -47,9 +47,9 @@ export default class CompanyValuation extends Component {
 
     return <div className='company-valuation'>
         <section className='company-valuation__dcf-container'>
-            <p>DCF Valuation</p>
-            <p>{'$' + Math.round(this.state.DCF.dcf)}</p>
-            <StockScoreComponent scores={this.state.stockScore} />
+            {/* <p>DCF Valuation</p>
+            <p>{'$' + Math.round(this.state.DCF.dcf)}</p> */}
+            <StockScoreComponent scores={this.state.stockScore} DCF={this.state.DCF}/>
         </section>
         <section className='company-valuation__rating-table'>
             <BuyRatingTable ratings={this.state.buyRatings} />

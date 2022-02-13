@@ -4,7 +4,7 @@ import uniqid from 'uniqid';
 import CompanyStatsTable from '../CompanyStatsTable/CompanyStatsTable';
 import CompanyEarningsTable from '../CompanyEarningsTable/CompanyEarningsTable';
 import SpecificCompanyHeader from '../SpecificCompanyHeader/SpecificCompanyHeader';
-
+import './CompanyStats.scss';
 
 export default class CompanyStats extends Component {
 
@@ -61,7 +61,7 @@ export default class CompanyStats extends Component {
             return <div class="loader"></div>
         }  
         
-    return <div>
+    return <div className='company-stats'>
       <CompanyStatsTable stats={this.state.stats.slice(0,6)} />
       <CompanyEarningsTable earnings={this.state.earnings.slice(0,6)} />
      

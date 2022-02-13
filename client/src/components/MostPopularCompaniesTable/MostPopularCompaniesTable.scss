@@ -12,37 +12,38 @@ tr {
     // border-style:hidden
 }
 .table {
-    // border-bottom: 0px solid rgb(194, 39, 194) ;
     background-color: white;
     margin: 0 auto;
     margin-bottom: 1rem;
     border-radius: .5rem;
     max-width: 25rem;
     box-shadow: rgb(1 7 14 / 20%) 14px 28px 24px;
-    // display: flex;
-    // justify-content: center;
     @include tablet {
         width: 100%;
     }
    
     &__row {
        width: 100%;
+       letter-spacing: -0.06em;
        &:hover {
         background-color: rgba(121, 189, 245, 0.5);
         cursor: pointer;
         }
         &:active {
-        
             background-color: rgba(121, 189, 245, 1)
         }
     }
     &__data {
         width: 50%;
         text-align: center;
-        text-transform: uppercase;
+        text-transform: lowercase;
         &--title {
             font-weight: 600;
+            letter-spacing: -0.06em;
             @include purple-gradient;
+        }
+        &--date {
+            font-size: .75rem;
         }
     }
 }

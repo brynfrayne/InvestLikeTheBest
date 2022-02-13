@@ -3,6 +3,8 @@
 
 .ratings-table {
     height: 70vh;
+    max-width: 100%;
+    margin: 0;
 
     &__data {
         width: 25%;
@@ -23,5 +25,6 @@
         border-bottom: .5px solid $light-grey;
         margin-bottom: .25rem;
         border-style: initial;
+        letter-spacing: -0.06em;
     }
 }

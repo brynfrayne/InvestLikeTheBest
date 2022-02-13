@@ -2,10 +2,14 @@
 @use "../../styles/partials/variables" as*;
 
 .stock-score {
+    background-color: white;
+    padding: 1rem;    
+    border-radius: .5rem;
+    width: 100%;
     &__row {
         display: flex;
         justify-content: space-between;
-        width: 80vw;
+        width: 100%;
         border-bottom: .5px solid black;
         @include tablet {
             width: 100%;
@@ -18,4 +22,11 @@
             align-items: flex-end;
         }
     }
+    &__column-title {
+        font-weight: 700;
+        // @include purple-gradient;
+        letter-spacing: -0.06em;
+
+    }
+
 }
