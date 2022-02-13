@@ -7,9 +7,16 @@
   box-shadow:rgba(1, 7, 14, 0.2) 0px 8px 24px;
   border-radius: .25rem;
   margin: 1rem;
-  height: 10rem;
+  height: 8rem;
   overflow: auto;
   transition: 0.2s all;
+  background-color: rgb(248, 245, 245);
+  letter-spacing: -0.06em;
+  &:hover {
+    background-color: $light-grey;
+    cursor: pointer;
+    color: black;
+  }
   &:active {
     transform: scale(0.97);
     /* Scaling button to 0.98 to its original size */

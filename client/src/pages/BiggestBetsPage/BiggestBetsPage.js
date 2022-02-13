@@ -50,7 +50,7 @@ componentDidMount() {
 
   render() {
       if (!this.state.investors || !this.state.biggestBets) {
-          return <p>Choo chooooo, here we go</p>
+        return <div class="loader"></div>
       }
     
     return <div>

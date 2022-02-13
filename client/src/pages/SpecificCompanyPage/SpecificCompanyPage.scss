@@ -13,6 +13,7 @@
     font-weight: 600;
     color: $graphite;
     @include purple-gradient;
+    letter-spacing: -0.06em;
     transition: 0.2s all;
     &:active {
         background-color: rgb(33, 235, 100);

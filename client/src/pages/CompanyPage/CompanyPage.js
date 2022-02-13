@@ -41,7 +41,7 @@ export default class CompanyPage extends Component {
     
     render() {
       if (this.state.stocks === null) {
-        return <p>Here we go, choo, choo!!</p>
+        return <div class="loader"></div>
       }
     return <div>
       <Header />

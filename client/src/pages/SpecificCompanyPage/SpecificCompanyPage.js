@@ -124,10 +124,10 @@ export default class SpecificCompanyPage extends Component {
       <SpecificCompanyHeader price={this.state.price} companyData={this.state.companyData} img={this.state.img} cusip={this.props.match.params.cusip}/>
       
       <div className='tab-container'>
-        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/stats`}>STATISTICS</NavLink>
-        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/news`}>NEWS</NavLink>
-        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/ownership`}>OWNERSHIP</NavLink>
-        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/valuation`}>VALUATION</NavLink>
+        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/stats`}>Statistics</NavLink>
+        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/news`}>News</NavLink>
+        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/ownership`}>Ownership</NavLink>
+        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/valuation`}>Valuation</NavLink>
       </div>  
 
       <Switch>

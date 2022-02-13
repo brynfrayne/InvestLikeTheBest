@@ -60,7 +60,7 @@ export default class SpecificCompanyFinancePage extends Component {
     render() {
       
         if ( !this.state.companyData || !this.state.img || !this.state.stats || !this.state.earnings || !this.state.price) {
-            return <p>CHoo choooo, here we go!!🚂 </p>
+          return <div class="loader"></div>
         }  
         
     return <div>
