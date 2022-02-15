@@ -6,8 +6,6 @@ My app plans to utilize the SEC’s API to gather this info, and display it in a
 
 ## Environment Variables
 
-Currently there are no environment variables needed to be declared locally, but I will refactoring before making the git repo public, and will update this at that time.
-
 ## 🚀 About Me
 I'm a full stack developer trying to manange my own portfolio so my money turns into more money.
 
