@@ -8,6 +8,7 @@ import SpecificCompanyPage from './pages/SpecificCompanyPage/SpecificCompanyPage
 import FundListPage from './pages/FundListPage/FundListPage';
 import BiggestBetsPage from './pages/BiggestBetsPage/BiggestBetsPage';
 import AuthPage from './pages/AuthPage/AuthPage';
+import TechStack from './pages/TechStack/TechStack';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
     <Route path='/charts' exact component={ChartsPage} /> 
     <Route path='/charts/most_held_stocks' component={ChartsPage} />
     <Route path='/charts/biggest_bets' component={BiggestBetsPage} />
+    <Route path='/tech-stack' component={TechStack} />
 
 
   </Switch>
