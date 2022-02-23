@@ -34,6 +34,10 @@ app.use("/funds", fundRoutes);
 app.use("/company", companyRoutes);
 app.use("/charts", chartRoutes);
 
+app.get("/", function(req,res){
+  res.send("hello world")
+})
+
 // rest api to get all holdings
 app.get('/filings', function (_req, res) {
    connection.query('select * from aggregate_holdings', function (error, result, _fields) {
