@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.622d33b4.css",
+    "main.js": "/static/js/main.35398297.js",
+    "static/media/Inter-ExtraBold.ttf": "/static/media/Inter-ExtraBold.4575fccf5b3158df637f.ttf",
+    "static/media/Inter-Black.ttf": "/static/media/Inter-Black.24d6be6c502d39fb3ce1.ttf",
+    "static/media/Inter-Bold.ttf": "/static/media/Inter-Bold.a73db89c43e44ca8f5e0.ttf",
+    "static/media/Inter-SemiBold.ttf": "/static/media/Inter-SemiBold.45b4c2ae493bb481102f.ttf",
+    "static/media/Inter-Medium.ttf": "/static/media/Inter-Medium.e7231ba33760832432b8.ttf",
+    "static/media/Inter-ExtraLight.ttf": "/static/media/Inter-ExtraLight.e22ca38c4e5fd2eb1bcf.ttf",
+    "static/media/Inter-Thin.ttf": "/static/media/Inter-Thin.5d11860425e7e7fbd0c5.ttf",
+    "static/media/Inter-Light.ttf": "/static/media/Inter-Light.58a136ec3193fa8a63e5.ttf",
+    "static/media/Inter-Regular.ttf": "/static/media/Inter-Regular.2391725004ae05a27e8e.ttf",
+    "static/media/bearsvsbulls-1.jpeg": "/static/media/bearsvsbulls-1.f2d98ace2679eae4085f.jpeg",
+    "static/media/Bull-Markets-and-Bear-Markets-Explained-for-Beginner-Investors-884x584.jpg": "/static/media/Bull-Markets-and-Bear-Markets-Explained-for-Beginner-Investors-884x584.2c143c43878be7d0e600.jpg",
+    "static/media/search.svg": "/static/media/search.b2de04bd644372446a508d25c3df2654.svg",
+    "index.html": "/index.html",
+    "main.622d33b4.css.map": "/static/css/main.622d33b4.css.map",
+    "main.35398297.js.map": "/static/js/main.35398297.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.622d33b4.css",
+    "static/js/main.35398297.js"
+  ]
+}
