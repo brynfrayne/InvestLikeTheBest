@@ -25,6 +25,7 @@ export default class FundPage extends Component {
    componentDidMount() {
     axios.get('http://localhost:8000/funds/'+this.props.match.params.CIK +"/"+this.props.match.params.period_of_report)
     .then((response)=> {
+      console.log(response)
       this.setState({
         fund:response.data
       })
@@ -54,7 +55,7 @@ export default class FundPage extends Component {
   render() {
     
     if (this.state.fund === null || this.state.data === null ) {
-      return <p>Choo choo, Here we go!!</p>
+      return <div class="loader"></div>
     }
     const sumval = this.state.fund
     .map((holding) => (holding.value))

@@ -11,7 +11,9 @@ export default function CompanyOwnershipTable({data}) {
     return <Table >
        <thead>
           <tr>           
-           <td className="company-ownership-table__row-item">Investor</td><td className="company-ownership-table__row-item">Fund</td><td className="company-ownership-table__row-item">Portfolio %</td>
+           <td className="company-ownership-table__row-item company-ownership-table__row-item--title">Investor</td>
+           <td className="company-ownership-table__row-item company-ownership-table__row-item--title">Fund</td>
+           <td className="company-ownership-table__row-item company-ownership-table__row-item--title">Portfolio %</td>
            </tr>
           </thead>
           <tbody>
@@ -19,9 +21,15 @@ export default function CompanyOwnershipTable({data}) {
             {data.map((holding) => ( 
                
                <tr className="company-ownership-table__row" key={uniqid()}  >
-                  <td   className="company-ownership-table__row-item"><Link className='table-links' to={`/funds/${holding.CIK}/Q3-21`}>{holding.investor}</Link></td>
-                  <td   className="company-ownership-table__row-item"><Link className='table-links' to={`/funds/${holding.CIK}/Q3-21`}>{holding.fund}</Link></td>
-                  <td className="company-ownership-table__row-item">{Math.round((holding.value/holding.portfolioValue)*100) +'%'}</td>
+                  <td className="company-ownership-table__row-item">
+                     <Link className='table-links' to={`/funds/${holding.CIK}/Q3-21`}>{holding.investor}</Link>
+                  </td>
+                  <td className="company-ownership-table__row-item">
+                     <Link className='table-links' to={`/funds/${holding.CIK}/Q3-21`}>{holding.fund}</Link>
+                  </td>
+                  <td className="company-ownership-table__row-item">
+                     {Math.round((holding.value/holding.portfolioValue)*100) +'%'}
+                  </td>
                 </tr>
              ))
             }              

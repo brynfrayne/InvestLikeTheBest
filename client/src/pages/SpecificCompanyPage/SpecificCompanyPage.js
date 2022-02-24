@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import CompanyOwnershipBarChart from '../../components/CompanyOwnershipBarChart/CompanyOwnershipBarChart';
 import Header from '../../components/Header/Header';
 import Hero from '../../components/Hero/Hero';
 import axios from 'axios';
 import uniqid from 'uniqid';
-import CompanyOwnershipTable from '../../components/CompanyOwnershipTable/CompanyOwnershipTable';
+import SpecificCompanyHeader from '../../components/SpecificCompanyHeader/SpecificCompanyHeader';
+import CompanyNews from '../../components/CompanyNews/CompanyNews';
+import FundOwnership from '../../components/FundOwnership/FundOwnership';
+import { NavLink, Route, Switch } from 'react-router-dom';
+import CompanyStats from '../../components/CompanyStats/CompanyStats';
+import './SpecificCompanyPage.scss';
+import CompanyValuation from '../../components/CompanyValuation/CompanyValuation';
+
 
 
 export default class SpecificCompanyPage extends Component {
@@ -26,17 +32,22 @@ export default class SpecificCompanyPage extends Component {
     
   componentDidMount() {
     let sortedData;
-    axios.get('http://localhost:8000/company/'+this.props.match.params.cusip +'/'+this.props.match.params.period_of_report)
+    console.log(this.props.match.params.period_of_report)
+    console.log(this.props.match.params.cusip)
+
+    axios.get('http://localhost:8000/company/'+this.props.match.params.cusip +'/'+this.props.match.params.period_of_report+'/institutional-ownership')
     .then((response)=> {
-        let newArray = [];
+      console.log(response.data)
+      let newArray = [];
         for(let i = 0; i < response.data.length; i++) {
-            if ( newArray.length>=1 && newArray[newArray.length - 1].investor === response.data[i].investor) {
+
+          // if the investors have numerous listings for the same stock we must consolidate them
+          
+          if ( newArray.length>=1 && newArray[newArray.length - 1].investor === response.data[i].investor) {
                 newArray[newArray.length - 1].shares += response.data[i].shares;
                 newArray[newArray.length - 1].value += response.data[i].value;
             } else {newArray.push(response.data[i])}
         }
-        console.log(newArray)
-
         sortedData = newArray.sort((a,b)=>(b.shares - a.shares));
       
       })
@@ -57,25 +68,22 @@ export default class SpecificCompanyPage extends Component {
         } 
       })
       .then((result)=> {
-          axios.get('https://api.polygon.io/v3/reference/tickers?cusip='+ this.props.match.params.cusip +'&apiKey=6S8WE2mCmlIzzY2UmCIFDAQAZmS13pGL')
+          axios.get('http://localhost:8000/company/'+ this.props.match.params.cusip +"/ticker")
             .then(response=>{
               this.setState({
                 companyData:response.data.results[0]
-              })
-                axios.get(`https://api.twelvedata.com/logo?symbol=${response.data.results[0].ticker}&apikey=7526608492784ea0bc724efc66592c3f`)
-              .then(response => {
-                this.setState({
-                  img: response.data.url
-                })
-              })
-      })
-  })
+              });
+        
+        })
+      }
+      )
 }
   componentDidUpdate(prevProps) {
     let sortedData;
     if (this.props.match.params.period_of_report !== prevProps.match.params.period_of_report ) {
-      axios.get('http://localhost:8000/company/'+this.props.match.params.cusip +'/'+this.props.match.params.period_of_report)
+      axios.get('http://localhost:8000/company/'+this.props.match.params.cusip +'/Q3-21/institutional-ownership')
       .then((response)=> {
+        
           let newArray = [];
           for(let i = 0; i < response.data.length; i++) {
               if ( newArray.length>=1 && newArray[newArray.length - 1].investor === response.data[i].investor) {
@@ -106,19 +114,36 @@ export default class SpecificCompanyPage extends Component {
     
     render() {
       
-        if ( !this.state.fundOwnership || !this.state.companyData || !this.state.img || document.querySelector("#root > div > svg > g.plot-area > rect:nth-child(2)") ) {
-            return <p>CHoo choooo, here we go!!🚂 </p>
+        if ( !this.state.companyData) {
+            return <div class="loader"></div>
         }  
-        
+    
     return <div>
       <Header />
       <Hero dropDown={this.state.dropDown} params={`company/${this.props.match.params.cusip}`}/>
-      <h1 className="company-page__title">{this.state.companyData.name}</h1>
-      <p className="company-page__ticker">Ticker: {this.state.companyData.ticker}</p>
-      <img className='company-page__image' src={this.state.img}  alt='/'/>
-      <p>{this.state.fundOwnership[0].period_of_report}</p>
-      <CompanyOwnershipBarChart data={this.state.fundOwnership}/>
-      <CompanyOwnershipTable data={this.state.fundOwnership} />
-    </div>;
+      <SpecificCompanyHeader price={this.state.price} companyData={this.state.companyData} img={this.state.img} cusip={this.props.match.params.cusip}/>
+      
+      <div className='tab-container'>
+        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/stats`}>Statistics</NavLink>
+        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/news`}>News</NavLink>
+        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/ownership`}>Ownership</NavLink>
+        <NavLink className='page-tab' activeClassName='page-tab--active' to={`/company/${this.props.match.params.cusip}/valuation`}>Valuation</NavLink>
+      </div>  
+
+      <Switch>
+        <Route exact path='/company/:cusip/ownership/'>  
+          <FundOwnership  cusip={this.props.match.params.cusip} companyData={this.state.companyData} fundOwnership={this.state.fundOwnership}/>
+        </Route>
+        <Route exact path='/company/:cusip/news'>
+          <CompanyNews ticker={this.state.companyData.ticker} />
+        </Route>   
+        <Route exact path='/company/:cusip/stats'>
+          <CompanyStats cusip={this.props.match.params.cusip} />
+        </Route> 
+        <Route exact path='/company/:cusip/valuation'>
+          <CompanyValuation ticker={this.state.companyData.ticker} />
+        </Route> 
+      </Switch>
+      </div>;
   }
 }

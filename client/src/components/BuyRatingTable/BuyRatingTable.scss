@@ -1,0 +1,30 @@
+@use '../../styles/partials/mixins' as*;
+@use '../../styles/partials/variables' as*;
+
+.ratings-table {
+    height: 70vh;
+    max-width: 100%;
+    margin: 0;
+
+    &__data {
+        width: 25%;
+    }
+    &__date {
+        font-size: .75rem;
+    } 
+    &__company {
+        font-weight: 600;
+    }
+    &__rating {
+        &--updated {
+            font-weight: 600;
+            color:lightcoral;      
+        }
+    }
+    &__row {
+        border-bottom: .5px solid $light-grey;
+        margin-bottom: .25rem;
+        border-style: initial;
+        letter-spacing: -0.06em;
+    }
+}

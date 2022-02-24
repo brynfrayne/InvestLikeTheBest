@@ -1,0 +1,11 @@
+.tech-stack-page {
+    &__logo {
+        mix-blend-mode: multiply;
+        // max-width: 420px;
+    }
+    &__logo-box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

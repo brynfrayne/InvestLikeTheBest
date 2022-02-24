@@ -1,6 +1,32 @@
+@use "../../styles/partials/mixins" as*;
+@use "../../styles/partials/variables" as*;
+
 #root > div > div > svg > g.x-axis > g:nth-child(20) {
     transform: rotate(-22);
 }
 .tick {
     transform: rotate(-22);
+}
+// svg {
+//     @include tablet {
+//         width: 50%;
+//     }
+// }
+.bar-chart__container {
+    height: 350px;
+    width:100% ;
+    margin-right: 0;
+    margin-left: 0;
+    // @include tablet {
+        width: 25rem;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        // padding: 0 1rem;
+        // position: absolute;
+        // right: 1rem;
+    // }
+    // @include desktop {
+    //     // width: 41%;
+    // }
 }

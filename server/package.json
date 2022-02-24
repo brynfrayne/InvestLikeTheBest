@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=development nodemon index.js",
-    "migrate": "knex migrate:latest --knexfile db/knexfile.js"
+    "start": "nodemon index.js",
+    "migrate": "knex migrate:latest --knexfile db/knexfile.js",
+    "seed": "node seed"
   },
   "keywords": [],
   "author": "",
@@ -19,11 +20,11 @@
     "cheerio": "^1.0.0-rc.10",
     "cors": "^2.8.5",
     "d3": "^7.3.0",
-    "dotenv": "^14.2.0",
     "express": "^4.17.2",
     "firebase": "^9.6.4",
     "knex": "^1.0.1",
     "mysql": "^2.18.1",
+    "node-fetch": "^2.6.1",
     "nodemon": "^2.0.15",
     "react-bootstrap": "^2.1.1",
     "react-bootstrap-icons": "^1.7.2",
@@ -33,9 +34,11 @@
     "react-router-dom": "5.3",
     "sass": "^1.49.0",
     "sec-api": "^3.1.5",
+    "sequelize": "^6.16.2",
     "uniqid": "^5.4.0"
   },
   "devDependencies": {
+    "dotenv": "^16.0.0",
     "eslint-plugin-react-hooks": "^4.3.0"
   }
 }

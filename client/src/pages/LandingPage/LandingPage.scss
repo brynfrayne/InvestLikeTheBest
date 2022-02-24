@@ -1,17 +1,26 @@
 @use "../../styles/partials/mixins" as*; 
+@use "../../styles/partials/variables" as*;
 
 .landing-page {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     &__title {
         font-weight: 700;
         @include purple-gradient;
         margin-top: .5rem;
+        letter-spacing: -0.06em;
     }
     &__image {
-        width: 92%;
-        margin: 1rem;
+        width: 100%;
+        margin: 1rem auto;
         border-radius: 1rem;
         box-shadow: rgba(1, 7, 14, 0.2) 0px 8px 24px;
-
+        // @include tablet {
+            max-height: 24.5rem;
+            max-width: 24.5rem;
+        // }
     }
     &__header {
         display: flex;

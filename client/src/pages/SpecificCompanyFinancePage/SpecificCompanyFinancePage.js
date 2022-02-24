@@ -4,6 +4,8 @@ import Hero from '../../components/Hero/Hero';
 import axios from 'axios';
 import uniqid from 'uniqid';
 import CompanyStatsTable from '../../components/CompanyStatsTable/CompanyStatsTable';
+import CompanyEarningsTable from '../../components/CompanyEarningsTable/CompanyEarningsTable';
+import SpecificCompanyHeader from '../../components/SpecificCompanyHeader/SpecificCompanyHeader';
 
 
 export default class SpecificCompanyFinancePage extends Component {
@@ -18,49 +20,55 @@ export default class SpecificCompanyFinancePage extends Component {
     data : null,
     img : null,
     companyData: null,
+    price: null,
+    earnings: null
     };
     
   componentDidMount() {
-          axios.get('https://api.polygon.io/v3/reference/tickers?cusip='+ this.props.match.params.cusip +'&apiKey=6S8WE2mCmlIzzY2UmCIFDAQAZmS13pGL')
+          axios.get('http://localhost:8000/company/'+ this.props.match.params.cusip +"/ticker")
             .then(response=>{
               this.setState({
                 companyData:response.data.results[0]
               })
-              axios.get(`https://api.twelvedata.com/logo?symbol=${response.data.results[0].ticker}&apikey=7526608492784ea0bc724efc66592c3f`)
+              axios.get(`http://localhost:8000/company/${this.props.match.params.cusip}/${response.data.results[0].ticker}/logo`)
                 .then(response => {
                   this.setState({
                     img: response.data.url
                   })
               })
-           
-            
-              axios.get(`https://financialmodelingprep.com/api/v3/ratios/${this.state.companyData.ticker}?period=quarter&limit=140&apikey=d955401eaf61979988a8f8b8073ea1f8`)
+              axios.get(`http://localhost:8000/company/${this.state.companyData.ticker}/price`)
                 .then(response => {
-                  console.log(response.data)
+                  this.setState({
+                    price:response.data[0]
+                  })
+                })
+              axios.get(`http://localhost:8000/company/${this.state.companyData.ticker}/stats`)
+                .then(response => {
                   this.setState({
                     stats: response.data
                   })
                 })
-            })         
-      
-  }
-
-  
-    
+              axios.get(`http://localhost:8000/company/earningssuprises/${this.state.companyData.ticker}`)
+                .then(response => {
+                  this.setState({
+                    earnings:response.data
+                  })
+                })
+            }
+            )}
     
     render() {
       
-        if ( !this.state.companyData || !this.state.img  ) {
-            return <p>CHoo choooo, here we go!!🚂 </p>
+        if ( !this.state.companyData || !this.state.img || !this.state.stats || !this.state.earnings || !this.state.price) {
+          return <div class="loader"></div>
         }  
         
     return <div>
       <Header />
       <Hero dropDown={this.state.dropDown} params={`company/${this.props.match.params.cusip}`}/>
-      <h1 className="company-page__title">{this.state.companyData.name}</h1>
-      <p className="company-page__ticker">Ticker: {this.state.companyData.ticker}</p>
-      <img className='company-page__image' src={this.state.img}  alt='/'/>
+      <SpecificCompanyHeader price={this.state.price} companyData={this.state.companyData} img={this.state.img} />
       <CompanyStatsTable stats={this.state.stats} />
+      <CompanyEarningsTable earnings={this.state.earnings} />
      
     </div>;
   }

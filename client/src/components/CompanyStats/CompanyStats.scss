@@ -1,0 +1,10 @@
+@use "../../styles/partials/mixins" as*;
+@use "../../styles/partials/variables" as*;
+
+.company-stats {
+    @include tablet {
+        display: flex;
+        margin-top: 2rem;
+        justify-content: space-evenly;
+    }
+}

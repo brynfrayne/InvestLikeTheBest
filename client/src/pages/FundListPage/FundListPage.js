@@ -28,7 +28,7 @@ export default class FundListPage extends Component {
 
   render() {
     if (this.state.investors === null) {
-      return <p>Choo choo, Here we go!!</p>
+      return <div class="loader"></div>
     }
   
     return <div>

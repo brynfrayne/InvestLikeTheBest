@@ -14,8 +14,8 @@ export default function CompanyStatsTable({stats}) {
            <td className='table__data table__data--title'>P/E</td>
            <td className='table__data table__data--title'>P/S</td>
            <td className='table__data table__data--title'>ROE</td>
-           <td className='table__data table__data--title'>Net Profit Margin</td>
-           <td className='table__data table__data--title'>Gross Profit Margin</td>
+           <td className='table__data table__data--title'>Net Profit %</td>
+           <td className='table__data table__data--title'>Gross Profit %</td>
 
            </tr>
           </thead>
@@ -23,7 +23,7 @@ export default function CompanyStatsTable({stats}) {
           
             {stats.map((stat) => ( 
                <tr className='table__row' key={uniqid()}>
-                  <td  className='table__data'>{stat.date}</td>
+                  <td  className='table__data table__data--date'>{stat.date}</td>
                   <td  className='table__data'>{stat.priceEarningsRatio.toFixed(2)}</td> 
                   <td  className='table__data'>{stat.priceToSalesRatio.toFixed(2)}</td> 
                   <td  className='table__data'>{Math.round((stat.returnOnEquity)*100)+'%'}</td> 

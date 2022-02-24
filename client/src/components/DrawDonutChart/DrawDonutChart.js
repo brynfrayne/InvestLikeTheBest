@@ -1,4 +1,9 @@
 import * as d3 from "d3";
+<<<<<<< HEAD
+=======
+import { color } from "d3";
+
+>>>>>>> develop
 
 export default function DrawDonutChart(element, data) {
   const colors = ["rgb(10, 209, 259)", "#2070C4", "#EB80F1", "#F5C842", "#37D400", "rgb(177, 24, 245)"];
@@ -39,10 +44,14 @@ export default function DrawDonutChart(element, data) {
     .append("text")
     .attr("text-anchor", "middle")
     .text((d, i)=>{return data[i].name})
-    .style("fill","hsl(266, 91%, 23%)")
+    .style("fill","#0e4883")
     .style("font-size", "16px")
     .attr('transform', (d)=> {
       const [x, y] = arcGenerator.centroid(d);
       return `translate(${x}, ${y})`;
     })
+<<<<<<< HEAD
 };
+=======
+  }
+>>>>>>> develop

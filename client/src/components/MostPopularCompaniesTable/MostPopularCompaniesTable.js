@@ -11,7 +11,8 @@ export default function MostPopularCompaniesTable({stocks}) {
     return <Table className='table'>
        <thead>
           <tr>           
-           <td className='table__data table__data--title'>Company</td><td className='table__data table__data--title'># Funds Who Own</td>
+           <td className='table__data table__data--title'>Company</td>
+           <td className='table__data table__data--title'># Funds Who Own</td>
            </tr>
           </thead>
           <tbody>
