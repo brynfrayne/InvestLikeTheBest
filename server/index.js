@@ -2,7 +2,7 @@ const express = require('express');
 const mysql = require('mysql');
 const app = express();
 const cors = require("cors");
-const port = process.env.port || 8000;
+// const port = process.env.port || 8000;
 const { config } = require('dotenv');
 const fetch = require('node-fetch');
 require("dotenv").config();
@@ -46,6 +46,6 @@ app.get('/filings', function (_req, res) {
 	});
 });
 
-app.listen(process.env.PORT || port, () => {
+app.listen(process.env.PORT || 8000, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
