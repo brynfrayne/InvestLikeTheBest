@@ -3,9 +3,9 @@ const mysql = require('mysql');
 const app = express();
 const cors = require("cors");
 // const port = process.env.port || 8000;
-const { config } = require('dotenv');
+// const { config } = require('dotenv');
 const fetch = require('node-fetch');
-require("dotenv").config();
+// require("dotenv").config();
 
 const companyRoutes = require('./routes/companyRoutes');
 const fundRoutes = require('./routes/fundRoutes');
