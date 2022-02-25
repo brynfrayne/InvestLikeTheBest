@@ -11,7 +11,7 @@ state = {
 }
 
     componentDidMount(){
-        axios.get('http://localhost:8000/company/'+this.props.ticker+'/news')
+        axios.get('https://investlikethebest.herokuapp.com/company/'+this.props.ticker+'/news')
             .then(response => {
                 console.log(response.data)
                 this.setState({

@@ -17,10 +17,6 @@ export default class ChartsPage extends Component {
         <Header />
         <Hero dropDown={this.state.dropDown} params={'charts'}/>
         <MostHeldStocks />
-<<<<<<< HEAD
-        
-=======
->>>>>>> develop
 
     </div>;
   }

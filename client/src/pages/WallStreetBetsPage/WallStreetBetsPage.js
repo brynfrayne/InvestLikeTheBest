@@ -22,7 +22,7 @@ export default class BiggestBetsPage extends Component {
 }
 
 componentDidMount() {
-   axios.get('http://localhost:8000/company/reddit')
+   axios.get('https://investlikethebest.herokuapp.com/company/reddit')
     .then(response => {
         console.log(response.data)
         

@@ -14,7 +14,7 @@ export default class CompanyValuation extends Component {
     }
     
     componentDidMount(){
-        axios.get('http://localhost:8000/company/'+this.props.ticker+'/dcf')
+        axios.get('https://investlikethebest.herokuapp.com/company/'+this.props.ticker+'/dcf')
             .then(response => {
                 console.log(response.data)
                 this.setState({
@@ -22,7 +22,7 @@ export default class CompanyValuation extends Component {
                 })
             })
             .then(response => {
-                axios.get('http://localhost:8000/company/'+this.props.ticker+'/buy-ratings')
+                axios.get('https://investlikethebest.herokuapp.com/company/'+this.props.ticker+'/buy-ratings')
                 .then(response => {
                     console.log(response.data)
                     this.setState({
@@ -31,7 +31,7 @@ export default class CompanyValuation extends Component {
                 })
             })
             .then(response => {
-                axios.get('http://localhost:8000/company/'+this.props.ticker+'/stock-score')
+                axios.get('https://investlikethebest.herokuapp.com/company/'+this.props.ticker+'/stock-score')
                 .then(response => {
                     console.log(response.data)
                     this.setState({

@@ -19,7 +19,7 @@ export default class CompanyPage extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/company/'+this.props.match.params.period_of_report)
+    axios.get('https://investlikethebest.herokuapp.com/company/'+this.props.match.params.period_of_report)
     .then((response)=> {
       const mostHeldStocks = response.data.sort((a,b)=>(b.stockCount - a.stockCount)).slice(0,20);
       this.setState({
@@ -29,7 +29,7 @@ export default class CompanyPage extends Component {
   }
   componentDidUpdate(prevProps) {
     if (this.props.match.params.period_of_report !== prevProps.match.params.period_of_report ) {
-      axios.get('http://localhost:8000/company/'+this.props.match.params.period_of_report)
+      axios.get('https://investlikethebest.herokuapp.com/company/'+this.props.match.params.period_of_report)
     .then((response)=> {
       const mostHeldStocks = response.data.sort((a,b)=>(b.stockCount - a.stockCount)).slice(0,20);
       this.setState({

@@ -25,30 +25,30 @@ export default class SpecificCompanyFinancePage extends Component {
     };
     
   componentDidMount() {
-          axios.get('http://localhost:8000/company/'+ this.props.match.params.cusip +"/ticker")
+          axios.get('https://investlikethebest.herokuapp.com/company/'+ this.props.match.params.cusip +"/ticker")
             .then(response=>{
               this.setState({
                 companyData:response.data.results[0]
               })
-              axios.get(`http://localhost:8000/company/${this.props.match.params.cusip}/${response.data.results[0].ticker}/logo`)
+              axios.get(`https://investlikethebest.herokuapp.com/company/${this.props.match.params.cusip}/${response.data.results[0].ticker}/logo`)
                 .then(response => {
                   this.setState({
                     img: response.data.url
                   })
               })
-              axios.get(`http://localhost:8000/company/${this.state.companyData.ticker}/price`)
+              axios.get(`https://investlikethebest.herokuapp.com/company/${this.state.companyData.ticker}/price`)
                 .then(response => {
                   this.setState({
                     price:response.data[0]
                   })
                 })
-              axios.get(`http://localhost:8000/company/${this.state.companyData.ticker}/stats`)
+              axios.get(`https://investlikethebest.herokuapp.com/company/${this.state.companyData.ticker}/stats`)
                 .then(response => {
                   this.setState({
                     stats: response.data
                   })
                 })
-              axios.get(`http://localhost:8000/company/earningssuprises/${this.state.companyData.ticker}`)
+              axios.get(`https://investlikethebest.herokuapp.com/company/earningssuprises/${this.state.companyData.ticker}`)
                 .then(response => {
                   this.setState({
                     earnings:response.data

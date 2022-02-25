@@ -22,7 +22,7 @@ export default class BiggestBetsPage extends Component {
 }
 
 componentDidMount() {
-    axios.get('http://localhost:8000/funds')
+    axios.get('https://investlikethebest.herokuapp.com/funds')
      .then((response)=> {
        this.setState({
          investors:response.data
@@ -32,7 +32,7 @@ componentDidMount() {
     .then(response => {
         let topStocks = [];
         for (let i = 0; i < this.state.investors.length; i++) {
-            axios.get('http://localhost:8000/funds/'+this.state.investors[i].CIK +"/Q3-21")
+            axios.get('https://investlikethebest.herokuapp.com/funds/'+this.state.investors[i].CIK +"/Q3-21")
                 .then(response => {
                     let topStock = response.data.sort((a,b)=> (b.value - a.value)).slice(0,1);
                     let portfolioValue = response.data.map((holding) => (holding.value)).reduce((prev, curr) => prev + curr, 0);

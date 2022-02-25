@@ -17,7 +17,7 @@ export default class FundListPage extends Component {
    };
    
    componentDidMount() {
-     axios.get('http://localhost:8000/funds')
+     axios.get('https://investlikethebest.herokuapp.com/funds')
      .then((response)=> {
        this.setState({
          investors:response.data
