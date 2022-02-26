@@ -5,7 +5,11 @@ const cors = require("cors");
 const port = process.env.PORT || 8000;
 const { config } = require('dotenv');
 const fetch = require('node-fetch');
+const apicache = require('apicache');
+
 require("dotenv").config();
+
+const cache = apicache.middleware;
 
 const companyRoutes = require('./routes/companyRoutes');
 const fundRoutes = require('./routes/fundRoutes');
@@ -75,7 +79,7 @@ app.get("/", function(req,res){
 
 // rest api to get all holdings
 app.get('/filings', function (_req, res) {
-   connection.query('select * from aggregate_holdings', function (error, result, _fields) {
+   connection.query('select * from aggregate_holdings', cache('60 minutes'), function (error, result, _fields) {
 	  if (error) throw error;
 	  res.send((result));
 	});

@@ -55,7 +55,7 @@ export default class FundPage extends Component {
   render() {
     
     if (this.state.fund === null || this.state.data === null ) {
-      return <div class="loader"></div>
+      return <div className="loader"></div>
     }
     const sumval = this.state.fund
     .map((holding) => (holding.value))

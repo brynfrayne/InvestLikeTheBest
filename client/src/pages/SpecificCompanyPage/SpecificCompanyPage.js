@@ -70,6 +70,7 @@ export default class SpecificCompanyPage extends Component {
       .then((result)=> {
           axios.get('https://investlikethebest.herokuapp.com/company/'+ this.props.match.params.cusip +"/ticker")
             .then(response=>{
+              console.log(response.data)
               this.setState({
                 companyData:response.data.results[0]
               });
@@ -115,7 +116,7 @@ export default class SpecificCompanyPage extends Component {
     render() {
       
         if ( !this.state.companyData) {
-            return <div class="loader"></div>
+            return <div className="loader"></div>
         }  
     
     return <div>
