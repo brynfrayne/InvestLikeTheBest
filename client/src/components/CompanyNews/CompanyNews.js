@@ -22,7 +22,7 @@ state = {
   render() {
       console.log(this.state.news)
       if (!this.state.news) {
-        return <div class="loader"></div>
+        return <div className="loader"></div>
       }
     return <div>
         {this.state.news.map(item=> {

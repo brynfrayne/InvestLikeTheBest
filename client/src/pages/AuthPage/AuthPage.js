@@ -6,13 +6,13 @@ import SignUp from '../../components/SignUp/SignUp'
 import Login from '../../components/Login/Login'
 import './AuthPage.scss';
 
-export default class extends Component {
+export default class AuthPage extends Component {
   render() {
     return (
       <div>
         <Header />
         <div className='hero'>
-            <Link to='/'><img className='hero__img' src={heroImg} alt="hero image of bull and bear" /></Link>
+            <Link to='/'><img className='hero__img' src={heroImg} alt="bull and bear" /></Link>
         </div>
         <div className='tab-container'>
         <NavLink className="btn btn-primary btn-block" activeClassName='btn--active' to={`/userAuth`}>LOGIN</NavLink>

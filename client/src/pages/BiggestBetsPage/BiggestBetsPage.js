@@ -3,7 +3,6 @@ import Header from '../../components/Header/Header';
 import Hero from '../../components/Hero/Hero';
 import uniqid from 'uniqid';
 import axios from 'axios';
-import ChartComponent from '../../components/ChartComponent/ChartComponent';
 import BiggestBetsTableComponent from '../../components/BiggestBetsTableComponent/BiggestBetsTableComponent';
 
 

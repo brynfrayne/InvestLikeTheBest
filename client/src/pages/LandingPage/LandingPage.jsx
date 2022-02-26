@@ -1,6 +1,5 @@
 import React from 'react';
 import bullBear from '../../assets/images/bearsvsbulls-1.jpeg';
-import DropDown from '../../components/DropDown/DropDown';
 import NavBar from '../../components/NavBar/NavBar';
 import Search from '../../components/Search/Search';
 import './LandingPage.scss';
