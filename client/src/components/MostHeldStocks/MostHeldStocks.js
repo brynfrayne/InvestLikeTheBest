@@ -19,7 +19,7 @@ export default class MostHeldStocks extends Component {
     
     render() {
       if (this.state.stocks === null) {
-        return <p>Here we go, choo, choo!!</p>
+        return <div className="loader"></div>
       }
     return <div>
       {/* <Header /> */}
