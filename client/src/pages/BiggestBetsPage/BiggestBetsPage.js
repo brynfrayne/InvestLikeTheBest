@@ -11,8 +11,6 @@ export default class BiggestBetsPage extends Component {
   
   dropDown : [
     {title:'Most Held Stocks', id:uniqid(), url:'most_held_stocks'},
-    {title:'Most Sold Last Quarter', id:uniqid(), url:'most_sold_qtr'},
-    {title:'Most Bought Last Quarter', id:uniqid(), url:'most_bought_last_qtr'},
     {title:'Biggest Bets', id:uniqid(), url:'biggest_bets'}
   ],
   investors: null,
