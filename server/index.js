@@ -72,6 +72,7 @@ app.use(cors());
 app.use("/funds", fundRoutes);
 app.use("/company", companyRoutes);
 app.use("/charts", chartRoutes);
+app.use("/users", userRoutes)
 
 app.get("/", function(req,res){
   res.send("hello world")
