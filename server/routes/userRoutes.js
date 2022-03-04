@@ -1,14 +1,24 @@
 const router = require("express").Router();
-const knex = require("../knexConfig");
+const knex = require("knex");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
+const db = knex({
+    client: 'mysql',
+    connection: {
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB
+    },
+});
+
 /* CREATE new user */
 router.post("/register", (req, res) => {
-    const { first_name, last_name, phone, address, email, password } = req.body;
+    const { first_name, last_name, email, password } = req.body;
 
     // If any fields are missing, return
-    if (!first_name || !last_name || !phone || !address || !email || !password) {
+    if (!first_name || !last_name || !email || !password) {
         return res.status(400).send("Please enter the required fields.");
     }
 
@@ -20,7 +30,7 @@ router.post("/register", (req, res) => {
         password: hashedPassword
     };
 
-    knex('users')
+    db('users')
         .insert(newUser)
         .then(() => {
             res.status(201).send("Registered successfully");
@@ -40,7 +50,7 @@ router.post("/login", (req, res) => {
     }
 
     // Find the user
-    knex('users')
+    db('users')
         .where({ email: email })
         .first()
         .then((user) => {
@@ -74,7 +84,7 @@ router.get("/current", (req, res) => {
         if (err) return res.status(401).send("Invalid auth token");
 
         // Find the user
-        knex('users')
+        db('users')
             .where({ email: decoded.email })
             .first()
             .then((user) => {

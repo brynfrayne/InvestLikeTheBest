@@ -5,6 +5,7 @@ import heroImg from '../../assets/images/Bull-Markets-and-Bear-Markets-Explained
 import SignUp from '../../components/SignUp/SignUp'
 import Login from '../../components/Login/Login'
 import './AuthPage.scss';
+import Dashboard from '../DashboardPage/DashboardPage'
 
 export default class AuthPage extends Component {
   render() {
@@ -26,6 +27,9 @@ export default class AuthPage extends Component {
             </Route>
             <Route exact path='/userAuth/signUp'>
                 <SignUp />
+            </Route>
+            <Route exact path='/userAuth/dashboard'>
+                <Dashboard />
             </Route>
         </Switch>
       </div>

@@ -1,9 +1,28 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 
 export default class Login extends Component {
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+
+        axios
+            .post('https://investlikethebest.herokuapp.com/users/login', {
+                email: event.target.email.value,
+                password: event.target.password.value
+            })
+            .then((response) => {
+                sessionStorage.setItem("token", response.data.token);
+                this.setState({ success: true });
+            })
+            .catch((error) => {
+                this.setState({ error: error.response.data });
+            });
+    };
+
   render() {
     return (
-    <form className='user-auth__form'>
+    <form className='user-auth__form' onSubmit={this.handleSubmit}>
         <h3>Sign In</h3>
         <div className="form-group">
             <label>Email address</label>

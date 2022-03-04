@@ -24,7 +24,7 @@ const chartRoutes = require('./routes/chartRoutes');
 // }); 
 
 // created the below to connect to cleardb & used createPool as per the tutorial im following
-// const connection = mysql.createPool({
+
   const db_config = {
   host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -42,7 +42,7 @@ var connection;
 
 function handleDisconnect() {
   connection = mysql.createConnection(db_config); // Recreate the connection, since
-                                                  // the old one cannot be reused.
+                                           // the old one cannot be reused.
 
   connection.connect(function(err) {              // The server is either down
     if(err) {                                     // or restarting (takes a while sometimes).
@@ -65,7 +65,7 @@ handleDisconnect();
 
 //  MIDDLEWARE
 app.use(express.json());
-// app.use(express.urlencoded());
+app.use(express.urlencoded());
 app.use(cors());
 
 //  ROUTES

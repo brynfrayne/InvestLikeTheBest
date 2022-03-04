@@ -1,4 +1,6 @@
 // Update with your config settings.
+const { config } = require('dotenv');
+require("dotenv").config();
 
 module.exports = {
 
@@ -11,5 +13,15 @@ module.exports = {
       database: '13f_filings',
       charset: 'utf8',
   },
- 
-}}
+  },
+  production: {
+    client: 'mysql',
+    connection: {
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB,
+      charset: 'utf8'
+    }
+  }
+}
