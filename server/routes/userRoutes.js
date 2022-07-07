@@ -15,6 +15,7 @@ const db = knex({
 
 /* CREATE new user */
 router.post("/register", (req, res) => {
+    res.send('Hello World')
     const { first_name, last_name, email, password } = req.body;
 
     // If any fields are missing, return
@@ -29,7 +30,7 @@ router.post("/register", (req, res) => {
         ...req.body,
         password: hashedPassword
     };
-
+    console.log(newUser);
     db('users')
         .insert(newUser)
         .then(() => {

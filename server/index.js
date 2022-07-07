@@ -1,5 +1,5 @@
 const express = require('express');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const app = express();
 const cors = require("cors");
 const port = process.env.PORT || 8000;
@@ -14,6 +14,7 @@ const cache = apicache.middleware;
 const companyRoutes = require('./routes/companyRoutes');
 const fundRoutes = require('./routes/fundRoutes');
 const chartRoutes = require('./routes/chartRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 // Commenting the below out to try and create connection with cleardb
 // const connection = mysql.createConnection({
@@ -73,10 +74,6 @@ app.use("/funds", fundRoutes);
 app.use("/company", companyRoutes);
 app.use("/charts", chartRoutes);
 app.use("/users", userRoutes)
-
-app.get("/", function(req,res){
-  res.send("hello world")
-})
 
 // rest api to get all holdings
 app.get('/filings', function (_req, res) {
