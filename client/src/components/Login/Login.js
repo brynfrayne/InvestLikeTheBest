@@ -7,7 +7,7 @@ export default class Login extends Component {
         event.preventDefault();
 
         axios
-            .post('https://investlikethebest.herokuapp.com/users/login', {
+            .post(process.env.REACT_APP_API_URI + '/users/login', {
                 email: event.target.email.value,
                 password: event.target.password.value
             })

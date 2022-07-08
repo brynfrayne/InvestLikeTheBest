@@ -8,7 +8,7 @@ export default class MostHeldStocks extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://investlikethebest.herokuapp.com/company/Q3-21')
+    axios.get(process.env.REACT_APP_API_URI + '/company/Q3-21')
     .then((response)=> {
       const mostHeldStocks = response.data.sort((a,b)=>(b.stockCount - a.stockCount)).slice(0,20);
       this.setState({

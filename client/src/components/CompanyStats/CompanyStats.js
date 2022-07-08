@@ -23,30 +23,30 @@ export default class CompanyStats extends Component {
     };
     
   componentDidMount() {
-          axios.get('https://investlikethebest.herokuapp.com/company/'+ this.props.cusip +"/ticker")
+          axios.get(process.env.REACT_APP_API_URI + '/company/'+ this.props.cusip +"/ticker")
             .then(response=>{
               this.setState({
                 companyData:response.data.results[0]
               })
-              axios.get(`https://investlikethebest.herokuapp.com/company/${this.props.cusip}/${response.data.results[0].ticker}/logo`)
+              axios.get(process.env.REACT_APP_API_URI + `/company/${this.props.cusip}/${response.data.results[0].ticker}/logo`)
                 .then(response => {
                   this.setState({
                     img: response.data.url
                   })
               })
-              axios.get(`https://investlikethebest.herokuapp.com/company/${this.state.companyData.ticker}/price`)
+              axios.get(process.env.REACT_APP_API_URI + `/company/${this.state.companyData.ticker}/price`)
                 .then(response => {
                   this.setState({
                     price:response.data[0]
                   })
                 })
-              axios.get(`https://investlikethebest.herokuapp.com/company/${this.state.companyData.ticker}/stats`)
+              axios.get(process.env.REACT_APP_API_URI + `/company/${this.state.companyData.ticker}/stats`)
                 .then(response => {
                   this.setState({
                     stats: response.data
                   })
                 })
-              axios.get(`https://investlikethebest.herokuapp.com/company/earningssuprises/${this.state.companyData.ticker}`)
+              axios.get(process.env.REACT_APP_API_URI + `/company/earningssuprises/${this.state.companyData.ticker}`)
                 .then(response => {
                   this.setState({
                     earnings:response.data

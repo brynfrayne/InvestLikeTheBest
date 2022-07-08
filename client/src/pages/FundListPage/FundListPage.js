@@ -17,7 +17,7 @@ export default class FundListPage extends Component {
    };
    
    componentDidMount() {
-     axios.get('https://investlikethebest.herokuapp.com/funds')
+     axios.get(process.env.REACT_APP_API_URI + '/funds')
      .then((response)=> {
        this.setState({
          investors:response.data

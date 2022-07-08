@@ -2,7 +2,7 @@ const express = require('express');
 const mysql = require('mysql2');
 const app = express();
 const cors = require("cors");
-const port = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
 const { config } = require('dotenv');
 const fetch = require('node-fetch');
 const apicache = require('apicache');
@@ -26,43 +26,43 @@ const userRoutes = require('./routes/userRoutes');
 
 // created the below to connect to cleardb & used createPool as per the tutorial im following
 
-  const db_config = {
-  host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB
-}; 
-// connection.connect();
+//   const db_config = {
+//   host: process.env.DB_HOST,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     database: process.env.DB
+// }; 
+// // connection.connect();
 
-// commented this out to try and test the connection
-// connection.connect(function(err) {
-//   if (err) throw err
-//   console.log('You are now connected with mysql database...')
-// })
-var connection;
+// // commented this out to try and test the connection
+// // connection.connect(function(err) {
+// //   if (err) throw err
+// //   console.log('You are now connected with mysql database...')
+// // })
+// var connection;
 
-function handleDisconnect() {
-  connection = mysql.createConnection(db_config); // Recreate the connection, since
-                                           // the old one cannot be reused.
+// function handleDisconnect() {
+//   connection = mysql.createConnection(db_config); // Recreate the connection, since
+//                                            // the old one cannot be reused.
 
-  connection.connect(function(err) {              // The server is either down
-    if(err) {                                     // or restarting (takes a while sometimes).
-      console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
-    }                                     // to avoid a hot loop, and to allow our node script to
-  });                                     // process asynchronous requests in the meantime.
-                                          // If you're also serving http, display a 503 error.
-  connection.on('error', function(err) {
-    console.log('db error', err);
-    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
-      handleDisconnect();                         // lost due to either server restart, or a
-    } else {                                      // connnection idle timeout (the wait_timeout
-      throw err;                                  // server variable configures this)
-    }
-  });
-}
+//   connection.connect(function(err) {              // The server is either down
+//     if(err) {                                     // or restarting (takes a while sometimes).
+//       console.log('error when connecting to db:', err);
+//       setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+//     }                                     // to avoid a hot loop, and to allow our node script to
+//   });                                     // process asynchronous requests in the meantime.
+//                                           // If you're also serving http, display a 503 error.
+//   connection.on('error', function(err) {
+//     console.log('db error', err);
+//     if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+//       handleDisconnect();                         // lost due to either server restart, or a
+//     } else {                                      // connnection idle timeout (the wait_timeout
+//       throw err;                                  // server variable configures this)
+//     }
+//   });
+// }
 
-handleDisconnect();
+// handleDisconnect();
 
 //  MIDDLEWARE
 app.use(express.json());
@@ -83,6 +83,8 @@ app.get('/filings', function (_req, res) {
 	});
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Example app listening at http://localhost:${PORT}`);
 });
+
+module.exports = PORT;

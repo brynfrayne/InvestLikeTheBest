@@ -19,7 +19,7 @@ class Dashboard extends Component {
 
         // Get the data from the API
         axios
-            .get('https://investlikethebest.herokuapp.com/users/current', {
+            .get(process.env.REACT_APP_API_URI+ '/users/current', {
                 headers: {
                     Authorization: 'Bearer ' + token
                 }

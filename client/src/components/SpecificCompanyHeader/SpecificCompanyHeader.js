@@ -9,13 +9,13 @@ export default class SpecificCompanyHeader extends Component {
   }
   
   componentDidMount() {
-    axios.get(`https://investlikethebest.herokuapp.com/company/${this.props.companyData.ticker}/price`)
+    axios.get(process.env.REACT_APP_API_URI + `/company/${this.props.companyData.ticker}/price`)
           .then(response => {
             console.log(response.data)
             this.setState({
               price:response.data[0]
             })
-            axios.get(`https://investlikethebest.herokuapp.com/company/${this.props.cusip}/${this.props.companyData.ticker}/logo`)
+            axios.get(process.env.REACT_APP_API_URI + `/company/${this.props.cusip}/${this.props.companyData.ticker}/logo`)
           .then(response => {
             this.setState({
               img: response.data.url

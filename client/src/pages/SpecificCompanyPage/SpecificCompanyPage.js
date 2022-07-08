@@ -32,10 +32,8 @@ export default class SpecificCompanyPage extends Component {
     
   componentDidMount() {
     let sortedData;
-    console.log(this.props.match.params.period_of_report)
-    console.log(this.props.match.params.cusip)
 
-    axios.get('https://investlikethebest.herokuapp.com/company/'+this.props.match.params.cusip +'/'+this.props.match.params.period_of_report+'/institutional-ownership')
+    axios.get(process.env.REACT_APP_API_URI + '/company/'+this.props.match.params.cusip +'/'+this.props.match.params.period_of_report+'/institutional-ownership')
     .then((response)=> {
       console.log(response.data)
       let newArray = [];
@@ -53,7 +51,7 @@ export default class SpecificCompanyPage extends Component {
       })
       .then(result => {        
         for(let i=0;i < sortedData.length; i++) {
-          axios.get('https://investlikethebest.herokuapp.com/funds/'+sortedData[i].CIK+'/'+sortedData[i].period_of_report)
+          axios.get(process.env.REACT_APP_API_URI + '/funds/'+sortedData[i].CIK+'/'+sortedData[i].period_of_report)
           .then(response => {
             const sumval = response.data
               .map((holding) => (holding.value))
@@ -68,9 +66,10 @@ export default class SpecificCompanyPage extends Component {
         } 
       })
       .then((result)=> {
-          axios.get('https://investlikethebest.herokuapp.com/company/'+ this.props.match.params.cusip +"/ticker")
+          axios.get(process.env.REACT_APP_API_URI + '/company/'+ this.props.match.params.cusip +"/ticker")
             .then(response=>{
               console.log(response.data)
+              console.log(process.env.REACT_APP_API_URI)
               this.setState({
                 companyData:response.data.results[0]
               });
@@ -82,7 +81,7 @@ export default class SpecificCompanyPage extends Component {
   componentDidUpdate(prevProps) {
     let sortedData;
     if (this.props.match.params.period_of_report !== prevProps.match.params.period_of_report ) {
-      axios.get('https://investlikethebest.herokuapp.com/company/'+this.props.match.params.cusip +'/Q3-21/institutional-ownership')
+      axios.get(process.env.REACT_APP_API_URI + '/company/'+this.props.match.params.cusip +'/Q3-21/institutional-ownership')
       .then((response)=> {
         
           let newArray = [];
@@ -97,7 +96,7 @@ export default class SpecificCompanyPage extends Component {
         })
         .then(result => {
           for(let i=0;i < sortedData.length; i++) {
-            axios.get('https://investlikethebest.herokuapp.com/funds/'+sortedData[i].CIK+'/'+sortedData[i].period_of_report)
+            axios.get(process.env.REACT_APP_API_URI + '/funds/'+sortedData[i].CIK+'/'+sortedData[i].period_of_report)
             .then(response => {
               const sumval = response.data
                 .map((holding) => (holding.value))

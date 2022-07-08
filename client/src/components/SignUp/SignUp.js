@@ -14,7 +14,7 @@ class Signup extends Component {
         event.preventDefault();
 
         axios
-            .post("http://investlikethebest.herokuapp.com/users/register", {
+            .post(process.env.REACT_APP_API_URI + "/users/register", {
                 email: event.target.email.value,
                 password: event.target.password.value,
                 first_name: event.target.first_name.value,

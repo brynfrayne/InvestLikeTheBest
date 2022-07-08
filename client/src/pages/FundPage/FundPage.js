@@ -23,7 +23,7 @@ export default class FundPage extends Component {
    };
    
    componentDidMount() {
-    axios.get('https://investlikethebest.herokuapp.com/funds/'+this.props.match.params.CIK +"/"+this.props.match.params.period_of_report)
+    axios.get(process.env.REACT_APP_API_URI + '/funds/'+this.props.match.params.CIK +"/"+this.props.match.params.period_of_report)
     .then((response)=> {
       console.log(response)
       this.setState({
@@ -37,7 +37,7 @@ export default class FundPage extends Component {
   })}
   componentDidUpdate(prevProps) {
     if (this.props.match.params.period_of_report !== prevProps.match.params.period_of_report) {
-      axios.get('https://investlikethebest.herokuapp.com/funds/'+this.props.match.params.CIK +"/"+this.props.match.params.period_of_report)
+      axios.get(process.env.REACT_APP_API_URI + '/funds/'+this.props.match.params.CIK +"/"+this.props.match.params.period_of_report)
     .then((response)=> {
       
       this.setState({

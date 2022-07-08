@@ -1,6 +1,4 @@
-const path = require('path');
 const fs = require('fs');
-// const request = require('request-promise'); --- doesnt do anything and is deprecated 
 const cheerio = require('cheerio');
 
 // Ignore this array for now

@@ -11,7 +11,7 @@ state = {
 }
 
     componentDidMount(){
-        axios.get('https://investlikethebest.herokuapp.com/company/'+this.props.ticker+'/news')
+        axios.get(process.env.REACT_APP_API_URI + '/company/'+this.props.ticker+'/news')
             .then(response => {
                 console.log(response.data)
                 this.setState({
