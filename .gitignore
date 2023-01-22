@@ -22,6 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 git add .
-node_modules
-node_modules
-firebase.js
+.vercel
+build
+package-lock.json
+yarn.lock
+.gitignore
